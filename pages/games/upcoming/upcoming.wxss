@@ -1,1 +1,15 @@
 /* pages/games/upcoming/upcoming.wxss */
+.banner {
+  background-size:cover !important;
+  background-position:center;
+  text-shadow:0 1px 3px rgba(0,0,0,0.6);
+  height:450rpx;
+  width:100%;
+  border-radius:15px;
+}
+
+.card {
+  width:100%;
+  box-shadow:0 0 10px #bbbbbb;
+  border-radius:15px;
+}

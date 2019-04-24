@@ -1,2 +1,5 @@
-<!--pages/games/upcoming/upcoming.wxml-->
-<text>pages/games/upcoming/upcoming.wxml</text>
+<view class="container">
+  <view class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(../../../images/archery.jpg);"></view>
+
+  <view class="card">hello</view>
+</view>
