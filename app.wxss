@@ -8,3 +8,142 @@
   padding: 20rpx 30rpx;
   box-sizing: border-box;
 } 
+
+text {
+  color: #535353;
+}
+
+/* COMPONENTS */
+
+/* BANNER */
+.banner {
+  background-size:cover !important;
+  background-position:center;
+  text-shadow:0 1px 3px rgba(0,0,0,0.6);
+  height:450rpx;
+  width:100%;
+  border-radius:15px;
+  margin-bottom:20px;
+}
+
+/* CARD */
+.card {
+width:100%;
+box-shadow:0 0 30px #e8e8e8;
+border-radius:15px;
+}
+
+.card-content {
+  margin:40rpx 40rpx;
+}
+
+.card-status {
+  background:#8e8e8e;
+  border-radius:8px;
+  font-size:16px;
+  padding:5px;
+}
+
+/* AVATARS */
+.avatar-sm {
+  width:30px;
+  height:30px;
+  border-radius:50%;
+}
+
+.avatar-md {
+ font-size:18px;
+}
+
+.avatar-lg {
+
+}
+
+/* BUTTONS */
+.btn-full {
+
+}
+
+.btn-half {
+
+}
+
+/* TEXT */
+.header-lg {
+
+}
+
+.header-md {
+  font-size: 18px;
+}
+
+.header-sm {
+  
+}
+
+.header-mini {
+  font-size:14px
+}
+
+.content {
+
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.text-grey {
+  color: #BDBDBD;
+}
+
+.text-white {
+  color: white;
+}
+
+/* DISPLAY */
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column !important;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb {
+  margin-bottom: 10px;
+}
+
+.mt {
+  margin-top: 10px;
+}
+
+.my {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.mx {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.mr {
+  margin-right: 10px;
+}
+
+.ml {
+  margin-left: 10px;
+}
+
+.w100 {
+  width: 100%;
+}

@@ -1,5 +1,34 @@
 <view class="container">
   <view class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(../../../images/archery.jpg);"></view>
 
-  <view class="card">hello</view>
+  <view class="card">
+    <view class="card-content">
+      <!-- DATE -->
+      <view class='d-flex flex-column text-center'>
+        <text class='header-md bold'>Wednesday, 31 Sept</text>
+        <text class='header-md mb'>12:30 - 14:30</text>
+      </view>
+      <!-- ATTENDEES -->
+      <view>
+        <view class='d-flex space-between'>
+          <text class='header-mini text-grey'>attendees: 28/28</text>
+          <text class='header-mini text-grey'>waiting: 20</text>
+        </view>
+        <view class='d-flex'>
+          <image src='../../../images/archery.jpg' class='avatar-sm mr my'></image>
+          <image src='../../../images/archery.jpg' class='avatar-sm mr my'></image>
+          <image src='../../../images/archery.jpg' class='avatar-sm mr my'></image>
+          <image src='../../../images/archery.jpg' class='avatar-sm mr my'></image>
+          <image src='../../../images/archery.jpg' class='avatar-sm mr my'></image>
+        </view>
+      </view>
+      <!-- STATUS -->
+      <view class='w100 mt'>
+        <view class='text-center card-status'>
+          <text class='text-white'>Registration opens 30 Apr, 12:30</text>
+          </view>
+      </view>
+    </view>
+  </view>
+
 </view>
