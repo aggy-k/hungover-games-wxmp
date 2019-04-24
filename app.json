@@ -1,7 +1,10 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/landing/landing",
+    "pages/games/upcoming/upcoming",
+    "pages/games/show/show",
+    "pages/games/registered/registered",
+    "pages/games/me/me"
   ],
   "window": {
     "backgroundTextStyle": "light",
