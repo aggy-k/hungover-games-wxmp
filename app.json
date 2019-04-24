@@ -9,8 +9,32 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "Hungover Games",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json", 
+
+  "tabBar": {
+    "backgroundColor": "#fff",
+    "selectedColor": "#3165EC",
+    "borderStyle": "black",
+    "color": "black",
+    "list": [
+      {
+        "pagePath": "pages/games/upcoming/upcoming",
+        "iconPath": "images/games.png",
+        "selectedIconPath": "images/games-active.png"
+      },
+      {
+        "pagePath": "pages/games/registered/registered",
+        "iconPath": "images/registered.png",
+        "selectedIconPath": "images/registered-active.png"
+      },
+      {
+        "pagePath": "pages/games/me/me",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/me-active.png"
+      }
+    ]
+  }
 }
