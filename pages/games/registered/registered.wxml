@@ -1,2 +1,37 @@
-<!--pages/games/registered/registered.wxml-->
-<text>pages/games/registered/registered.wxml</text>
+<view class='container'>
+  <text class='header-lg bold mb'>Your games</text>
+  <view>
+    <text class='mb'>Tab bars</text>
+  </view>
+
+  <view class='card'>
+    <view class='card-content'>
+      <!-- TOP -->
+      <view class='d-flex space-between'>
+        <view class='d-flex flex-column mb'>
+          <text class='header-md bold'>Sunday, 31 Sept</text>
+          <text class='header-md'>12:30 - 14:30</text>
+        </view>
+        <text class='text-green header-md'>Registered</text>
+      </view>
+      <!-- ATTENDEES -->
+      <view class='my'>
+        <view class='d-flex space-between mb'>
+          <text class='header-mini text-grey'>Attendees: 28/28</text>
+          <text class='header-mini text-grey'>Waiting: 20</text>
+        </view>
+        <view>
+          <image src='../../../images/archery.jpg' class='avatar-sm mr'></image>
+          <image src='../../../images/archery.jpg' class='avatar-sm mr'></image>
+        </view>
+      </view>
+      <!-- BOTTOM -->
+      <view class='d-flex space-between item-center'>
+        <text class='text-grey w100 header-sm'>Click to cancel ></text>
+        <navigator class='btn-sm btn-red w70'>I'm lame</navigator>
+      </view>
+    </view>
+  </view>
+
+
+</view>

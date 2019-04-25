@@ -1,7 +1,7 @@
 <view class="container">
   <view class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(../../../images/archery.jpg);"></view>
 
-  <view class="card">
+  <navigator class="card" url='../show/show'>
     <view class="card-content">
       <!-- DATE -->
       <view class='d-flex flex-column text-center'>
@@ -29,6 +29,6 @@
           </view>
       </view>
     </view>
-  </view>
+  </navigator>
 
 </view>
