@@ -39,12 +39,33 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
 					"name": "upcoming",
 					"pathName": "pages/games/upcoming/upcoming",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "registered",
+					"pathName": "pages/games/registered/registered",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "me",
+					"pathName": "pages/games/me/me",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "show",
+					"pathName": "pages/games/show/show",
 					"query": "",
 					"scene": null
 				}

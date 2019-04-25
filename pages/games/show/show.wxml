@@ -1,2 +1,9 @@
-<!--pages/games/show/show.wxml-->
-<text>pages/games/show/show.wxml</text>
+<view class='status-bar text-center'>
+  <text class='text-white'>Registration opens Monday, 31 Sept, 12:30</text>
+</view>
+
+<view class='container'>
+  <view class='card'>
+    <text class='header-lg'></text>
+  </view>
+</view>

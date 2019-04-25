@@ -44,6 +44,13 @@ border-radius:15px;
   padding:5px;
 }
 
+.status-bar {
+  background:#8e8e8e;
+  font-size:16px;
+  padding:5px;
+  width: 100%;
+}
+
 /* AVATARS */
 .avatar-sm {
   width:30px;
