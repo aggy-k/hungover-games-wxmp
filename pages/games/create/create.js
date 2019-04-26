@@ -7,7 +7,6 @@ Page({
    */
   data: {
     index: 0,
-    date: '2019-1-1',
     maxCapacity: 28,
     signUpTime: '12:00 PM',
      
@@ -24,8 +23,8 @@ Page({
     console.log('tomorrow',tomorrow)
     
     this.setData({
-      date: `${currentDate.getFullYear()}-${currentDate.getMonth()+1}-${currentDate.getDate()}`,
-      signUpDate: `${tomorrow.getFullYear()}-${tomorrow.getMonth() + 1}-${tomorrow.getDate()}`
+      date: currentDate.getFullYear() + '-' + ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' + ('0' + currentDate.getDate()).slice(-2),
+      signUpDate: tomorrow.getFullYear() + '-' + ('0' + (tomorrow.getMonth() + 1)).slice(-2) + '-' + ('0' + tomorrow.getDate()).slice(-2)
     })
     const url = app.globalData.url;
     const page = this;
@@ -132,7 +131,6 @@ Page({
     const minusSix = new Date(date.setDate(date.getDate() - 6));
     this.setData({
       date: e.detail.value,
-      // signUpDate: `${minusSix.getFullYear()}-${minusSix.getMonth() + 1}-${minusSix.getDate()}`,
       signUpDate: minusSix.getFullYear() + '-' + ('0' + (minusSix.getMonth() + 1)).slice(-2) + '-' + ('0' + minusSix.getDate()).slice(-2)
     })
   },
@@ -159,34 +157,42 @@ Page({
     const url = app.globalData.url;
     const page = this;
     console.log(e)
+
     const data = e.detail.value
     const date = data.date
     const start_time = data.startTime
     const end_time = data.endTime
     const signup_time = `${data.signUpDate} ${data.signUpTime}`
     const max_capacity = parseInt(data.maxCapacity)
-    const user_id = 1;
+    const location = data.location
+    const description = data.description
+    const announcement = data.announcement
+
+    const is_active = data.isActive
+
+    const user_id = 1; // for testing purposes only
+    // const user_id = app.globalData.userId
+
     const games = {
       date: date,
       start_time: start_time,
       end_time: end_time,
       signup_time: signup_time,
       max_capacity: max_capacity,
+      location: location,
+      description: description,
+      announcement: announcement,
       user_id: user_id,
-      is_active: true
+      is_active: is_active
     }
-    // const games = {
-    //   max_capacity: max_capacity, user_id: 1
-    // }
-    
 
-    wx.request({
-      url: `${url}games`,
-      method: 'POST',
-      data: games,
-      success(res) {
+    // wx.request({
+    //   url: `${url}games`,
+    //   method: 'POST',
+    //   data: games,
+    //   success(res) {
 
-      }
-    })
+    //   }
+    // })
   }
 })

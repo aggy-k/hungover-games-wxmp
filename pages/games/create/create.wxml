@@ -1,10 +1,9 @@
 <!--pages/games/create/create.wxml-->
-<text>pages/games/create/create.wxml</text>
 <form bindsubmit="formSubmit" bindreset="formReset">
 
       <!-- TIMESLOT PICKER -->
-      <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{timeslotsArray}}">
-        <!-- <button type="default">{{array[index]}}</button> -->
+      <label for="timeslotPicker">Select timeslot</label>
+      <picker id="timeslotPicker" class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{timeslotsArray}}">
         <view class="user-input input-height">
           <text>{{timeslotsArray[index]}}</text>
           <!-- <image class='image-icon' src='/images/arrow-down.png'></image> -->
@@ -12,33 +11,49 @@
       </picker>
 
       <!-- DATE PICKER -->
-      <picker mode="date" value="{{date}}" start="2019-01-01" end="2020-12-31" bindchange="bindDateChange" name="date">
+      <label for="gameDatePicker">Date</label>
+      <picker id="gameDatePicker" mode="date" value="{{date}}" start="2019-01-01" end="2020-12-31" bindchange="bindDateChange" name="date">
         <view class="picker">{{date}}</view>
       </picker>
 
       <!-- START TIME PICKER -->
-      <picker mode="time" value="{{startTime}}" start="00:00" end="23:30" bindchange="bindStartTimeChange" name="startTime">
+      <label for='gameStartTimePicker'>Start Time</label>
+      <picker id='gameStartTimePicker' mode="time" value="{{startTime}}" start="00:00" end="23:30" bindchange="bindStartTimeChange" name="startTime">
         <view class="picker">{{startTime}}</view>
       </picker>
 
       <!-- END TIME PICKER -->
-      <picker mode="time" value="{{endTime}}" start="00:00" end="23:30" bindchange="bindEndTimeChange" name="endTime">
+      <label for='gameEndTimePicker'>End Time</label>
+      <picker id="gameEndTimePicker" mode="time" value="{{endTime}}" start="00:00" end="23:30" bindchange="bindEndTimeChange" name="endTime">
         <view class="picker">{{endTime}}</view>
       </picker>
 
       <!-- SIGNUP DATE -->
-      <picker mode="date" value="{{signUpDate}}" start="2019-01-01" end="2020-12-31" bindchange="bindSignUpDateChange" name="signUpDate">
+      <label for='signUpDatePicker'>Signup Starts at</label>
+      <picker id='signUpDatePicker' mode="date" value="{{signUpDate}}" start="2019-01-01" end="2020-12-31" bindchange="bindSignUpDateChange" name="signUpDate">
         <view class="picker">{{signUpDate}}</view>
       </picker>
 
       <!-- SIGN UP TIME -->
-      <picker mode="time" value="{{signUpTime}}" start="00:00" end="23:30" bindchange="bindSignUpTimeChange" name="signUpTime">
+      <label for='signUpTimePicker'></label>
+      <picker id='signUpTimePicker' mode="time" value="{{signUpTime}}" start="00:00" end="23:30" bindchange="bindSignUpTimeChange" name="signUpTime">
         <view class="picker">{{signUpTime}}</view>
       </picker>
 
-      <view><input type="number" name= "maxCapacity" value="{{maxCapacity}}" placeholder="Max Capacity"></input></view>
+      <label for='maxCapacity'>Max. Capacity</label>
+      <view><input id="maxCapacity" type="number" name= "maxCapacity" value="{{maxCapacity}}" placeholder="Max Capacity"></input></view>
 
-      <radio-group class="radio-group" bindchange="radioChange" name="isActive">
+      <label for='location'>Location</label>
+      <view><input id="location" type="text" name= "location" value="{{location}}" placeholder="Location"></input></view>
+
+      <label for='description'>Description</label>
+      <view><input id="description" type="text" name= "description" value="{{description}}" placeholder="Description"></input></view>
+
+      <label for='announcement'>Announcement</label>
+      <view><input id="announcement" type="text" name= "announcement" value="{{announcement}}" placeholder="Announcement"></input></view>
+
+      <label for='gameStatus'>Game Status</label>
+      <radio-group id='gameStatus' class="radio-group" bindchange="radioChange" name="isActive">
         <label class="radio">
           <radio value="true" checked="true">Active</radio>
           <radio value="false">Cancelled</radio>       
