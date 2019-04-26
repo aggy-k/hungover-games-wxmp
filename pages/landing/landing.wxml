@@ -10,4 +10,5 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">Enter</button>
 </view>

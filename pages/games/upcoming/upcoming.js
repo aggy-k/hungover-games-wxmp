@@ -1,4 +1,6 @@
 // pages/games/upcoming/upcoming.js
+const app = getApp();
+
 Page({
 
   /**
@@ -12,7 +14,8 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-
+    console.log('global data:');
+    console.log(app.globalData)
   },
 
   /**
@@ -26,7 +29,17 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
-
+    const page = this
+    wx.request({
+      url: 'http://localhost:3000/api/v1/games',
+      success: function (res) {
+        page.setData({
+          games: res.data
+        })
+        console.log('Games index:')
+        console.log(page.data.games)
+      }
+    })
   },
 
   /**

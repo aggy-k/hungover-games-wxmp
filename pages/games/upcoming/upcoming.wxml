@@ -1,11 +1,14 @@
 <view class="container">
+  <!-- BANNER -->
   <view class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(../../../images/archery.jpg);"></view>
 
-  <navigator class="card" url='../show/show'>
+  <!-- CARDS -->
+  <view wx:for="{{games}}" wx:for-item="game" wx:key="game.id" bindtap="showGame" class="card" data-space="{{game}}">
+  <!-- <navigator class="card" url='../show/show'> -->
     <view class="card-content">
       <!-- DATE -->
       <view class='d-flex flex-column text-center'>
-        <text class='header-md bold'>Wednesday, 31 Sept</text>
+        <text class='header-md bold'>Wednesday, 31 Sept{{game.date}}</text>
         <text class='header-md mb'>12:30 - 14:30</text>
       </view>
       <!-- ATTENDEES -->
@@ -29,6 +32,7 @@
           </view>
       </view>
     </view>
-  </navigator>
+  <!-- </navigator> -->
+  </view>
 
 </view>
