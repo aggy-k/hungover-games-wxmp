@@ -39,14 +39,12 @@ text {
 }
 
 .card-status {
-  background:#8e8e8e;
   border-radius:8px;
   font-size:16px;
   padding:5px;
 }
 
 .status-bar {
-  background:#8e8e8e;
   font-size:16px;
   padding-top:5px;
   padding-bottom:5px;
@@ -218,4 +216,25 @@ text {
 
 .w70 {
   width: 70%;
+}
+
+/* COLORS */
+.bg-grey {
+  background:#C9C8C8;
+}
+
+.bg-red {
+  background: #FF8C8C;
+}
+
+.bg-green {
+  background: #67C180;
+}
+
+.bg-orange {
+  background: #F08302;
+}
+
+.bg-blue {
+  background: #6AC9E7;
 }

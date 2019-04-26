@@ -8,14 +8,14 @@
     <view class="card-content">
       <!-- DATE -->
       <view class='d-flex flex-column text-center'>
-        <text class='header-md bold'>Wednesday, 31 Sept{{game.date}}</text>
-        <text class='header-md mb'>12:30 - 14:30</text>
+        <text class='header-md bold'>{{game.start_time.weekDay}}, {{game.start_time.day}} {{game.start_time.month}}, {{game.start_time.year}}</text>
+        <text class='header-md mb'>{{game.start_time.time}} - {{game.end_time.time}}</text>
       </view>
       <!-- ATTENDEES -->
       <view>
         <view class='d-flex space-between'>
-          <text class='header-mini text-grey'>attendees: 28/28</text>
-          <text class='header-mini text-grey'>waiting: 20</text>
+          <text class='header-mini text-grey'>attendees: {{game.attendees_count}}/{{game.max_capacity}}</text>
+          <text class='header-mini text-grey'>waiting: {{game.signups.length - game.attendees_count}}</text>
         </view>
         <view class='d-flex'>
           <image src='../../../images/archery.jpg' class='avatar-sm mr my'></image>
@@ -27,8 +27,8 @@
       </view>
       <!-- STATUS -->
       <view class='w100 mt'>
-        <view class='text-center card-status'>
-          <text class='text-white'>Registration opens 30 Apr, 12:30</text>
+        <view class='text-center card-status bg-grey'>
+          <text class='text-white'>Signup opens {{game.signup_date.day}} {{game.signup_date.month}}, {{game.signup_date.time}}</text>
           </view>
       </view>
     </view>
