@@ -1,6 +1,6 @@
 <view>
   <view class='status-bar bg-grey text-center mb'>
-    <text class='text-white'>Signup opens Monday, 31 Sept, 12:30</text>
+    <text class='text-white'>Signup opens {{gameInfo.signup_time.weekDay}}, {{gameInfo.signup_time.day}} {{gameInfo.signup_time.month}}, {{gameInfo.signup_time.time}}</text>
   </view>
 </view>
 
@@ -8,16 +8,16 @@
   <!-- DATE -->
   <view class='card'>
     <view class='card-content text-center d-flex flex-column'>
-      <text class='header-lg header-lg bold'>Sunday, 31 September</text>
-      <text class='header-lg header-lg bold'>12:30 - 14:30</text>
+      <text class='header-lg header-lg bold'>{{gameInfo.start_time.weekDay}}, {{gameInfo.start_time.day}} {{gameInfo.start_time.month}}</text>
+      <text class='header-lg header-lg bold'>{{gameInfo.start_time.time}} - {{gameInfo.end_time.time}}</text>
     </view>
   </view>
 
   <!-- ATTENDEES -->
   <view class='w100 mb'>
     <view class='d-flex space-between mb'>
-      <text>attendees: 28/28</text>
-      <text class='text-orange'>waiting: 20</text>
+      <text>Attendees: {{gameInfo.attendeesCount}}/{{gameInfo.maxCapacity}}</text>
+      <text class='text-orange'>Waiting: {{gameInfo.attendees.length - gameInfo.maxCapacity}}</text>
     </view>
     <view>
       <image src='../../../images/archery.jpg' class='avatar-md mr'></image>
