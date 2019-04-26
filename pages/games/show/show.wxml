@@ -1,14 +1,75 @@
-<view class='status-bar text-center'>
-  <text class='text-white'>Registration opens Monday, 31 Sept, 12:30</text>
-</view>
-
-<view class='container'>
-  <view class='card'>
-    <text class='header-lg'></text>
+<view>
+  <view class='status-bar text-center mb'>
+    <text class='text-white'>Signup opens Monday, 31 Sept, 12:30</text>
   </view>
 </view>
 
-Currently only connects to #create
-<form bindsubmit="formSubmit" bindreset="formReset">
-  <button style="margin-bottom:10px" type="primary" formType="submit" loading="{{loading}}" class='btn-half' data-game_id="{{game_id}}">Join</button>
-</form>
+<view class='container'>
+  <!-- DATE -->
+  <view class='card'>
+    <view class='card-content text-center d-flex flex-column'>
+      <text class='header-lg header-lg bold'>Sunday, 31 September</text>
+      <text class='header-lg header-lg bold'>12:30 - 14:30</text>
+    </view>
+  </view>
+
+  <!-- ATTENDEES -->
+  <view class='w100 mb'>
+    <view class='d-flex space-between mb'>
+      <text>attendees: 28/28</text>
+      <text class='text-orange'>waiting: 20</text>
+    </view>
+    <view>
+      <image src='../../../images/archery.jpg' class='avatar-md mr'></image>
+      <image src='../../../images/archery.jpg' class='avatar-md mr'></image>
+    </view>
+  </view>
+  
+  <!-- CARDS -->
+  <!-- ANNOUNCEMENTS -->
+  <view class='card'>
+    <view class='card-content'>
+      <view class='d-flex flex-column text-center item-center'>
+        <image src='../../../images/announcement.png' class='icon'></image>
+        <text class='header-md bold mb'>Announcements</text>
+      </view>
+      <view>
+        <text>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it.</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- DESCRIPTION -->
+  <view class='card'>
+    <view class='card-content'>
+      <view class='d-flex flex-column text-center item-center'>
+        <image src='../../../images/description.png' class='icon'></image>
+        <text class='header-md bold mb'>Description</text>
+      </view>
+      <view>
+        <text>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it.</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- LOCATION -->
+  <view class='card'>
+    <view class='card-content'>
+      <view class='d-flex flex-column text-center item-center'>
+        <image src='../../../images/location.png' class='icon'></image>
+        <text class='header-md bold mb'>Location</text>
+      </view>
+      <view>
+        <!-- MAP -->
+        <text>Cages, Jiangning rd, Jing'An</text>
+        <image src='../../../images/archery.jpg'></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class='button-footer d-flex'>
+  <navigator class='w100 ma btn btn-transparent'>Share</navigator>
+  <navigator class='w100 ma btn btn-orange' bindtap="formSubmit" data-game_id="{{game_id}}">Sign up</navigator>
+</view>

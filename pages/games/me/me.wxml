@@ -1,2 +1,14 @@
-<!--pages/games/me/me.wxml-->
-<text>pages/games/me/me.wxml</text>
+<view class='container'>
+  <view class='d-flex flex-column mt'>  
+    <view class='d-flex flex-column item-center my'>
+      <image src='../../../images/archery.jpg' class='avatar-lg my'></image>
+      <text class='header-lg bold mb'>Aggy</text> 
+    </view>
+    <view class='d-flex flex-column item-center mt'>
+      <navigator class='btn btn-ghost-orange w100 my'>Game rules</navigator>
+      <navigator class='btn btn-ghost-orange w100 my'>Manage games</navigator> 
+    </view>
+  </view>
+  
+
+</view>
