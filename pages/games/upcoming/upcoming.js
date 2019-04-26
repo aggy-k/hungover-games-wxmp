@@ -7,15 +7,15 @@ Page({
    * Page initial data
    */
   data: {
-
+    week: app.globalData.week,
+    month: app.globalData.month
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-    console.log('global data:');
-    console.log(app.globalData)
+
   },
 
   /**
@@ -33,13 +33,27 @@ Page({
     wx.request({
       url: 'http://localhost:3000/api/v1/games',
       success: function (res) {
-        page.setData({
-          games: res.data
-        })
-        console.log('Games index:')
+        const games = res.data
+        games.forEach(function (game) {
+          game.start_time = page.setDateTime(game.start_time)
+          game.end_time = page.setDateTime(game.end_time)
+          game.signup_date = page.setDateTime(game.signup_date)
+        });
+        page.setData({ games: games });
         console.log(page.data.games)
-      }
+      },
     })
+  },
+
+  setDateTime: function(dateString) {
+    const date = new Date(dateString);
+    const weekDay = this.data.week[date.getDay()];
+    const day = date.getDate();
+    const month = this.data.month[date.getMonth()].slice(0, 3);
+    const year = date.getFullYear();
+    const time = `${date.getHours()}:${('0' + date.getMinutes()).slice(-2)}`;
+
+    return { weekDay: weekDay, day: day, month: month, year: year, time: time }
   },
 
   /**

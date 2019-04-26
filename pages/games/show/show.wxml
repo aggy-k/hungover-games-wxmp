@@ -1,5 +1,5 @@
 <view>
-  <view class='status-bar text-center mb'>
+  <view class='status-bar bg-grey text-center mb'>
     <text class='text-white'>Signup opens Monday, 31 Sept, 12:30</text>
   </view>
 </view>
