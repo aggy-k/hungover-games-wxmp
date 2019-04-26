@@ -1,4 +1,6 @@
 // pages/games/show/show.js
+const app = getApp();
+
 Page({
 
   /**
@@ -12,7 +14,13 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    // Testing only, to be removed
+    this.setData({
+      game_id: 1
+    })
 
+    // load signup data for this game_id if user already signed up
+    // How to handle 2 signups?
   },
 
   /**
@@ -62,5 +70,27 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  formSubmit(e) {
+    const page = this;
+    console.log(page)
+    const url = app.globalData.url;
+    console.log(e.detail.target.dataset)
+    const game_id = e.detail.target.dataset.game_id
+    console.log(game_id)
+    const user_id = 1;
+    const attendee_status = 'signed-up'
+
+    wx.request({
+      url: `${url}signups?game_id=${game_id}&user_id=${user_id}`,
+      method: 'POST',
+      data: {"attendee_status": attendee_status},
+      success(res) {
+        // wx.reLaunch({
+        //   url: page,
+        // })
+      }
+    })
   }
 })
