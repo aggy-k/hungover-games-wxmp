@@ -1,0 +1,52 @@
+<!--pages/games/create/create.wxml-->
+<text>pages/games/create/create.wxml</text>
+<form bindsubmit="formSubmit" bindreset="formReset">
+
+      <!-- TIMESLOT PICKER -->
+      <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{timeslotsArray}}">
+        <!-- <button type="default">{{array[index]}}</button> -->
+        <view class="user-input input-height">
+          <text>{{timeslotsArray[index]}}</text>
+          <!-- <image class='image-icon' src='/images/arrow-down.png'></image> -->
+        </view>
+      </picker>
+
+      <!-- DATE PICKER -->
+      <picker mode="date" value="{{date}}" start="2019-01-01" end="2020-12-31" bindchange="bindDateChange" name="date">
+        <view class="picker">{{date}}</view>
+      </picker>
+
+      <!-- START TIME PICKER -->
+      <picker mode="time" value="{{startTime}}" start="00:00" end="23:30" bindchange="bindStartTimeChange" name="startTime">
+        <view class="picker">{{startTime}}</view>
+      </picker>
+
+      <!-- END TIME PICKER -->
+      <picker mode="time" value="{{endTime}}" start="00:00" end="23:30" bindchange="bindEndTimeChange" name="endTime">
+        <view class="picker">{{endTime}}</view>
+      </picker>
+
+      <!-- SIGNUP DATE -->
+      <picker mode="date" value="{{signUpDate}}" start="2019-01-01" end="2020-12-31" bindchange="bindSignUpDateChange" name="signUpDate">
+        <view class="picker">{{signUpDate}}</view>
+      </picker>
+
+      <!-- SIGN UP TIME -->
+      <picker mode="time" value="{{signUpTime}}" start="00:00" end="23:30" bindchange="bindSignUpTimeChange" name="signUpTime">
+        <view class="picker">{{signUpTime}}</view>
+      </picker>
+
+      <view><input type="number" name= "maxCapacity" value="{{maxCapacity}}" placeholder="Max Capacity"></input></view>
+
+      <radio-group class="radio-group" bindchange="radioChange" name="isActive">
+        <label class="radio">
+          <radio value="true" checked="true">Active</radio>
+          <radio value="false">Cancelled</radio>       
+        </label>
+      </radio-group>
+
+    <view class='button-inline'>       
+      <button class='btn-half' style="margin-bottom:20px" type="warn" bindtap="cancelSubmit">Cancel</button>     
+      <button style="margin-bottom:20px" type="primary" formType="submit" loading="{{loading}}" class='btn-half'>Publish Game</button>
+    </view> 
+  </form>
