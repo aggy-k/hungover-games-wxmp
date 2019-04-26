@@ -7,7 +7,8 @@ Page({
    * Page initial data
    */
   data: {
-
+    week: app.globalData.week,
+    month: app.globalData.month
   },
 
   /**
@@ -21,6 +22,20 @@ Page({
 
     // load signup data for this game_id if user already signed up
     // How to handle 2 signups?
+
+    const page = this
+    wx.request({
+      url: 'http://localhost:3000/api/v1/games/1',
+      success: function (res) {
+        const game = res.data
+        game.start_time = page.setDateTime(game.start_time)
+        game.end_time = page.setDateTime(game.end_time)
+        game.signup_time = page.setDateTime(game.signup_time)
+
+        page.setData({ gameInfo: game });
+        console.log(page.data.gameInfo)
+      },
+    })
   },
 
   /**
@@ -35,6 +50,17 @@ Page({
    */
   onShow: function () {
 
+  },
+
+  setDateTime: function (dateString) {
+    const date = new Date(dateString);
+    const weekDay = this.data.week[date.getDay()];
+    const day = date.getDate();
+    const month = this.data.month[date.getMonth()];
+    const year = date.getFullYear();
+    const time = `${date.getHours()}:${('0' + date.getMinutes()).slice(-2)}`;
+
+    return { weekDay: weekDay, day: day, month: month, year: year, time: time }
   },
 
   /**
