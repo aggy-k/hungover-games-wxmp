@@ -37,6 +37,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    url: 'http://localhost:3000/api/v1/'
+    url: 'http://localhost:3000/api/v1/', 
+    week: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    month: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
   }
 })
