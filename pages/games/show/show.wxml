@@ -34,7 +34,7 @@
         <text class='header-md bold mb'>Announcements</text>
       </view>
       <view>
-        <text>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it.</text>
+        <text>{{gameInfo.announcement}}</text>
       </view>
     </view>
   </view>
@@ -47,7 +47,7 @@
         <text class='header-md bold mb'>Description</text>
       </view>
       <view>
-        <text>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it.</text>
+        <text>{{gameInfo.description}}</text>
       </view>
     </view>
   </view>
@@ -61,8 +61,8 @@
       </view>
       <view>
         <!-- MAP -->
-        <text>Cages, Jiangning rd, Jing'An</text>
-        <image src='../../../images/archery.jpg'></image>
+        <text>{{gameInfo.location}}</text>
+        <image src='../../../images/archery.jpg' class='rounded w100'></image>
       </view>
     </view>
   </view>

@@ -55,7 +55,8 @@ Page({
 
     })
 
-    
+    console.log('Displaying page data')
+    console.log(this.data)
   },
 
   /**

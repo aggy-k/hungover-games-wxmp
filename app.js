@@ -6,12 +6,29 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
+    const host = 'http://localhost:3000/api/v1/'
     // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         console.log('Logging in');
         console.log(res)
+
+        wx.request({
+          url: host + 'login',
+          method: 'POST',
+          data: {
+            code: 'test_wechat_id'
+          },
+          success: (res) => {
+            console.log(11, res)
+            this.globalData.userId = res.data.userId
+          },
+          fail: (res) => {
+            console.log(12, res)
+          }
+        })
+
       }
     })
     // 获取用户信息
