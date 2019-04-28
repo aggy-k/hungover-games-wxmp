@@ -119,6 +119,24 @@ text {
   margin:10px;
 }
 
+/* FORM */
+
+.form-group {
+  margin-bottom:20px;
+}
+
+.form-label {
+  margin-bottom: 5px;
+  margin-left: 3px;
+  color: #BDBDBD;
+}
+
+.form-value {
+  border:solid 1px #f0f0f0;
+  padding:10px;
+  border-radius:5px;
+}
+
 /* TEXT */
 .header-lg {
   font-size:24px;

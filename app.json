@@ -4,8 +4,9 @@
     "pages/games/upcoming/upcoming",
     "pages/games/show/show",
     "pages/games/registered/registered",
-    "pages/games/create/create",
-    "pages/games/me/me"
+    "pages/games/me/me",
+    "pages/manage/index/index",
+    "pages/manage/create/create"
   ],
   "window": {
     "backgroundTextStyle": "light",

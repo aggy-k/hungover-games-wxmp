@@ -1,0 +1,148 @@
+<!--pages/games/create/create.wxml-->
+<view class='container'>
+  <view class='header-lg bold mb'>
+    <text> Create new game</text>
+  </view>
+
+  <view class='w100 mt'>
+    <form bindsubmit="formSubmit" bindreset="formReset">
+
+      <!-- TIMESLOT PICKER -->
+      <view class='form-group'>
+        <view class='form-label'>
+          <label for="timeslotPicker">Select timeslot</label>
+        </view>
+        <view class='form-value'>
+          <picker id="timeslotPicker" class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{timeslotsArray}}">
+          <view class="user-input input-height">
+            <text>{{timeslotsArray[index]}}</text>
+            <!-- <image class='image-icon' src='/images/arrow-down.png'></image> -->
+          </view>
+        </picker>
+        </view>
+      </view>
+
+      <!-- DATE PICKER -->
+      <view class='form-group'>      
+        <view class='form-label'>
+          <label for="gameDatePicker">Date</label>
+        </view>
+        <view class='form-value'>
+          <picker id="gameDatePicker" mode="date" value="{{date}}" start="2019-01-01" end="2020-12-31" bindchange="bindDateChange" name="date">
+            <view class="picker">{{date}}</view>
+          </picker>
+        </view>
+      </view>
+      
+      <!-- START TIME PICKER -->
+      <view class='form-group'>
+        <view class='d-flex'>
+          <view class='w100'>
+            <view class='form-label'>
+              <label for='gameStartTimePicker'>Start Time</label>
+            </view>
+            <view class='form-value'>
+              <picker id='gameStartTimePicker' mode="time" value="{{startTime}}" start="00:00" end="23:30" bindchange="bindStartTimeChange" name="startTime">
+                <view class="picker">{{startTime}}</view>
+              </picker>
+            </view>
+          </view>
+
+          <view class='w100 ml'>
+            <view class='form-label'>
+              <label for='gameEndTimePicker'>End Time</label>
+            </view>
+            <view class='form-value'>
+              <picker id="gameEndTimePicker" mode="time" value="{{endTime}}" start="00:00" end="23:30" bindchange="bindEndTimeChange" name="endTime">
+                <view class="picker">{{endTime}}</view>
+              </picker>
+            </view>        
+          </view>
+        </view>
+      </view>
+      
+      <!-- END TIME PICKER -->
+      <!-- <view class='form-group'>
+
+      </view> -->
+      
+      <!-- SIGNUP DATE -->
+      <view class='form-group'>
+        <view class='form-label'>
+          <label for='signUpDatePicker'>Signup Starts at</label>
+        </view>
+        <view class='form-value'>
+          <picker id='signUpDatePicker' mode="date" value="{{signUpDate}}" start="2019-01-01" end="2020-12-31" bindchange="bindSignUpDateChange" name="signUpDate">
+            <view class="picker">{{signUpDate}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <!-- SIGN UP TIME -->
+      <view class='form-group'>
+        <view class='form-label'>
+          <label for='signUpTimePicker'></label>
+        </view>
+        <view class='form-value'>
+          <picker id='signUpTimePicker' mode="time" value="{{signUpTime}}" start="00:00" end="23:30" bindchange="bindSignUpTimeChange" name="signUpTime">
+            <view class="picker">{{signUpTime}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class='form-group'>      
+        <view class='form-label'>
+          <label for='maxCapacity'>Max. Capacity</label>
+        </view>
+        <view class='form-value'>
+            <view><input id="maxCapacity" type="number" name= "maxCapacity" value="{{maxCapacity}}" placehol  der="Max Capacity"></input></view>
+        </view>
+      </view>
+      
+      <view class='form-group'>      
+        <view class='form-label'>
+          <label for='location'>Location</label>
+        </view>
+        <view class='form-value'>
+            <view><input id="location" type="text" name= "location" value="{{location}}" placehol der="Location"></input></view>
+        </view>
+      </view>
+      
+      <view class='form-group'>
+        <view class='form-label'>
+          <label for='description'>Description</label>
+        </view>
+        <view class='form-value'>
+            <view><input id="description" type="text" name= "description" value="{{description}}" placehol  der="Description"></input></view>
+        </view>
+      </view>
+      
+      <view class='form-group'>
+        <view class='form-label'>
+          <label for='announcement'>Announcement</label>
+        </view>
+        <view class='form-value'>
+           <view><input id="announcement" type="text" name= "announcement" value="{{announcement}}" placehol der="Announcement"></input></view>
+        </view>
+      </view>
+      
+      <view class='form-group'>      
+        <view class='form-label'>
+          <label for='gameStatus'>Game Status</label>
+        </view>
+        <radio-group id='gameStatus' class="radio-group" bindchange="radioChange" name="isActive">
+          <label class="radio">
+            <radio value="true" checked="true" class='mr'>Active</radio>
+            <radio value="false">Cancelled</radio>       
+          </label>
+        </radio-group>
+      </view>
+
+      <view class='button-inline'>       
+        <!-- <button class='btn-half' style="margin-bottom:20px" type="warn" bindtap="cancelSubmit">Cancel</button>      -->
+        <button style="margin-bottom:20px; padding: unset" formType="submit" loading="{{loading}}" class='btn-half btn btn-orange'>Publish Game</button>
+      </view>
+
+    </form>
+  </view>
+</view>
