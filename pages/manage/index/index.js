@@ -1,4 +1,4 @@
-// pages/games/registered/registered.js
+// pages/manage/index/index.js
 Page({
 
   /**
@@ -26,20 +26,7 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
-    const page = this
-    wx.request({
-      url: 'http://localhost:3000/api/v1/games',
-      success: function (res) {
-        const games = res.data
-        games.forEach(function (game) {
-          game.start_time = page.setDateTime(game.start_time)
-          game.end_time = page.setDateTime(game.end_time)
-          game.signup_date = page.setDateTime(game.signup_date)
-        });
-        page.setData({ games: games });
-        console.log(page.data.games)
-      },
-    })
+
   },
 
   /**

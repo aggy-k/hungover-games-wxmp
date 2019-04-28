@@ -15,11 +15,10 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-    // Testing only, to be removed
     this.setData({
-      game_id: 1
+      game_id: options.id
     })
-
+    console.log(`game id is ${this.data.game_id}`)
     // load signup data for this game_id if user already signed up
     // How to handle 2 signups?
 

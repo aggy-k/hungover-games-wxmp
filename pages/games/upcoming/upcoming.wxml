@@ -14,8 +14,8 @@
       <!-- ATTENDEES -->
       <view>
         <view class='d-flex space-between'>
-          <text class='header-mini text-grey'>attendees: {{game.attendees_count}}/{{game.max_capacity}}</text>
-          <text class='header-mini text-grey'>waiting: {{game.signups.length - game.attendees_count}}</text>
+          <text class='header-mini text-grey'>Attendees: {{game.attendees_count}}/{{game.max_capacity}}</text>
+          <text class='header-mini text-grey'>Waiting: {{game.signups.length - game.attendees_count}}</text>
         </view>
         <view class='d-flex'>
           <image src='../../../images/archery.jpg' class='avatar-sm mr my'></image>

@@ -56,6 +56,13 @@ Page({
     return { weekDay: weekDay, day: day, month: month, year: year, time: time }
   },
 
+  showGame: function (e) {
+    const game_id = e.currentTarget.dataset.space.id
+    wx.navigateTo({
+      url: `../show/show?id=${game_id}`,
+    })
+  },
+
   /**
    * Lifecycle function--Called when page hide
    */
