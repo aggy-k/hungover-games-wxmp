@@ -24,7 +24,7 @@ Page({
 
     const page = this
     wx.request({
-      url: 'http://localhost:3000/api/v1/games/1',
+      url: app.globalData.url + `games/${page.data.game_id}`,
       success: function (res) {
         const game = res.data
         game.start_time = page.setDateTime(game.start_time)
@@ -99,12 +99,13 @@ Page({
 
   formSubmit(e) {
     const page = this;
+    console.log('console logging Page')
     console.log(page)
     const url = app.globalData.url;
-    console.log(e.detail.target.dataset)
-    const game_id = e.detail.target.dataset.game_id
-    console.log(game_id)
-    const user_id = 1;
+    const game_id = e.target.dataset.game_id
+    console.log('signing up for game id' + game_id)
+    console.log(app.globalData)
+    const user_id = app.globalData.userId; 
     const attendee_status = 'signed-up'
 
     wx.request({
@@ -116,6 +117,9 @@ Page({
         //   url: page,
         // })
       }
+    });
+    wx.switchTab({
+      url: '../registered/registered',
     })
-  }
+  },
 })
