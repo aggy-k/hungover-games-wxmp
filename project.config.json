@@ -76,13 +76,6 @@
 					"pathName": "pages/manage/create/create",
 					"query": "",
 					"scene": null
-				},
-				{
-					"id": 5,
-					"name": "edit game",
-					"pathName": "pages/manage/edit/edit",
-					"query": "",
-					"scene": null
 				}
 			]
 		}

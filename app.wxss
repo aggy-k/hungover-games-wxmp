@@ -13,6 +13,14 @@ text {
   color: #535353;
 }
 
+button::after {
+  border: none;
+}
+
+button {
+  background-color: unset;
+}
+
 /* COMPONENTS */
 
 /* BANNER */
@@ -39,14 +47,12 @@ text {
 }
 
 .card-status {
-  background:#8e8e8e;
   border-radius:8px;
   font-size:16px;
   padding:5px;
 }
 
 .status-bar {
-  background:#8e8e8e;
   font-size:16px;
   padding-top:5px;
   padding-bottom:5px;
@@ -82,13 +88,13 @@ text {
 /* BUTTONS */
 .btn {
   text-align:center;
-  padding:10px;
+  /* padding:10px; */
   border-radius:10px;
 }
 
 .btn-sm {
   text-align:center;
-  padding:5px;
+  /* padding:5px; */
   border-radius:5px;
 }
 
@@ -119,6 +125,24 @@ text {
   height:60rpx;
   width:60rpx;
   margin:10px;
+}
+
+/* FORM */
+
+.form-group {
+  margin-bottom:20px;
+}
+
+.form-label {
+  margin-bottom: 5px;
+  margin-left: 3px;
+  color: #BDBDBD;
+}
+
+.form-value {
+  border:solid 1px #f0f0f0;
+  padding:10px;
+  border-radius:5px;
 }
 
 /* TEXT */
@@ -212,10 +236,35 @@ text {
   margin-left: 10px;
 }
 
+.rounded {
+  border-radius: 10px;
+}
+
 .w100 {
   width: 100%;
 }
 
 .w70 {
   width: 70%;
+}
+
+/* COLORS */
+.bg-grey {
+  background:#C9C8C8;
+}
+
+.bg-red {
+  background: #FF8C8C;
+}
+
+.bg-green {
+  background: #67C180;
+}
+
+.bg-orange {
+  background: #F08302;
+}
+
+.bg-blue {
+  background: #6AC9E7;
 }

@@ -7,20 +7,34 @@ Page({
    * Page initial data
    */
   data: {
-
+    week: app.globalData.week,
+    month: app.globalData.month
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-    // Testing only, to be removed
     this.setData({
-      game_id: 1
+      game_id: options.id
     })
-
+    console.log(`game id is ${this.data.game_id}`)
     // load signup data for this game_id if user already signed up
     // How to handle 2 signups?
+
+    const page = this
+    wx.request({
+      url: app.globalData.url + `games/${page.data.game_id}`,
+      success: function (res) {
+        const game = res.data
+        game.start_time = page.setDateTime(game.start_time)
+        game.end_time = page.setDateTime(game.end_time)
+        game.signup_time = page.setDateTime(game.signup_time)
+
+        page.setData({ gameInfo: game });
+        console.log(page.data.gameInfo)
+      },
+    })
   },
 
   /**
@@ -35,6 +49,17 @@ Page({
    */
   onShow: function () {
 
+  },
+
+  setDateTime: function (dateString) {
+    const date = new Date(dateString);
+    const weekDay = this.data.week[date.getDay()];
+    const day = date.getDate();
+    const month = this.data.month[date.getMonth()];
+    const year = date.getFullYear();
+    const time = `${date.getHours()}:${('0' + date.getMinutes()).slice(-2)}`;
+
+    return { weekDay: weekDay, day: day, month: month, year: year, time: time }
   },
 
   /**
@@ -74,12 +99,13 @@ Page({
 
   formSubmit(e) {
     const page = this;
+    console.log('console logging Page')
     console.log(page)
     const url = app.globalData.url;
-    console.log(e.detail.target.dataset)
-    const game_id = e.detail.target.dataset.game_id
-    console.log(game_id)
-    const user_id = 1;
+    const game_id = e.target.dataset.game_id
+    console.log('signing up for game id' + game_id)
+    console.log(app.globalData)
+    const user_id = app.globalData.userId; 
     const attendee_status = 'signed-up'
 
     wx.request({
@@ -91,6 +117,9 @@ Page({
         //   url: page,
         // })
       }
+    });
+    wx.switchTab({
+      url: '../registered/registered',
     })
-  }
+  },
 })

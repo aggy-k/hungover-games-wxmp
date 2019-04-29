@@ -5,8 +5,8 @@
       <text class='header-lg bold mb'>Aggy</text> 
     </view>
     <view class='d-flex flex-column item-center mt'>
-      <navigator class='btn btn-ghost-orange w100 my'>Game rules</navigator>
-      <navigator class='btn btn-ghost-orange w100 my'>Manage games</navigator> 
+      <button class='btn btn-ghost-orange w100 my'>Game rules</button>
+      <button class='btn btn-ghost-orange w100 my'>Manage games</button> 
     </view>
   </view>
   

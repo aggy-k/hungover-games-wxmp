@@ -9,7 +9,6 @@ Page({
     index: 0,
     maxCapacity: 28,
     signUpTime: '12:00 PM',
-
   },
 
   /**
@@ -21,6 +20,7 @@ Page({
     const tomorrow = new Date();
     new Date(tomorrow.setDate(tomorrow.getDate() + 1));
     console.log('tomorrow', tomorrow)
+
 
     this.setData({
       date: currentDate.getFullYear() + '-' + ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' + ('0' + currentDate.getDate()).slice(-2),
@@ -42,6 +42,7 @@ Page({
           timeslotsArray.push(`${t.day} ${t.start_time} - ${t.end_time}`)
         })
 
+
         timeslotsArray.push('Other')
 
         page.setData({
@@ -54,7 +55,6 @@ Page({
       }
 
     })
-
 
   },
 

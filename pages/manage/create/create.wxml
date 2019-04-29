@@ -1,2 +1,3 @@
 <import src="/shared/game_form.wxml"/>
 <template is="form" data="{{timeslotsArray: timeslotsArray, index: index, date: date, description: description, location: location, announcement: announcement, maxCapacity: maxCapacity, signUpDate: signUpDate, signUpTime: signUpTime, startTime: startTime, endTime: endTime}}"/>
+
