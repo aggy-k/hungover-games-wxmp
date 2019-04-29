@@ -5,6 +5,7 @@
     "pages/games/show/show",
     "pages/games/registered/registered",
     "pages/games/create/create",
+    "pages/games/edit/edit",
     "pages/games/me/me"
   ],
   "window": {

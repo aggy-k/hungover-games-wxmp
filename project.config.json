@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 5,
 			"list": [
 				{
 					"id": 0,
@@ -74,6 +74,13 @@
 					"id": -1,
 					"name": "create game",
 					"pathName": "pages/games/create/create",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "edit game",
+					"pathName": "pages/games/edit/edit",
 					"scene": null
 				}
 			]
