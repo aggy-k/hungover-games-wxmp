@@ -9,6 +9,10 @@ Page({
     index: 0,
     maxCapacity: 28,
     signUpTime: '12:00 PM',
+    gameStatus: true,
+    startTime: "17:30",
+    endTime: "19:30"
+
   },
 
   /**
@@ -29,32 +33,32 @@ Page({
     const url = app.globalData.url;
     const page = this;
 
-    wx.request({
-      url: `${url}timeslots`,
-      success(res) {
-        console.log(res)
-        let data = res.data
+    // wx.request({
+    //   url: `${url}timeslots`,
+    //   success(res) {
+    //     console.log(res)
+    //     let data = res.data
 
-        let timeslotsArray = []
+    //     let timeslotsArray = []
 
-        // timeslotsArray.push('Select Timeslot')
-        data.forEach((t) => {
-          timeslotsArray.push(`${t.day} ${t.start_time} - ${t.end_time}`)
-        })
+    //     // timeslotsArray.push('Select Timeslot')
+    //     data.forEach((t) => {
+    //       timeslotsArray.push(`${t.day} ${t.start_time} - ${t.end_time}`)
+    //     })
 
 
-        timeslotsArray.push('Other')
+    //     timeslotsArray.push('Other')
 
-        page.setData({
-          timeslots: res.data,
-          timeslotsArray: timeslotsArray,
-          startTime: res.data[0].start_time,
-          endTime: res.data[0].end_time
-        })
-        console.log('timeslots', page.data.timeslots)
-      }
+    //     page.setData({
+    //       timeslots: res.data,
+    //       timeslotsArray: timeslotsArray,
+    //       startTime: res.data[0].start_time,
+    //       endTime: res.data[0].end_time
+    //     })
+    //     console.log('timeslots', page.data.timeslots)
+    //   }
 
-    })
+    // })
 
   },
 
@@ -107,24 +111,24 @@ Page({
 
   },
 
-  bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    const index = e.detail.value
-    this.setData({
-      index: index
-    })
-    if (index < (this.data.timeslots.length)) {
-      const signUpTime = this.data.timeslots[index].signup_time
-      const startTime = this.data.timeslots[index].start_time
-      const endTime = this.data.timeslots[index].end_time
+  // bindPickerChange: function (e) {
+  //   console.log('picker发送选择改变，携带值为', e.detail.value)
+  //   const index = e.detail.value
+  //   this.setData({
+  //     index: index
+  //   })
+  //   if (index < (this.data.timeslots.length)) {
+  //     const signUpTime = this.data.timeslots[index].signup_time
+  //     const startTime = this.data.timeslots[index].start_time
+  //     const endTime = this.data.timeslots[index].end_time
 
-      this.setData({
-        signUpTime: signUpTime,
-        startTime: startTime,
-        endTime: endTime
-      })
-    }
-  },
+  //     this.setData({
+  //       signUpTime: signUpTime,
+  //       startTime: startTime,
+  //       endTime: endTime
+  //     })
+  //   }
+  // },
   bindDateChange: function (e) {
     console.log('picker send selection modified. The carry value is ', e.detail.value)
     const date = new Date(e.detail.value)
@@ -160,8 +164,8 @@ Page({
 
     const data = e.detail.value
     const date = data.date
-    const start_time = data.startTime
-    const end_time = data.endTime
+    const start_time = `${data.date} ${data.startTime}`
+    const end_time = `${data.date} ${data.endTime}`
     const signup_time = `${data.signUpDate} ${data.signUpTime}`
     const max_capacity = parseInt(data.maxCapacity)
     const location = data.location
@@ -186,13 +190,17 @@ Page({
       is_active: is_active
     }
 
-    // wx.request({
-    //   url: `${url}games`,
-    //   method: 'POST',
-    //   data: games,
-    //   success(res) {
-
-    //   }
-    // })
+    wx.request({
+      url: `${url}games`,
+      method: 'POST',
+      data: games,
+      success(res) {
+        console.log('post res', res)
+        const id = res.data.id
+        wx.navigateTo({
+          url: `/pages/games/show/show?id=${id}`,
+        })
+      }
+    })
   }
 })

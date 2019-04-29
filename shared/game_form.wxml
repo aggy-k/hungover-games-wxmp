@@ -9,12 +9,12 @@
       </picker>
 
       <!-- TIMESLOT PICKER -->
-      <label for="timeslotPicker" class='header-sm bold'>Select timeslot</label>
+      <!-- <label for="timeslotPicker" class='header-sm bold'>Select timeslot</label>
       <picker id="timeslotPicker" class="picker header-sm" bindchange="bindPickerChange" value="{{index}}" range="{{timeslotsArray}}">
         <view class="user-input input-height">
           <text>{{timeslotsArray[index]}}</text>
         </view>
-      </picker>
+      </picker> -->
 
       <!-- START TIME PICKER -->
       <label class='header-sm bold' for='gameStartTimePicker'>Start Time</label>
