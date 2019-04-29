@@ -17,7 +17,7 @@ Page({
     const page = this;
     console.log('options', options)
     // const id = options.id
-    const id = 10;
+    const id = 16;
 
     wx.request({
       url: `${url}games/${id}`,
@@ -83,24 +83,24 @@ Page({
 
   },
 
-  bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    const index = e.detail.value
-    this.setData({
-      index: index
-    })
-    if (index < (this.data.timeslots.length)) {
-      const signUpTime = this.data.timeslots[index].signup_time
-      const startTime = this.data.timeslots[index].start_time
-      const endTime = this.data.timeslots[index].end_time
+  // bindPickerChange: function (e) {
+  //   console.log('picker发送选择改变，携带值为', e.detail.value)
+  //   const index = e.detail.value
+  //   this.setData({
+  //     index: index
+  //   })
+  //   if (index < (this.data.timeslots.length)) {
+  //     const signUpTime = this.data.timeslots[index].signup_time
+  //     const startTime = this.data.timeslots[index].start_time
+  //     const endTime = this.data.timeslots[index].end_time
 
-      this.setData({
-        signUpTime: signUpTime,
-        startTime: startTime,
-        endTime: endTime
-      })
-    }
-  },
+  //     this.setData({
+  //       signUpTime: signUpTime,
+  //       startTime: startTime,
+  //       endTime: endTime
+  //     })
+  //   }
+  // },
   bindDateChange: function (e) {
     console.log('picker send selection modified. The carry value is ', e.detail.value)
     const date = new Date(e.detail.value)
@@ -132,12 +132,13 @@ Page({
   formSubmit(e) {
     const url = app.globalData.url;
     const page = this;
+    const game_id = page.data.id;
     console.log(e)
 
     const data = e.detail.value
     const date = data.date
-    const start_time = data.startTime
-    const end_time = data.endTime
+    const start_time = `${data.date} ${data.startTime}`
+    const end_time = `${data.date} ${data.endTime}`
     const signup_time = `${data.signUpDate} ${data.signUpTime}`
     const max_capacity = parseInt(data.maxCapacity)
     const location = data.location
@@ -162,13 +163,16 @@ Page({
       is_active: is_active
     }
 
-    // wx.request({
-    //   url: `${url}games`,
-    //   method: 'POST',
-    //   data: games,
-    //   success(res) {
-
-    //   }
-    // })
+    wx.request({
+      url: `${url}games/${game_id}`,
+      method: 'PUT',
+      data: games,
+      success(res) {
+        console.log('put res', res);
+        wx.navigateTo({
+          url: `/pages/games/show/show?id=${game_id}`,
+        })
+      }
+    })
   }
 })
