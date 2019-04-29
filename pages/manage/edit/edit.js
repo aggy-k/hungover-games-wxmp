@@ -1,4 +1,4 @@
-// pages/games/create/create.js
+// pages/games/edit/edit.js
 const app = getApp();
 Page({
 
@@ -6,56 +6,32 @@ Page({
    * Page initial data
    */
   data: {
-    index: 0,
-    maxCapacity: 28,
-    signUpTime: '12:00 PM',
-     
+    date: '2019-01-01',
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-    const currentDate = new Date();
-    new Date(currentDate.setDate(currentDate.getDate() + 7));
-    const tomorrow = new Date();
-    new Date(tomorrow.setDate(tomorrow.getDate() + 1));
-    console.log('tomorrow',tomorrow)
-    
-    this.setData({
-      date: currentDate.getFullYear() + '-' + ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' + ('0' + currentDate.getDate()).slice(-2),
-      signUpDate: tomorrow.getFullYear() + '-' + ('0' + (tomorrow.getMonth() + 1)).slice(-2) + '-' + ('0' + tomorrow.getDate()).slice(-2)
-    })
     const url = app.globalData.url;
     const page = this;
+    console.log('options', options)
+    // const id = options.id
+    const id = 10;
 
     wx.request({
-      url: `${url}timeslots`,
+      url: `${url}games/${id}`,
+      method: 'get',
       success(res) {
-        console.log(res)
-        let data = res.data
+        console.log('res', res)
 
-        let timeslotsArray = []
+        const data = res.data;
 
-        // timeslotsArray.push('Select Timeslot')
-        data.forEach((t) => {
-          timeslotsArray.push(`${t.day} ${t.start_time} - ${t.end_time}`)
-        })
-        
-        timeslotsArray.push('Other')
-
-        page.setData({
-          timeslots: res.data,
-          timeslotsArray: timeslotsArray,
-          startTime: res.data[0].start_time,
-          endTime: res.data[0].end_time
-        })
-        console.log('timeslots', page.data.timeslots)
+        page.setData(data)
+        console.log('res.data.date', res.data.date)
       }
-
     })
 
-    
   },
 
   /**
