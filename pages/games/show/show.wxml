@@ -70,6 +70,6 @@
 
 
 <view class='button-footer d-flex'>
-  <navigator class='w100 ma btn btn-transparent'>Share</navigator>
-  <navigator class='w100 ma btn btn-orange' bindtap="formSubmit" data-game_id="{{game_id}}">Sign up</navigator>
+  <button class='w100 ma btn btn-transparent'>Share</button>
+  <button class='w100 ma btn btn-orange' bindtap="formSubmit" data-game_id="{{game_id}}">Sign up</button>
 </view>

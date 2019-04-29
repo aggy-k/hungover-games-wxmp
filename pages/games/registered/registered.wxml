@@ -28,7 +28,7 @@
       <!-- BOTTOM -->
       <view class='d-flex space-between item-center'>
         <text class='text-grey w100 header-sm'>Click to cancel ></text>
-        <navigator class='btn-sm btn-red w70'>I'm lame</navigator>
+        <button class='btn-sm btn-red w70'>I'm lame</button>
       </view>
     </view>
   </view>

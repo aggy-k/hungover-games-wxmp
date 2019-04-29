@@ -5,8 +5,14 @@ Page({
    * Page initial data
    */
   data: {
-
+    cancelText: ["I'm lame", "I'm a chicken"]
   },
+
+  test: function () {
+    const array = ["I'm lame", "I'm a chicken"]
+    const num = Math.floor(Math.random() * array.length)
+    return array[num]
+  }, 
 
   /**
    * Lifecycle function--Called when page load
@@ -26,20 +32,20 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
-    const page = this
-    wx.request({
-      url: 'http://localhost:3000/api/v1/games',
-      success: function (res) {
-        const games = res.data
-        games.forEach(function (game) {
-          game.start_time = page.setDateTime(game.start_time)
-          game.end_time = page.setDateTime(game.end_time)
-          game.signup_date = page.setDateTime(game.signup_date)
-        });
-        page.setData({ games: games });
-        console.log(page.data.games)
-      },
-    })
+    // const page = this
+    // wx.request({
+    //   url: 'http://localhost:3000/api/v1/games',
+    //   success: function (res) {
+    //     const games = res.data
+    //     games.forEach(function (game) {
+    //       game.start_time = page.setDateTime(game.start_time)
+    //       game.end_time = page.setDateTime(game.end_time)
+    //       game.signup_date = page.setDateTime(game.signup_date)
+    //     });
+    //     page.setData({ games: games });
+    //     console.log(page.data.games)
+    //   },
+    // })
   },
 
   /**
