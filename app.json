@@ -6,7 +6,9 @@
     "pages/games/registered/registered",
     "pages/games/me/me",
     "pages/manage/index/index",
-    "pages/manage/create/create"
+    "pages/manage/create/create",
+    "pages/manage/edit/edit"
+
   ],
   "window": {
     "backgroundTextStyle": "light",
