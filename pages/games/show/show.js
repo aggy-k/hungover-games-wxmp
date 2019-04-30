@@ -105,8 +105,9 @@ Page({
     const game_id = e.target.dataset.game_id
     console.log('signing up for game id' + game_id)
     console.log(app.globalData)
-    const user_id = app.globalData.userId; 
-    const attendee_status = 'signed-up'
+    // const user_id = app.globalData.userId; 
+    const user_id = 1;
+    const attendee_status = 'Signed-up'
 
     wx.request({
       url: `${url}signups?game_id=${game_id}&user_id=${user_id}`,
@@ -116,10 +117,11 @@ Page({
         // wx.reLaunch({
         //   url: page,
         // })
+        wx.switchTab({
+          url: '../registered/registered',
+        })
       }
     });
-    wx.switchTab({
-      url: '../registered/registered',
-    })
+    
   },
 })

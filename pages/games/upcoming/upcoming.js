@@ -30,8 +30,10 @@ Page({
    */
   onShow: function () {
     const page = this
+    const url = app.globalData.url;
+
     wx.request({
-      url: 'http://localhost:3000/api/v1/games',
+      url: `${url}games`,
       success: function (res) {
         const games = res.data
         games.forEach(function (game) {

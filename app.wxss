@@ -189,6 +189,10 @@ button {
   color: #67C180;
 }
 
+.text-red {
+  color: #F98A8B;
+}
+
 /* DISPLAY */
 .d-flex {
   display: flex;
