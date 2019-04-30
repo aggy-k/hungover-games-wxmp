@@ -3,11 +3,17 @@
     <form bindsubmit="formSubmit" bindreset="formReset">
 
       <!-- DATE PICKER -->
-      <label for="gameDatePicker" class='header-sm bold'>Date</label>
-      <picker class='header-sm' id="gameDatePicker" mode="date" value="{{date}}" start="2019-01-01" end="2020-12-31" bindchange="bindDateChange" name="date">
-        <view class="picker">{{date}}</view>
-      </picker>
-
+      <view class='form-group'>
+        <view class='form-label'>
+          <label for="gameDatePicker" class='header-sm bold'>Date</label>
+        </view>
+        <view class='form-value'>
+          <picker class='header-sm' id="gameDatePicker" mode="date" value="{{date}}" start="2019-01-01" end="2020-12-31" bindchange="bindDateChange" name="date">
+            <view class="picker">{{date}}</view>
+          </picker>
+        </view>
+      </view>
+      
       <!-- TIMESLOT PICKER -->
       <!-- <label for="timeslotPicker" class='header-sm bold'>Select timeslot</label>
       <picker id="timeslotPicker" class="picker header-sm" bindchange="bindPickerChange" value="{{index}}" range="{{timeslotsArray}}">
@@ -16,62 +22,120 @@
         </view>
       </picker> -->
 
-      <!-- START TIME PICKER -->
-      <label class='header-sm bold' for='gameStartTimePicker'>Start Time</label>
-      <picker class='header-sm' id='gameStartTimePicker' mode="time" value="{{startTime}}" start="00:00" end="23:30" bindchange="bindStartTimeChange" name="startTime">
-        <view class="picker">{{startTime}}</view>
-      </picker>
+      <!-- TIME PICKER -->
+      <view class='form-group'>
+        <!-- START TIME -->
+        <view class='d-flex'>
+          <view class='w100'>
+            <view class='form-label'>
+              <label class='header-sm bold' for='gameStartTimePicker'>Start Time</label>
+            </view>
+            <view class='form-value'>
+              <picker class='header-sm' id='gameStartTimePicker' mode="time" value="{{startTime}}" start="00:00" end="23:30" bindchange="bindStartTimeChange" name="startTime">
+                <view class="picker">{{startTime}}</view>
+              </picker>
+            </view>
+          </view>
+          <!-- END TIME -->
+          <view class='w100 ml'>
+            <view class='form-label'>
+              <label class='header-sm bold' for='gameEndTimePicker'>End Time</label>
+            </view>
+            <view class='form-value'>
+              <picker class='header-sm' id="gameEndTimePicker" mode="time" value="{{endTime}}" start="00:00" end="23:30" bindchange="bindEndTimeChange" name="endTime">
+                <view class="picker">{{endTime}}</view>
+              </picker>
+            </view>
+          </view>
+        </view>
+      </view>
 
-      <!-- END TIME PICKER -->
-      <label class='header-sm bold' for='gameEndTimePicker'>End Time</label>
-      <picker class='header-sm' id="gameEndTimePicker" mode="time" value="{{endTime}}" start="00:00" end="23:30" bindchange="bindEndTimeChange" name="endTime">
-        <view class="picker">{{endTime}}</view>
-      </picker>
 
       <!-- SIGNUP DATE -->
-      <label class='header-sm bold' for='signUpDatePicker'>Signup Opens</label>
-      <picker class='header-sm' id='signUpDatePicker' mode="date" value="{{signUpDate}}" start="2019-01-01" end="2020-12-31" bindchange="bindSignUpDateChange" name="signUpDate">
-        <view class="picker">{{signUpDate}}</view>
-      </picker>
+      <view class='form-group'>
+        <view class='form-label'>
+          <label class='header-sm bold' for='signUpDatePicker'>Signup Opens</label>
+        </view>
+        <view class='form-value'>
+          <picker class='header-sm' id='signUpDatePicker' mode="date" value="{{signUpDate}}" start="2019-01-01" end="2020-12-31" bindchange="bindSignUpDateChange" name="signUpDate">
+            <view class="picker">{{signUpDate}}</view>
+          </picker>
+        </view>
+      </view>
 
       <!-- SIGN UP TIME -->
-      <label class='header-sm bold' for='signUpTimePicker'></label>
-      <picker class='header-sm' id='signUpTimePicker' mode="time" value="{{signUpTime}}" start="00:00" end="23:30" bindchange="bindSignUpTimeChange" name="signUpTime">
-        <view class="picker">{{signUpTime}}</view>
-      </picker>
+      <view class='form-group'>
+        <view class='form-label'>
+          <label class='header-sm bold' for='signUpTimePicker'></label>
+        </view>
+        <view class='form-value'>
+          <picker class='header-sm' id='signUpTimePicker' mode="time" value="{{signUpTime}}" start="00:00" end="23:30" bindchange="bindSignUpTimeChange" name="signUpTime">
+            <view class="picker">{{signUpTime}}</view>
+          </picker>
+        </view>
+      </view>
 
       <!-- INPUT MAX CAPACITY -->
-      <label class='header-sm bold' for='maxCapacity'>Max. Capacity</label>
-      <view><input class='header-sm' id="maxCapacity" type="number" name= "maxCapacity" value="{{maxCapacity}}" placeholder="Max Capacity"></input></view>
+      <view class='form-group'>
+        <view class='form-label'>
+          <label class='header-sm bold' for='maxCapacity'>Max. Capacity</label>
+        </view>
+        <view class='form-value'>
+          <view><input class='header-sm' id="maxCapacity" type="number" name= "maxCapacity" value="{{maxCapacity}}" placeholder="Max Capacity"></input></view>
+        </view>
+      </view>
 
       <!-- INPUT LOCATION -->
-      <label class='header-sm bold' for='location'>Location</label>
-      <view><input class='header-sm' id="location" type="text" name= "location" value="{{location}}" placeholder="Location"></input></view>
+      <view class='form-group'>
+        <view class='form-label'>
+          <label class='header-sm bold' for='location'>Location</label>
+        </view>
+        <view class='form-value'>
+          <view><input class='header-sm' id="location" type="text" name= "location" value="{{location}}" placeholder="Location"></input></view>
+        </view>
+      </view>
 
       <!-- INPUT DESCRIPTION -->
-      <label class='header-sm bold' for='description'>Description</label>
-      <!-- <view><input id="description" type="text" name= "description" value="{{description}}" placeholder="Description"></input></view> -->
-      <view><textarea class='header-sm input-text-box' id="description" type="text" name= "description" value="{{description}}" placeholder=""></textarea></view>
+      <view class='form-group'>
+        <view class='form-label'>
+          <label class='header-sm bold' for='description'>Description</label>
+        </view>
+        <view class='form-value'>
+          <!-- <view><input id="description" type="text" name= "description" value="{{description}}" placeholder="Description"></input></view> -->
+          <view><textarea class='header-sm' id="description" type="text" name= "description" value="{{description}}" placeholder=""></textarea></view>
+        </view>
+      </view>
 
       <!-- INPUT ANNOUNCEMENT -->
-      <label class='header-sm bold' for='announcement'>Announcement</label>
-      <!-- <view><input id="announcement" type="text" name= "announcement" value="{{announcement}}" placeholder="Announcement"></input></view> -->
-      <view><textarea class='header-sm input-text-box' id="announcement" type="text" name= "announcement" value="{{announcement}}" placeholder=""></textarea></view>
+      <view class='form-group'>
+        <view class='form-label'>
+          <label class='header-sm bold' for='announcement'>Announcement</label>
+        </view>
+        <view class='form-value'>
+          <!-- <view><input id="announcement" type="text" name= "announcement" value="{{announcement}}" placeholder="Announcement"></input></view> -->
+          <view><textarea class='header-sm' id="announcement" type="text" name= "announcement" value="{{announcement}}" placeholder=""></textarea></view>
+        </view>
+      </view>
 
       <!-- GAME STATUS RADIO BUTTON -->
-      <label class='header-sm bold' for='gameStatus'>Game Status</label>
-      <radio-group id='gameStatus' class="radio-group header-sm" bindchange="radioChange" name="isActive">
-        <label class="radio d-flex space-between item-center mt">
-          <radio value="true" checked="{{gameStatus === true}}">Active</radio>
-          <radio value="false" checked="{{gameStatus === false}}">Cancelled</radio>       
-        </label>
-      </radio-group>
+      <view class='form-group'>
+        <view class='form-label'>
+          <label class='header-sm bold' for='gameStatus'>Game Status</label>
+        </view>
+        <radio-group id='gameStatus' class="radio-group header-sm" bindchange="radioChange" name="isActive">
+          <label class="radio d-flex space-between item-center mt">
+            <radio value="true" checked="{{gameStatus === true}}">Active</radio>
+            <radio value="false" checked="{{gameStatus === false}}">Cancelled</radio>       
+          </label>
+        </radio-group>
+      </view>
 
       <!-- SUBMIT BUTTONS -->
       <view class='d-flex content-center item-center mt'>       
-        <button class='w100 mr' style="margin-bottom:20px" type="warn" bindtap="cancelSubmit">Cancel</button>     
-        <button style="margin-bottom:20px" type="primary" formType="submit" loading="{{loading}}" class='w100'>Publish</button>
-      </view> 
+        <button class='w100 mr btn-ghost-orange' style="margin-bottom:20px" bindtap="cancelSubmit">Cancel</button>     
+        <button style="margin-bottom:20px" formType="submit" loading="{{loading}}" class='w100 btn-orange'>Publish</button>
+      </view>
+
     </form>
   </view>
 </template>
