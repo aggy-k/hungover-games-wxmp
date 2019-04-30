@@ -19,10 +19,10 @@
       <text>Attendees: {{gameInfo.attendeesCount}}/{{gameInfo.maxCapacity}}</text>
       <text class='text-orange'>Waiting: {{gameInfo.attendees.length - gameInfo.maxCapacity}}</text>
     </view>
-    <view>
-      <image src='../../../images/archery.jpg' class='avatar-md mr'></image>
-      <image src='../../../images/archery.jpg' class='avatar-md mr'></image>
-    </view>
+    <scroll-view class='scroll-view_H' scroll-x style="width: 100%">   
+      <image wx:for="{{gameInfo.attendees}}" wx:for-item="signup" data-signup="{{signup}}" 
+      src='../../../images/archery.jpg' class='avatar-md mr my'></image>
+    </scroll-view>
   </view>
   
   <!-- CARDS -->
