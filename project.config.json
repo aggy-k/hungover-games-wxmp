@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
@@ -81,6 +81,13 @@
 					"id": -1,
 					"name": "edit game",
 					"pathName": "pages/manage/edit/edit",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "manager games index",
+					"pathName": "pages/manage/index/index",
 					"query": "",
 					"scene": null
 				}

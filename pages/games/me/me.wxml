@@ -5,8 +5,8 @@
       <text class='header-lg bold mb'>Aggy</text> 
     </view>
     <view class='d-flex flex-column item-center mt'>
-      <button class='btn btn-ghost-orange w100 my'>Game rules</button>
-      <button class='btn btn-ghost-orange w100 my'>Manage games</button> 
+      <button class='btn btn-ghost-orange w100 my' bindtap='gameRules'>Game rules</button>
+      <button class='btn btn-ghost-orange w100 my' bindtap='manageIndex'>Manage games</button> 
     </view>
   </view>
   
