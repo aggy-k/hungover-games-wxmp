@@ -61,7 +61,7 @@ Page({
   showGame: function (e) {
     const game_id = e.currentTarget.dataset.space.id
     wx.navigateTo({
-      url: `../show/show?id=${game_id}`,
+      url: `../../games/show/show?id=${game_id}`,
     })
   },
 
