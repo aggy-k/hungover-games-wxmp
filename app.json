@@ -9,6 +9,9 @@
     "pages/manage/index/index",
     "pages/manage/create/create",
     "pages/manage/edit/edit",
+    "pages/manage/show/show",
+    "pages/manage/signup/signup",
+    "pages/manage/signup_edit/signup_edit",
     "pages/manage/test/test"
   ],
   "window": {
