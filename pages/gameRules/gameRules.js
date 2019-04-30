@@ -1,4 +1,4 @@
-// pages/games/me/me.js
+// pages/gameRules/gameRules.js
 Page({
 
   /**
@@ -62,17 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }, 
-
-  gameRules(e) {
-    wx.navigateTo({
-      url: `../../gameRules/gameRules`
-    })
-  }, 
-
-  manageIndex(e) {
-    wx.navigateTo({
-      url: `../../manage/index/index`,
-    })
-  },
+  }
 })
