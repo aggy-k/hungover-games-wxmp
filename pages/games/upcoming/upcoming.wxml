@@ -3,7 +3,7 @@
   <view class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(../../../images/archery.jpg);"></view>
 
   <!-- CARDS -->
-  <view wx:for="{{games}}" wx:for-item="game" wx:key="game.id" bindtap="showGame" class="card" data-space="{{game}}">
+  <view wx:for="{{games}}" wx:for-item="game" wx:key="game.id" class="card" data-space="{{game}}">
   <!-- <navigator class="card" url='../show/show'> -->
     <view class="card-content">
       <!-- DATE -->
@@ -27,9 +27,15 @@
       </view>
       <!-- STATUS -->
       <view class='w100 mt'>
-        <view class='text-center card-status bg-grey'>
+        <!-- signup not open -->
+        <view wx:if="{{(game.signup_opens === false)}}" class='text-center card-status bg-grey'>
           <text class='text-white'>Signup opens {{game.signup_date.day}} {{game.signup_date.month}}, {{game.signup_date.time}}</text>
-          </view>
+        </view>
+        <!-- signup opens -->
+        <view wx:if="{{(game.signup_opens)}}" class='text-center card-status bg-orange' data-game_id="{{game.id}}" bindtap="showGame">
+          <text class='text-white'>Signup opens</text>
+        </view>
+
       </view>
     </view>
   <!-- </navigator> -->

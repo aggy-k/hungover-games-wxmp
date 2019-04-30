@@ -15,7 +15,7 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -29,6 +29,12 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
+    // const now = new Date();
+    // console.log(now)
+    // this.setData({
+    //   now: now
+    // })
+
     const page = this
     const url = app.globalData.url;
 
@@ -36,13 +42,18 @@ Page({
       url: `${url}games`,
       success: function (res) {
         const games = res.data
+        const now = new Date();
         games.forEach(function (game) {
           game.start_time = page.setDateTime(game.start_time)
           game.end_time = page.setDateTime(game.end_time)
           game.signup_date = page.setDateTime(game.signup_date)
+          game.signup_time = new Date(game.signup_time)
+          game.signup_opens = (now >= game.signup_time)
         });
         page.setData({ games: games });
         console.log(page.data.games)
+        // console.log(page.data.games[0].signup_time, now)
+        // console.log('signup time vs now', (page.data.now >= page.data.games[0].signup_time))
       },
     })
   },
@@ -59,7 +70,8 @@ Page({
   },
 
   showGame: function (e) {
-    const game_id = e.currentTarget.dataset.space.id
+    // const game_id = e.currentTarget.dataset.space.id
+    const game_id = e.currentTarget.dataset.game_id
     wx.navigateTo({
       url: `../show/show?id=${game_id}`,
     })

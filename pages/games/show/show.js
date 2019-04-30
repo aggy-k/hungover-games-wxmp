@@ -107,7 +107,9 @@ Page({
     console.log(app.globalData)
     // const user_id = app.globalData.userId; 
     const user_id = 1;
-    const attendee_status = 'Signed-up'
+    // const attendee_status = 'Signed-up'
+    const attendee_status = (this.data.maxCapacity >= this.data.attendeesCount) ? 'Signed-up' : 'Waitlisted'
+    
 
     wx.request({
       url: `${url}signups?game_id=${game_id}&user_id=${user_id}`,
