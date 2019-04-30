@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/landing/landing",
+    "pages/gameRules/gameRules",
     "pages/games/upcoming/upcoming",
     "pages/games/show/show",
     "pages/games/registered/registered",
@@ -8,7 +9,6 @@
     "pages/manage/index/index",
     "pages/manage/create/create",
     "pages/manage/edit/edit"
-
   ],
   "window": {
     "backgroundTextStyle": "light",
