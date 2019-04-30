@@ -8,7 +8,8 @@
     "pages/games/me/me",
     "pages/manage/index/index",
     "pages/manage/create/create",
-    "pages/manage/edit/edit"
+    "pages/manage/edit/edit",
+    "pages/manage/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",

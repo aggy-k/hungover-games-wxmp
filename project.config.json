@@ -86,8 +86,8 @@
 				},
 				{
 					"id": -1,
-					"name": "manager games index",
-					"pathName": "pages/manage/index/index",
+					"name": "test",
+					"pathName": "pages/manage/test/test",
 					"query": "",
 					"scene": null
 				}
