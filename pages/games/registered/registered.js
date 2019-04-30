@@ -1,4 +1,6 @@
 // pages/games/registered/registered.js
+const app = getApp();
+
 Page({
 
   /**
@@ -18,7 +20,21 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    const url = app.globalData.url;
+    const page = this;
+    // const user_id = app.globalData.userId;
+    const user_id = 1;
 
+    wx.request({
+      url: `${url}users/${user_id}/signups`,
+      method: 'GET',
+      success(res) {
+        console.log('res', res);
+        const signups = res.data
+        page.setData({signups: signups});
+        console.log('signups', signups)
+      }
+    })
   },
 
   /**
