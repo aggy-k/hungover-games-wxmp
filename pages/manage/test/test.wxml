@@ -1,0 +1,4 @@
+<block wx:for="{{myArray}}" wx:for-item="item">
+<view>{{item}}</view>
+</block>
+<view class='btn' bindtap="loadMore">load more</view>
