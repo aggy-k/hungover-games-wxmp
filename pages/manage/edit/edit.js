@@ -16,8 +16,8 @@ Page({
     const url = app.globalData.url;
     const page = this;
     console.log('options', options)
-    // const id = options.id
-    const id = 16;
+    const id = options.id
+    // const id = 16;
 
     wx.request({
       url: `${url}games/${id}`,
@@ -170,7 +170,7 @@ Page({
       success(res) {
         console.log('put res', res);
         wx.navigateTo({
-          url: `/pages/games/show/show?id=${game_id}`,
+          url: `/pages/manage/show/show?id=${game_id}`,
         })
       }
     })

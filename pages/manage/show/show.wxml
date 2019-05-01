@@ -8,22 +8,28 @@
   <!-- DATE -->
   <view class='card'>
     <view class='card-content text-center d-flex flex-column'>
-      <text class='header-md bold'>{{gameInfo.start_time.weekDay}}, {{gameInfo.start_time.day}} {{gameInfo.start_time.month}}</text>
-      <text class='header-md bold'>{{gameInfo.start_time.time}} - {{gameInfo.end_time.time}}</text>
+      <text class='header-lg header-lg bold'>{{gameInfo.start_time.weekDay}}, {{gameInfo.start_time.day}} {{gameInfo.start_time.month}}</text>
+      <text class='header-lg header-lg bold'>{{gameInfo.start_time.time}} - {{gameInfo.end_time.time}}</text>
     </view>
   </view>
 
   <!-- ATTENDEES -->
   <view class='w100 mb'>
     <view class='d-flex space-between mb'>
-      <text class='header-mini text-grey'>Attendees: {{gameInfo.signedUpCount}}/{{gameInfo.maxCapacity}}</text>
-      <text class='text-orange header-mini'>Waiting: {{gameInfo.waitlistCount}}</text>
+      <text class='header-sm'>Attendees: {{gameInfo.signedUpCount}}/{{gameInfo.maxCapacity}}</text>
+      <text class='text-orange header-sm'>Waiting: {{gameInfo.waitlistCount}}</text>
     </view>
-    <scroll-view class='scroll-view_H' scroll-x style="width: 100%">   
-      <image wx:for="{{gameInfo.attendees}}" wx:for-item="signup" data-signup="{{signup}}" 
-      src='../../../images/archery.jpg' class='avatar-md mr my'></image>
-    </scroll-view>
+    <view>
+      <image src='../../../images/archery.jpg' class='avatar-md mr'></image>
+      <image src='../../../images/archery.jpg' class='avatar-md mr'></image>
+    </view>
   </view>
+  <view class='w100 d-flex'>
+    <navigator url="/pages/manage/signup/signup?game_id={{gameInfo.id}}" class='header-sm text-orange ma' style="margin-left: 0px;" data-game_id="{{gameInfo.id}}">
+      Manage attendees >
+    </navigator>
+  </view>
+  
   
   <!-- CARDS -->
   <!-- ANNOUNCEMENTS -->
@@ -34,7 +40,7 @@
         <text class='header-sm bold mb'>Announcements</text>
       </view>
       <view>
-        <text class='header-sm'>{{gameInfo.announcement}}</text>
+        <text>{{gameInfo.announcement}}</text>
       </view>
     </view>
   </view>
@@ -70,6 +76,6 @@
 
 
 <view class='button-footer d-flex'>
-  <button class='w100 ma btn btn-transparent'>Share</button>
-  <button class='w100 ma btn btn-orange' bindtap="formSubmit" data-game_id="{{game_id}}">Sign up</button>
+  <button class='w100 ma btn btn-transparent' bindtap="back">Back</button>
+  <button class='w100 ma btn btn-orange' bindtap="editGame" data-game_id="{{game_id}}">Edit Game</button>
 </view>

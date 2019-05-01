@@ -1,5 +1,5 @@
-// pages/manage/index/index.js
-const app = getApp()
+// pages/games/show/show.js
+const app = getApp();
 
 Page({
 
@@ -15,7 +15,26 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    this.setData({
+      game_id: options.id
+    })
+    console.log(`game id is ${this.data.game_id}`)
+    // load signup data for this game_id if user already signed up
+    // How to handle 2 signups?
 
+    const page = this
+    wx.request({
+      url: app.globalData.url + `games/${page.data.game_id}`,
+      success: function (res) {
+        const game = res.data
+        game.start_time = page.setDateTime(game.start_time)
+        game.end_time = page.setDateTime(game.end_time)
+        game.signup_time = page.setDateTime(game.signup_time)
+
+        page.setData({ gameInfo: game });
+        console.log(page.data.gameInfo)
+      },
+    })
   },
 
   /**
@@ -29,40 +48,18 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
-    const page = this
-    const url = app.globalData.url;
 
-    wx.request({
-      url: `${url}games`,
-      success: function (res) {
-        const games = res.data
-        games.forEach(function (game) {
-          game.start_time = page.setDateTime(game.start_time)
-          game.end_time = page.setDateTime(game.end_time)
-          game.signup_date = page.setDateTime(game.signup_date)
-        });
-        page.setData({ games: games });
-        console.log(page.data.games)
-      },
-    })
   },
 
   setDateTime: function (dateString) {
     const date = new Date(dateString);
     const weekDay = this.data.week[date.getDay()];
     const day = date.getDate();
-    const month = this.data.month[date.getMonth()].slice(0, 3);
+    const month = this.data.month[date.getMonth()];
     const year = date.getFullYear();
     const time = `${date.getHours()}:${('0' + date.getMinutes()).slice(-2)}`;
 
     return { weekDay: weekDay, day: day, month: month, year: year, time: time }
-  },
-
-  showGame: function (e) {
-    const game_id = e.currentTarget.dataset.game_id
-    wx.navigateTo({
-      url: `../../games/show/show?id=${game_id}`,
-    })
   },
 
   /**
@@ -98,13 +95,20 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }, 
+  },
 
-  gameCreate(e) {
-    const user_id = 1;
-    
+  editGame: function(e) {
+    console.log('e', e)
+    const game_id = e.currentTarget.dataset.game_id;
+
     wx.navigateTo({
-      url: `../create/create?user_id=${user_id}`,
+      url: `/pages/manage/edit/edit?id=${game_id}`,
     })
   },
+
+  back: function() {
+    wx.navigateTo({
+      url: '/pages/manage/index/index',
+    })
+  }
 })

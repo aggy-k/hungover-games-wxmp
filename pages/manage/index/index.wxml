@@ -1,9 +1,7 @@
 <view class="container">
 
-CARD CONTENT TO BE CHANGED
-
   <!-- CARDS -->
-  <view wx:for="{{games}}" wx:for-item="game" wx:key="game.id" bindtap="showGame" class="card" data-space="{{game}}">
+  <view wx:for="{{games}}" wx:for-item="game" wx:key="game.id" bindtap="showGame" class="card" data-game_id="{{game.id}}">
   <!-- <navigator class="card" url='../show/show'> -->
     <view class="card-content">
       <!-- DATE -->
