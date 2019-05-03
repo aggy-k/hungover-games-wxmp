@@ -1,17 +1,28 @@
-<view>
-  <view class='status-bar bg-grey text-center mb'>
-    <text class='text-white'>Signup opens {{gameInfo.signup_time.weekDay}}, {{gameInfo.signup_time.day}} {{gameInfo.signup_time.month}}, {{gameInfo.signup_time.time}}</text>
+
+<!-- BANNER -->
+<view class="banner pos-middle" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/images/HG_arrows.jpg);">
+  <!-- SIGNUP TIME -->
+  <!-- <view class='status-bar bg-grey text-center mb pos-top'>
+    <view class='text-white'>
+      Signup opens {{gameInfo.signup_time.weekDay}}, {{gameInfo.signup_time.day}} 
+      {{gameInfo.signup_time.month}}, {{gameInfo.signup_time.time}}
+    </view>
+  </view> -->
+  <!-- DATE -->
+  <view class='header-md bold text-white text-shadow'>
+    {{gameInfo.start_time.weekDay}}, {{gameInfo.start_time.day}} {{gameInfo.start_time.month}}, {{gameInfo.start_time.time}} - {{gameInfo.end_time.time}}
   </view>
+
 </view>
 
 <view class='container'>
   <!-- DATE -->
-  <view class='card'>
+  <!-- <view class='card'>
     <view class='card-content text-center d-flex flex-column'>
       <text class='header-md bold'>{{gameInfo.start_time.weekDay}}, {{gameInfo.start_time.day}} {{gameInfo.start_time.month}}</text>
       <text class='header-md bold'>{{gameInfo.start_time.time}} - {{gameInfo.end_time.time}}</text>
     </view>
-  </view>
+  </view> -->
 
   <!-- ATTENDEES -->
   <view class='w100 mb'>
@@ -27,7 +38,7 @@
   
   <!-- CARDS -->
   <!-- ANNOUNCEMENTS -->
-  <view class='card' wx:if="{{gameInfo.announcement !== ''}}">
+  <view class='card' wx:if="{{(gameInfo.announcement !== '')}}">
     <view class='card-content'>
       <view class='d-flex flex-column text-center item-center'>
         <image src='../../../images/announcement.png' class='icon'></image>
@@ -53,7 +64,7 @@
   </view>
 
   <!-- LOCATION -->
-  <view class='card'>
+  <view class='card pos-relative'>
     <view class='card-content'>
       <view class='d-flex flex-column text-center item-center'>
         <image src='../../../images/location.png' class='icon'></image>
@@ -62,7 +73,9 @@
       <view>
         <!-- MAP -->
         <text class='header-sm'>{{gameInfo.location}}</text>
-        <image src='../../../images/archery.jpg' class='rounded w100'></image>
+        <image src='/images/map.png' class='rounded w100'></image>
+        <!-- <image src='/images/map-marker-point.png' class='map-marker'></image> -->
+        <image src='/images/hg_logo.jpg' class='avatar-sm border-orange pos-fixed-map'></image>
       </view>
     </view>
   </view>
