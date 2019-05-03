@@ -1,1 +1,14 @@
 /* pages/games/show/show.wxss */
+.map-marker {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  bottom: 170px;
+  right: 150px;
+}
+
+.pos-fixed-map {
+  position: absolute;
+  bottom: 150px;
+  right: 150px;
+}

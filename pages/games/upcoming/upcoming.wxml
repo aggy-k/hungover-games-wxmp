@@ -1,6 +1,9 @@
+<!-- BANNER -->
+<view class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/images/HG_arrows.jpg);">
+  <image src='/images/hg_logo.jpg' class='avatar-md pos-middle border-white'></image>
+</view>
+
 <view class="container">
-  <!-- BANNER -->
-  <view class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(../../../images/archery.jpg);"></view>
 
   <!-- CARDS -->
   <view wx:for="{{games}}" wx:for-item="game" wx:key="game.id" class="card" data-space="{{game}}">
