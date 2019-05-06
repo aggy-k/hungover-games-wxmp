@@ -15,7 +15,7 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-    console.log(options)
+    console.log(23, options)
     const url = app.globalData.url;
     const page = this;
     const id = options.id;
@@ -99,7 +99,7 @@ Page({
     wx.request({
       url: `${url}signups/${id}`,
       method: 'PUT',
-      data: {attendee_status: attendeeStatus},
+      data: {attendee_status: attendeeStatus, game_id: game_id},
       success(res) {
         console.log(res)
         wx.navigateTo({

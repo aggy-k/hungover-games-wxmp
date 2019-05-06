@@ -22,7 +22,7 @@
         </view>
 
         <scroll-view class='scroll-view_H' scroll-x style="width: 100%">   
-          <image wx:for="{{game.signups}}" wx:for-item="signup" data-signup="{{signup}}" src='../../../images/archery.jpg' class='avatar-sm mr my'></image>
+          <image wx:for="{{game.signups}}" wx:for-item="signup" wx:key="unique" data-signup="{{signup}}" src='../../../images/archery.jpg' class='avatar-sm mr my'></image>
         </scroll-view>
       </view>
       <!-- STATUS -->

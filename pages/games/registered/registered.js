@@ -7,7 +7,8 @@ Page({
    * Page initial data
    */
   data: {
-    cancelText: ["I'm lame", "I'm a chicken"]
+    cancelText: ["I'm lame", "I'm a chicken"],
+    isUpcoming: true
   },
 
   test: function () {
@@ -22,17 +23,23 @@ Page({
   onLoad: function (options) {
     const url = app.globalData.url;
     const page = this;
-    // const user_id = app.globalData.userId;
-    const user_id = 1;
+    const user_id = app.globalData.userId;
+    // const user_id = 1;
 
     wx.request({
       url: `${url}users/${user_id}/signups`,
       method: 'GET',
       success(res) {
         console.log('res', res);
-        const signups = res.data
-        page.setData({signups: signups});
+        const signups = res.data.signups
+        const pastSignups = res.data.pastSignups
+
+        page.setData({
+          signups: signups,
+          pastSignups: pastSignups
+          });
         console.log('signups', signups)
+        console.log('past signups', pastSignups)
       }
     })
   },
@@ -97,5 +104,45 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  cancelGame: function(e) {
+    const url = app.globalData.url;
+    console.log(e)
+    const id = e.currentTarget.dataset.id
+    const game_id = e.currentTarget.dataset.game_id
+    // const now = new Date();
+    // console.log('now', now)
+    const start_time = new Date(`${e.currentTarget.dataset.start_time}`);
+    // console.log('starttime', start_time)
+
+    const last_status = e.currentTarget.dataset.last_status
+    console.log('last status', last_status)
+    
+    const delta = (start_time - (new Date())) / 3600 / 1000;
+    // console.log('delta', delta)
+    // console.log(delta < 24)
+    const attendee_status = (((delta < 24) && (last_status === 'Signed-up')) ? 'Late-cancelled' : 'Cancelled')
+    console.log(attendee_status)
+    
+    wx.request({
+      url: `${url}signups/${id}`,
+      method: 'PUT',
+      data: {attendee_status: attendee_status, game_id: game_id},
+      success(res) {
+        console.log(res)
+        wx.reLaunch({
+          url: '../registered/registered',
+        })
+      }
+    })
+  },
+
+  showPastSignups() {
+    this.setData({isUpcoming: false})
+  },
+
+  showSignups() {
+    this.setData({isUpcoming: true})
   }
 })

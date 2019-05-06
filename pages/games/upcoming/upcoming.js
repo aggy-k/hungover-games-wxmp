@@ -41,8 +41,10 @@ Page({
     wx.request({
       url: `${url}games`,
       success: function (res) {
-        const games = res.data
+        const games = res.data.games
+        console.log('resdata', res.data)
         const now = new Date();
+
         games.forEach(function (game) {
           game.start_time = page.setDateTime(game.start_time)
           game.end_time = page.setDateTime(game.end_time)
@@ -52,8 +54,9 @@ Page({
         });
         page.setData({ games: games });
         console.log(page.data.games)
-        // console.log(page.data.games[0].signup_time, now)
-        // console.log('signup time vs now', (page.data.now >= page.data.games[0].signup_time))
+
+        console.log(page.data.games[0].signup_time, now)
+        console.log('signup time vs now', (page.data.now >= page.data.games[0].signup_time))
       },
     })
   },
