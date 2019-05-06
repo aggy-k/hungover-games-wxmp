@@ -8,7 +8,8 @@ Page({
    */
   data: {
     week: app.globalData.week,
-    month: app.globalData.month
+    month: app.globalData.month,
+    isUpcoming: true
   },
 
   /**
@@ -29,20 +30,31 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
+    const now = new Date();
+    console.log(now)
     const page = this
     const url = app.globalData.url;
 
     wx.request({
       url: `${url}games`,
       success: function (res) {
-        const games = res.data
+        const games = res.data.games
+        const pastGames = res.data.pastGames
+        console.log('res.data', res.data)
         games.forEach(function (game) {
           game.start_time = page.setDateTime(game.start_time)
           game.end_time = page.setDateTime(game.end_time)
           game.signup_date = page.setDateTime(game.signup_date)
         });
         page.setData({ games: games });
-        console.log(page.data.games)
+        console.log(page.data.games);
+      
+        pastGames.forEach(function (game) {
+          game.start_time = page.setDateTime(game.start_time)
+          game.end_time = page.setDateTime(game.end_time)
+          game.signup_date = page.setDateTime(game.signup_date)
+        });
+        page.setData({ pastGames: pastGames });
       },
     })
   },
@@ -105,6 +117,18 @@ Page({
     
     wx.navigateTo({
       url: `../create/create?user_id=${user_id}`,
+    })
+  },
+
+  showPastGames(e) {
+    this.setData({
+      isUpcoming: false
+    })
+  },
+
+  showGames(e) {
+    this.setData({
+      isUpcoming: true
     })
   },
 })

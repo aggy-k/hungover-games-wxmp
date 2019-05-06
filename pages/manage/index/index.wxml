@@ -1,40 +1,87 @@
-<view class="container">
+<view class="container pos-relative">
 
-  <!-- CARDS -->
-  <view wx:for="{{games}}" wx:for-item="game" wx:key="game.id" bindtap="showGame" class="card" data-game_id="{{game.id}}">
-  <!-- <navigator class="card" url='../show/show'> -->
-    <view class="card-content">
-      <!-- DATE -->
-      <view class='d-flex flex-column text-center'>
-        <text class='header-md bold'>{{game.start_time.weekDay}}, {{game.start_time.day}} {{game.start_time.month}}, {{game.start_time.year}}</text>
-        <text class='header-md mb'>{{game.start_time.time}} - {{game.end_time.time}}</text>
-      </view>
-      <!-- ATTENDEES -->
-      <view>
-        <view class='d-flex space-between'>
-          <text class='header-mini text-grey'>Attendees: {{game.attendees_count}}/{{game.max_capacity}}</text>
-          <text class='header-mini text-grey'>Waiting: {{game.signups.length - game.attendees_count}}</text>
-        </view>
-        <view class='d-flex'>
-          <image src='../../../images/archery.jpg' class='avatar-sm mr my'></image>
-          <image src='../../../images/archery.jpg' class='avatar-sm mr my'></image>
-          <image src='../../../images/archery.jpg' class='avatar-sm mr my'></image>
-          <image src='../../../images/archery.jpg' class='avatar-sm mr my'></image>
-          <image src='../../../images/archery.jpg' class='avatar-sm mr my'></image>
-        </view>
-      </view>
-      <!-- STATUS -->
-      <view class='w100 mt'>
-        <view class='text-center card-status bg-grey'>
-          <text class='text-white'>Signup opens {{game.signup_date.day}} {{game.signup_date.month}}, {{game.signup_date.time}}</text>
-          </view>
-      </view>
+  <!-- UPCOMING BLOCK -->
+  <block wx:if="{{isUpcoming === true}}">
+  
+  <!-- tabbar -->
+    <view class='d-flex item-center content-center w100'>
+      <view class='tab-active header-md w50 text-center py mb'>Upcoming ({{games.length}})</view>
+      <view class='tab-inactive header-md text-grey w50 text-center py mb' bindtap="showPastGames">Past ({{pastGames.length}})</view>
     </view>
-  <!-- </navigator> -->
-  </view>
+
+    <!-- CARDS -->
+    <view wx:for="{{games}}" wx:for-item="game" wx:key="game.id" bindtap="showGame" class="card" data-game_id="{{game.id}}">
+    <!-- <navigator class="card" url='../show/show'> -->
+      <view class="card-content">
+        <!-- DATE -->
+        <view class='d-flex flex-column text-center'>
+          <text class='header-md bold'>{{game.start_time.weekDay}}, {{game.start_time.day}} {{game.start_time.month}}, {{game.start_time.year}}</text>
+          <text class='header-md mb'>{{game.start_time.time}} - {{game.end_time.time}}</text>
+        </view>
+        <!-- ATTENDEES -->
+        <view>
+          <view class='d-flex space-between'>
+            <text class='header-mini text-grey'>Attendees: {{game.attendees_count}}/{{game.max_capacity}}</text>
+            <text class='header-mini text-grey'>Waiting: {{game.waitlist_count}}</text>
+          </view>
+        </view>
+        <!-- STATUS -->
+        <view class='w100 mt'>
+          <view class='text-center text-orange bold header-sm py'>
+            <!-- <text class='text-white'>Signup opens {{game.signup_date.day}} {{game.signup_date.month}}, {{game.signup_date.time}}</text> -->
+            <!-- <text>View/Edit</text> -->
+            View/Edit
+            </view>
+        </view>
+      </view>
+    <!-- </navigator> -->
+    </view>
+  </block>
+
+  <!-- PAST BLOCK -->
+  <block wx:if="{{isUpcoming === false}}">
+  
+  <!-- tabbar -->
+    <view class='d-flex item-center content-center w100'>
+      <view class='tab-inactive header-md text-grey w50 text-center py mb'  bindtap="showGames">Upcoming ({{games.length}})</view>
+      <view class='tab-active header-md w50 text-center py mb'>Past ({{pastGames.length}})</view>
+    </view>
+
+    <!-- CARDS -->
+    <view wx:for="{{pastGames}}" wx:for-item="game" wx:key="game.id" bindtap="showGame" class="card" data-game_id="{{game.id}}">
+    <!-- <navigator class="card" url='../show/show'> -->
+      <view class="card-content">
+        <!-- DATE -->
+        <view class='d-flex flex-column text-center'>
+          <text class='header-md bold'>{{game.start_time.weekDay}}, {{game.start_time.day}} {{game.start_time.month}}, {{game.start_time.year}}</text>
+          <text class='header-md mb'>{{game.start_time.time}} - {{game.end_time.time}}</text>
+        </view>
+        <!-- ATTENDEES -->
+        <view>
+          <view class='d-flex space-between'>
+            <text class='header-mini text-grey'>Attendees: {{game.attendees_count}}/{{game.max_capacity}}</text>
+            <text class='header-mini text-grey'>Waiting: {{game.waitlist_count}}</text>
+          </view>
+        </view>
+        <!-- STATUS -->
+        <view class='w100 mt'>
+          <view class='text-center text-orange bold header-sm py'>
+            <!-- <text class='text-white'>Signup opens {{game.signup_date.day}} {{game.signup_date.month}}, {{game.signup_date.time}}</text> -->
+            <!-- <text>View/Edit</text> -->
+            View/Edit
+            </view>
+        </view>
+      </view>
+    <!-- </navigator> -->
+    </view>
+  </block>
+
+
+
+  <image src='/images/plus.png' class='avatar-md border-white fixed-right-bottom avatar-shadow' bindtap="gameCreate"></image>
 
 </view>
-
+<!-- 
 <view class='button-footer d-flex'>
   <button class='w100 ma btn btn-orange' bindtap="gameCreate" data-game_id="{{game_id}}">Create new game</button>
-</view>
+</view> -->

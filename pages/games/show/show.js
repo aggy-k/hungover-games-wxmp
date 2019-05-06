@@ -99,27 +99,21 @@ Page({
 
   formSubmit(e) {
     const page = this;
-    console.log('console logging Page')
-    console.log(page)
+
     const url = app.globalData.url;
     const game_id = e.target.dataset.game_id
     console.log('signing up for game id' + game_id)
-    console.log(app.globalData)
-    // const user_id = app.globalData.userId; 
-    const user_id = 1;
-    // const attendee_status = 'Signed-up'
-    const attendee_status = (this.data.maxCapacity >= this.data.attendeesCount) ? 'Signed-up' : 'Waitlisted'
-    
+    const user_id = app.globalData.userId; 
+
+    const attendee_status = ((this.data.gameInfo.maxCapacity >= this.data.gameInfo.attendeesCount) ? 'Signed-up' : 'Waitlisted')
+    console.log('attendee status', attendee_status)
 
     wx.request({
       url: `${url}signups?game_id=${game_id}&user_id=${user_id}`,
       method: 'POST',
       data: {"attendee_status": attendee_status},
       success(res) {
-        // wx.reLaunch({
-        //   url: page,
-        // })
-        wx.switchTab({
+        wx.reLaunch({
           url: '../registered/registered',
         })
       }

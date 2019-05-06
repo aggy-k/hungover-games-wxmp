@@ -3,9 +3,9 @@
 <block wx:for="{{attendees}}" wx:for-item="attendee" wx:key="unique" wx:if="{{attendee.attendeeStatus === 'Signed-up'}}">
 
   <view class='d-flex item-center grid-box mb pos-relative'>
-    <navigator url='/pages/manage/signup_edit/signup_edit?id={{attendee.id}}'>
-      <image src='/images/edit.png' class='icon-sm float-right-bottom'></image>
-    </navigator>
+    <!-- <navigator url='/pages/manage/signup_edit/signup_edit?id={{attendee.id}}'> -->
+      <image data-id="{{attendee.id}}" bindtap="editAttendeeStatus" src='/images/edit.png' class='icon-sm float-right-bottom'></image>
+    <!-- </navigator> -->
     <view class='my ml'>
       <image src='../../../images/archery.jpg' class='avatar-md'></image>
     </view>
@@ -25,9 +25,9 @@
 <block wx:for="{{attendees}}" wx:for-item="attendee" wx:key="unique" wx:if="{{attendee.attendeeStatus === 'Waitlisted'}}">
 
   <view class='d-flex item-center grid-box mb pos-relative'>
-     <navigator url='/pages/manage/signup_edit/signup_edit?id={{attendee.id}}'>
-      <image src='/images/edit.png' class='icon-sm float-right-bottom'></image>
-    </navigator>
+     <!-- <navigator url='/pages/manage/signup_edit/signup_edit?id={{attendee.id}}'> -->
+      <image data-id="{{attendee.id}}" bindtap="editAttendeeStatus" src='/images/edit.png' class='icon-sm float-right-bottom'></image>
+    <!-- </navigator> -->
     <view class='my ml'>
       <image src='../../../images/archery.jpg' class='avatar-md'></image>
     </view>
@@ -47,9 +47,9 @@
 <block wx:for="{{attendees}}" wx:for-item="attendee" wx:key="unique" wx:if="{{(attendee.attendeeStatus !== 'Signed-up') && (attendee.attendeeStatus !== 'Waitlisted')}}">
 
   <view class='d-flex item-center grid-box mb pos-relative'>
-     <navigator url='/pages/manage/signup_edit/signup_edit?id={{attendee.id}}'>
-      <image src='/images/edit.png' class='icon-sm float-right-bottom'></image>
-    </navigator>
+     <!-- <navigator url='/pages/manage/signup_edit/signup_edit?id={{attendee.id}}'> -->
+      <image data-id="{{attendee.id}}" bindtap="editAttendeeStatus" src='/images/edit.png' class='icon-sm float-right-bottom'></image>
+    <!-- </navigator> -->
     <view class='my ml'>
       <image src='../../../images/archery.jpg' class='avatar-md'></image>
     </view>

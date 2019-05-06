@@ -46,14 +46,38 @@ Page({
     }
   },
   getUserInfo: function (e) {
-    console.log(e)
+    const url = app.globalData.url;
+    const id = app.globalData.userId;
+
+
+    console.log('rawdata', e.detail.rawData)
+    console.log('e', e)
+    console.log('userInfo', e.detail.userInfo)
     app.globalData.userInfo = e.detail.userInfo
+
+    const avatarUrl = e.detail.userInfo.avatarUrl;
+    const nickName = e.detail.userInfo.nickName;
+    const data = {username: nickName, profile_image: avatarUrl}
+
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    });
+
+    app.globalData.userInfo = e.detail.userInfo;
+
+    wx.request({
+      url: `${url}users/${id}`,
+      method: 'PUT',
+      data: data,
+      success(res) {
+        console.log(res)
+        
+        wx.switchTab({
+          url: '../games/upcoming/upcoming',
+        });
+      }
     })
-    wx.switchTab({
-      url: '../games/upcoming/upcoming',
-    })
+
   }
 })

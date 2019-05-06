@@ -16,6 +16,7 @@ Page({
   onLoad: function (options) {
     console.log('onLoad options is', options)
     const game_id = options.game_id;
+    this.setData({game_id: game_id})
     const url = app.globalData.url;
     const page = this;
 
@@ -83,6 +84,16 @@ Page({
 
     wx.navigateTo({
       url: `/pages/manage/show/show?id=${game_id}`,
+    })
+  },
+
+  editAttendeeStatus(e) {
+    console.log(22, e)
+    const id = e.currentTarget.dataset.id
+    const game_id = this.data.game_id
+
+    wx.navigateTo({
+      url: `../signup_edit/signup_edit?id=${id}&game_id=${game_id}`,
     })
   }
 })

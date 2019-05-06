@@ -1,14 +1,20 @@
 <view class='container'>
   <view class='d-flex flex-column mt'>  
     <view class='d-flex flex-column item-center my'>
-      <image src='../../../images/archery.jpg' class='avatar-lg my'></image>
-      <text class='header-lg bold mb'>Aggy</text> 
+      <image src="{{userInfo.avatarUrl}}" class='avatar-lg my'></image>
+      <text class='header-lg bold mb'>{{userInfo.nickName}}</text> 
     </view>
+
     <view class='d-flex flex-column item-center mt'>
       <button class='btn btn-ghost-orange w100 my' bindtap='gameRules'>Game rules</button>
       <button class='btn btn-ghost-orange w100 my' bindtap='manageIndex'>Manage games</button> 
     </view>
   </view>
+
+  <!-- <view class='d-flex item-center content-center w100'>
+    <view class='tab-active header-md w50 text-center py'>Profile</view>
+    <view class='tab-inactive header-md text-grey w50 text-center py'>Admin</view>
+  </view> -->
   
 
 </view>
