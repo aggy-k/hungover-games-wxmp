@@ -191,5 +191,13 @@ Page({
         })
       }
     })
+  },
+
+  cancelSubmit: function(e) {
+    console.log(e)
+    const id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `/pages/manage/show/show?id=${id}`,
+    })
   }
 })

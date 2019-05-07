@@ -193,5 +193,11 @@ Page({
         })
       }
     })
+  },
+
+  cancelSubmit: function() {
+    wx.navigateTo({
+      url: '/pages/manage/index/index',
+    })
   }
 })

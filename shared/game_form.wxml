@@ -132,7 +132,7 @@
 
       <!-- SUBMIT BUTTONS -->
       <view class='d-flex content-center item-center mt'>       
-        <button class='w100 mr btn-ghost-orange' style="margin-bottom:20px" bindtap="cancelSubmit">Cancel</button>     
+        <button class='w100 mr btn-ghost-orange' style="margin-bottom:20px" bindtap="cancelSubmit" data-id="{{id}}">Cancel</button>     
         <button style="margin-bottom:20px" formType="submit" loading="{{loading}}" class='w100 btn-orange'>Publish</button>
       </view>
 
