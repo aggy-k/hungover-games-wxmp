@@ -25,7 +25,7 @@
         <view class='my'>
           <view class='d-flex space-between mb'>
             <text class='header-mini text-grey'>Attendees: {{signup.game.attendees_count}}/{{signup.game.max_capacity}}</text>
-            <text class='header-mini text-grey'>Waiting: {{(signup.game.attendees_count <= signup.game.max_capacity) ? 0 : (signup.game.attendees_count - signup.game.max_capacity)}}</text>
+            <text class='header-mini text-grey'>Waiting: {{(signup.game.waitlist_count)}}</text>
           </view>
           <view>
             <image src='../../../images/archery.jpg' class='avatar-sm mr'></image>
