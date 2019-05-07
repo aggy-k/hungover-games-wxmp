@@ -165,6 +165,7 @@ Page({
 
     const user_id = 1; // for testing purposes only
     // const user_id = app.globalData.userId
+    console.log('start time', start_time)
 
     const games = {
       date: date,
