@@ -120,6 +120,12 @@ Page({
     })
   },
 
+  back() {
+    wx.switchTab({
+      url: '/pages/games/upcoming/upcoming',
+    })
+  },
+
   showPastGames(e) {
     this.setData({
       isUpcoming: false

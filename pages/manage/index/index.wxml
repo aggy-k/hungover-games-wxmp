@@ -78,10 +78,11 @@
 
 
 
-  <image src='/images/plus.png' class='avatar-md border-white fixed-right-bottom avatar-shadow' bindtap="gameCreate"></image>
+  <!-- <image src='/images/plus.png' class='avatar-md border-white fixed-right-bottom avatar-shadow' bindtap="gameCreate"></image> -->
 
 </view>
-<!-- 
+
 <view class='button-footer d-flex'>
-  <button class='w100 ma btn btn-orange' bindtap="gameCreate" data-game_id="{{game_id}}">Create new game</button>
-</view> -->
+  <button class='w100 ma btn btn-transparent' bindtap="back">Home</button>
+  <button class='w100 ma btn btn-orange' bindtap="gameCreate" data-game_id="{{game_id}}">Create Game</button>
+</view>

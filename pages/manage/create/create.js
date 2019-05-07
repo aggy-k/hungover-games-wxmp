@@ -33,33 +33,6 @@ Page({
     const url = app.globalData.url;
     const page = this;
 
-    // wx.request({
-    //   url: `${url}timeslots`,
-    //   success(res) {
-    //     console.log(res)
-    //     let data = res.data
-
-    //     let timeslotsArray = []
-
-    //     // timeslotsArray.push('Select Timeslot')
-    //     data.forEach((t) => {
-    //       timeslotsArray.push(`${t.day} ${t.start_time} - ${t.end_time}`)
-    //     })
-
-
-    //     timeslotsArray.push('Other')
-
-    //     page.setData({
-    //       timeslots: res.data,
-    //       timeslotsArray: timeslotsArray,
-    //       startTime: res.data[0].start_time,
-    //       endTime: res.data[0].end_time
-    //     })
-    //     console.log('timeslots', page.data.timeslots)
-    //   }
-
-    // })
-
   },
 
   /**
@@ -139,6 +112,22 @@ Page({
     })
   },
 
+  bindSignUpDateChange: function(e) {
+    console.log('picker send selection modified. The carry value is ', e.detail.value)
+    const date = new Date(e.detail.value)
+    this.setData({
+      // date: e.detail.value,
+      signUpDate: e.detail.value
+    })
+  },
+
+  bindSignUpTimeChange: function(e) {
+    console.log('picker send selection modified. The carry value is ', e.detail.value)
+    this.setData({
+      signUpTime: e.detail.value
+    })
+  },
+
   bindStartTimeChange: function (e) {
     console.log('picker send selection modified. The carry value is ', e.detail.value)
     this.setData({
@@ -198,7 +187,8 @@ Page({
         console.log('post res', res)
         const id = res.data.id
         wx.navigateTo({
-          url: `/pages/games/show/show?id=${id}`,
+          // url: `/pages/games/show/show?id=${id}`,
+          url: '/pages/manage/index/index'
         })
       }
     })

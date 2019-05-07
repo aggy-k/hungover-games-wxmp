@@ -110,6 +110,22 @@ Page({
       signUpDate: minusSix.getFullYear() + '-' + ('0' + (minusSix.getMonth() + 1)).slice(-2) + '-' + ('0' + minusSix.getDate()).slice(-2)
     })
   },
+  
+  bindSignUpDateChange: function (e) {
+    console.log('picker send selection modified. The carry value is ', e.detail.value)
+    const date = new Date(e.detail.value)
+    this.setData({
+      // date: e.detail.value,
+      signUpDate: e.detail.value
+    })
+  },
+
+  bindSignUpTimeChange: function (e) {
+    console.log('picker send selection modified. The carry value is ', e.detail.value)
+    this.setData({
+      signUpTime: e.detail.value
+    })
+  },
 
   bindStartTimeChange: function (e) {
     console.log('picker send selection modified. The carry value is ', e.detail.value)
