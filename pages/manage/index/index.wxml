@@ -12,9 +12,16 @@
     <!-- CARDS -->
     <view wx:for="{{games}}" wx:for-item="game" wx:key="game.id" bindtap="showGame" class="card" data-game_id="{{game.id}}">
     <!-- <navigator class="card" url='../show/show'> -->
-      <view class="card-content">
+      <view class="card-content pos-relative">
+        <view wx:if="{{game.game_status.name === 'Cancelled'}}" class='bg-red text-white px rounded header-sm pos-absolute pos-flag-right-top flag text-center'>
+          Cancelled
+        </view>
+        <view class='bg-green text-white px rounded header-sm pos-absolute pos-flag-right-top flag text-center' wx:else>
+          Active
+        </view>
+        
         <!-- DATE -->
-        <view class='d-flex flex-column text-center'>
+        <view class='d-flex flex-column'>
           <text class='header-md bold'>{{game.start_time.weekDay}}, {{game.start_time.day}} {{game.start_time.month}}, {{game.start_time.year}}</text>
           <text class='header-md mb'>{{game.start_time.time}} - {{game.end_time.time}}</text>
         </view>
@@ -24,14 +31,6 @@
             <text class='header-mini text-grey'>Attendees: {{game.attendees_count}}/{{game.max_capacity}}</text>
             <text class='header-mini text-grey'>Waiting: {{game.waitlist_count}}</text>
           </view>
-        </view>
-        <!-- STATUS -->
-        <view class='w100 mt'>
-          <view class='text-center text-orange bold header-sm py'>
-            <!-- <text class='text-white'>Signup opens {{game.signup_date.day}} {{game.signup_date.month}}, {{game.signup_date.time}}</text> -->
-            <!-- <text>View/Edit</text> -->
-            View/Edit
-            </view>
         </view>
       </view>
     <!-- </navigator> -->
@@ -50,9 +49,16 @@
     <!-- CARDS -->
     <view wx:for="{{pastGames}}" wx:for-item="game" wx:key="game.id" bindtap="showGame" class="card" data-game_id="{{game.id}}">
     <!-- <navigator class="card" url='../show/show'> -->
-      <view class="card-content">
+      <view class="card-content pos-relative">
+        <view wx:if="{{game.game_status.name === 'Cancelled'}}" class='bg-red text-white px rounded header-sm pos-absolute pos-flag-right-top flag text-center'>
+          Cancelled
+        </view>
+        <view class='bg-green text-white px rounded header-sm pos-absolute pos-flag-right-top flag text-center' wx:else>
+          Active
+        </view>
+        
         <!-- DATE -->
-        <view class='d-flex flex-column text-center'>
+        <view class='d-flex flex-column'>
           <text class='header-md bold'>{{game.start_time.weekDay}}, {{game.start_time.day}} {{game.start_time.month}}, {{game.start_time.year}}</text>
           <text class='header-md mb'>{{game.start_time.time}} - {{game.end_time.time}}</text>
         </view>
@@ -63,14 +69,7 @@
             <text class='header-mini text-grey'>Waiting: {{game.waitlist_count}}</text>
           </view>
         </view>
-        <!-- STATUS -->
-        <view class='w100 mt'>
-          <view class='text-center text-orange bold header-sm py'>
-            <!-- <text class='text-white'>Signup opens {{game.signup_date.day}} {{game.signup_date.month}}, {{game.signup_date.time}}</text> -->
-            <!-- <text>View/Edit</text> -->
-            View/Edit
-            </view>
-        </view>
+        
       </view>
     <!-- </navigator> -->
     </view>
@@ -80,6 +79,7 @@
 
   <!-- <image src='/images/plus.png' class='avatar-md border-white fixed-right-bottom avatar-shadow' bindtap="gameCreate"></image> -->
 
+<!-- CONTAINER CLOSES -->
 </view>
 
 <view class='button-footer d-flex'>
