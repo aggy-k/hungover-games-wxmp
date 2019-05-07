@@ -18,7 +18,7 @@
       <view>
         <view class='d-flex space-between'>
           <text class='header-mini text-grey'>Attendees: {{game.attendees_count}}/{{game.max_capacity}}</text>
-          <text class='header-mini text-grey'>Waiting: {{game.signups.length - game.attendees_count}}</text>
+          <text class='header-mini text-grey'>Waiting: {{game.waitlist_count}}</text>
         </view>
 
         <scroll-view class='scroll-view_H' scroll-x style="width: 100%">   
