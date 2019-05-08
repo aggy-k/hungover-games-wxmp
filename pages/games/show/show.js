@@ -1,5 +1,3 @@
-var order = ['pic1', 'pic2', 'pic3', 'pic4']
-
 // pages/games/show/show.js
 const app = getApp();
 
@@ -11,13 +9,6 @@ Page({
   data: {
     week: app.globalData.week,
     month: app.globalData.month,
-    // TEST
-    toView: 'pic1',
-    scrollTop: 100,
-    inputShowed: false,
-    inputVal: "",
-    trueStatement: true,
-    falseStatement: false
   },
 
   /**
@@ -129,31 +120,5 @@ Page({
       }
     });
     
-  },
-
-  // TEST
-  upper: function (e) {
-    console.log(e)
-  },
-  lower: function (e) {
-    console.log(e)
-  },
-  scroll: function (e) {
-    console.log(e)
-  },
-  tap: function (e) {
-    for (var i = 0; i < order.length; ++i) {
-      if (order[i] === this.data.toView) {
-        this.setData({
-          toView: order[i + 1]
-        })
-        break
-      }
-    }
-  },
-  tapMove: function (e) {
-    this.setData({
-      scrollTop: this.data.scrollTop + 10
-    })
   }
 })

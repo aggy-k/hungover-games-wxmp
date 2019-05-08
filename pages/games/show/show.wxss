@@ -12,22 +12,3 @@
   bottom: 150px;
   right: 150px;
 }
-
-
-/* TEST */
-.scroll-view {
-  margin-bottom: 15px;
-}
-
-.scroll-row {
-  display: flex;
-  flex-direction: row;
-  width: 680px;
-  position: relative;
-  margin-right: right;
-}
-
-.scroll-view-item_H image {
-  width: 150px;
-  height: 150px;
-}
