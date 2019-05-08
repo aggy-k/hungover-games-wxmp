@@ -6,7 +6,7 @@
 <view class="container">
 
   <!-- CARDS SIGNUP OPEN -->
-  <view wx:if="{{(game.signup_opens)}}" data-game_id="{{game.id}}" bindtap="showGame" wx:for="{{games}}" wx:for-item="game" wx:key="game.id" class="card" data-space="{{game}}">
+  <view wx:if="{{(game.signup_opens && game.game_status.name === 'Active')}}" data-game_id="{{game.id}}" bindtap="showGame" wx:for="{{games}}" wx:for-item="game" wx:key="game.id" class="card" data-space="{{game}}">
   
     <view class="card-content">
       <!-- DATE -->
@@ -38,7 +38,7 @@
   </view>
 
   <!-- CARDS SIGNUP CLOSED -->
-  <view wx:if="{{(game.signup_opens === false)}}" wx:for="{{games}}" wx:for-item="game" wx:key="game.id" class="card" data-space="{{game}}" data-game_id="{{game.id}}" bindtap="showGame">
+  <view wx:if="{{(!game.signup_opens || game.game_status.name !== 'Active' )}}" wx:for="{{games}}" wx:for-item="game" wx:key="game.id" class="card" data-space="{{game}}" data-game_id="{{game.id}}" bindtap="showGame">
   
     <view class="card-content">
       <!-- DATE -->
@@ -53,8 +53,10 @@
           <text class='header-mini text-grey'>Waiting: {{game.waitlist_count}}</text>
         </view>
 
-        <scroll-view class='scroll-view_H' scroll-x style="width: 100%">   
-          <image wx:for="{{game.signups}}" wx:for-item="signup" wx:key="unique" data-signup="{{signup}}" src='../../../images/archery.jpg' class='avatar-sm mr my'></image>
+        <scroll-view scroll-x style="width: 100%">
+          <view class='scroll-row'>
+            <image wx:for="{{game.signups}}" wx:for-item="signup" wx:key="unique" data-signup="{{signup}}" src='../../../images/archery.jpg' class='avatar-sm mr my'></image>
+          </view>
         </scroll-view>
       </view>
       <!-- STATUS -->
