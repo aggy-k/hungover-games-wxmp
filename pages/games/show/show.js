@@ -114,16 +114,14 @@ Page({
     console.log('signing up for game id ' + game_id)
     const user_id = app.globalData.userId; 
 
-    // TO BE CHANGED -> need to make API call when signing up
-    const attendee_status = ((this.data.gameInfo.maxCapacity >= this.data.gameInfo.attendeesCount) ? 'Signed-up' : 'Waitlisted')
 
-
-    console.log('attendee status', attendee_status)
+    // const attendee_status = ((this.data.gameInfo.maxCapacity >= this.data.gameInfo.attendeesCount) ? 'Signed-up' : 'Waitlisted')
+    // console.log('attendee status', attendee_status)
 
     wx.request({
-      url: `${url}signups?game_id=${game_id}&user_id=${user_id}`,
+      url: `${url}signups`,
       method: 'POST',
-      data: {"attendee_status": attendee_status},
+      data: {game_id: game_id, user_id: user_id},
       success(res) {
         wx.reLaunch({
           url: '../registered/registered',

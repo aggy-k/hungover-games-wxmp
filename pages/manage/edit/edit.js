@@ -28,7 +28,7 @@ Page({
         const data = res.data;
 
         page.setData(data)
-        console.log('res.data.date', res.data.date)
+        console.log('res.data', res.data)
       }
     })
 
@@ -110,7 +110,7 @@ Page({
       signUpDate: minusSix.getFullYear() + '-' + ('0' + (minusSix.getMonth() + 1)).slice(-2) + '-' + ('0' + minusSix.getDate()).slice(-2)
     })
   },
-  
+
   bindSignUpDateChange: function (e) {
     console.log('picker send selection modified. The carry value is ', e.detail.value)
     const date = new Date(e.detail.value)
@@ -165,6 +165,7 @@ Page({
 
     const user_id = 1; // for testing purposes only
     // const user_id = app.globalData.userId
+    console.log('start time', start_time)
 
     const games = {
       date: date,
@@ -189,6 +190,14 @@ Page({
           url: `/pages/manage/show/show?id=${game_id}`,
         })
       }
+    })
+  },
+
+  cancelSubmit: function(e) {
+    console.log(e)
+    const id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `/pages/manage/show/show?id=${id}`,
     })
   }
 })

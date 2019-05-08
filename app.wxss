@@ -398,9 +398,19 @@ button {
   position: relative;
 }
 
+.pos-absolute {
+  position: absolute;
+}
+
 .float-right-bottom {
   position: absolute;
   bottom: 10px;
+  right: 10px;
+}
+
+.float-right-top {
+  position: absolute;
+  top: 10px;
   right: 10px;
 }
 
@@ -419,4 +429,14 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.pos-flag-right-top {
+  top: 2px;
+  right: 0px;
+}
+
+/* FLAG */
+.flag {
+  min-width: 60px;
 }

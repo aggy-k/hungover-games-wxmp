@@ -165,6 +165,7 @@ Page({
 
     const user_id = 1; // for testing purposes only
     // const user_id = app.globalData.userId
+    console.log('start time', start_time)
 
     const games = {
       date: date,
@@ -191,6 +192,12 @@ Page({
           url: '/pages/manage/index/index'
         })
       }
+    })
+  },
+
+  cancelSubmit: function() {
+    wx.navigateTo({
+      url: '/pages/manage/index/index',
     })
   }
 })
