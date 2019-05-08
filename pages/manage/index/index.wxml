@@ -1,12 +1,23 @@
+<!-- TABBAR -->
+<view class='text-center tabbar'>
+  <text class='header-lg bold mb'>Games Manager</text>
+  <block wx:if="{{isUpcoming === true}}">
+    <view class='d-flex item-center content-center w100'>
+      <view class='tab-active header-md w50 text-center py'>Upcoming ({{games.length}})</view>
+      <view class='tab-inactive header-md text-grey w50 text-center py' bindtap="showPastGames">Past ({{pastGames.length}})</view>
+    </view>
+  </block>
+
+  <block wx:if="{{isUpcoming === false}}">
+    <view class='d-flex item-center content-center w100'>
+      <view class='tab-inactive header-md text-grey w50 text-center py'  bindtap="showGames">Upcoming ({{games.length}})</view>
+      <view class='tab-active header-md w50 text-center py'>Past ({{pastGames.length}})</view>
+    </view>
+  </block>
+</view>
+
 <!-- UPCOMING BLOCK -->
 <block wx:if="{{isUpcoming === true}}">
-  
-  <!-- tabbar -->
-  <view class='tabbar d-flex item-center content-center w100'>
-    <view class='tab-active header-md w50 text-center py'>Upcoming ({{games.length}})</view>
-    <view class='tab-inactive header-md text-grey w50 text-center py' bindtap="showPastGames">Past ({{pastGames.length}})</view>
-  </view>
-
   <view class="container pos-relative" style='justify-content: unset; height: 100vh'>
 
     <!-- CARDS -->
@@ -42,12 +53,6 @@
 
 <!-- PAST BLOCK -->
 <block wx:if="{{isUpcoming === false}}">
-
-  <!-- tabbar -->
-  <view class='tabbar d-flex item-center content-center w100'>
-    <view class='tab-inactive header-md text-grey w50 text-center py'  bindtap="showGames">Upcoming ({{games.length}})</view>
-    <view class='tab-active header-md w50 text-center py'>Past ({{pastGames.length}})</view>
-  </view>
 
   <view class="container pos-relative" style='justify-content: unset; height: 100vh'>
 
@@ -92,6 +97,6 @@
 
 
 <view class='button-footer d-flex'>
-  <button class='w100 ma btn btn-transparent' bindtap="back">Home</button>
+  <button class='w100 ma btn btn-transparent d-flex item-center content-center' bindtap="back"><image class="icon" style="margin: unset; margin-right: 10px;" src='/images/games-active.png'></image>Home</button>
   <button class='w100 ma btn btn-orange' bindtap="gameCreate" data-game_id="{{game_id}}">Create Game</button>
 </view>

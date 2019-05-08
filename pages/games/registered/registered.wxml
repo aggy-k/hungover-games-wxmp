@@ -1,5 +1,5 @@
 <view class='text-center tabbar'>
-  <text class='header-lg bold mb'>Your games</text>
+  <text class='header-lg bold mb'>Your Games</text>
   <block wx:if="{{isUpcoming === true}}">
     <!-- tabbar -->
     <view class='d-flex item-center content-center w100'>

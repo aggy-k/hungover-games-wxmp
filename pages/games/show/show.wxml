@@ -88,8 +88,8 @@
   </view>
 </view>
 
-
-<view class='button-footer d-flex'>
+<view style='height: 67px;'></view>
+<cover-view class='button-footer d-flex' style='position: fixed; width: 100%;'>
   <button class='w100 ma btn btn-transparent' open-type="share">Share</button>
   <button class='w100 ma btn btn-orange' bindtap="formSubmit" data-game_id="{{game_id}}">Sign up</button>
-</view>
+</cover-view>
