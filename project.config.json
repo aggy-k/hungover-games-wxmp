@@ -92,9 +92,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "map",
-					"pathName": "pages/games/map/map",
+					"id": 7,
+					"name": "manager index",
+					"pathName": "pages/manage/index/index",
+					"query": "",
 					"scene": null
 				}
 			]

@@ -1,14 +1,25 @@
-<view class='container'>
+<view class='text-center tabbar'>
   <text class='header-lg bold mb'>Your games</text>
-  
-  <!-- UPCOMING BLOCK -->
   <block wx:if="{{isUpcoming === true}}">
-  <!-- tabbar -->
+    <!-- tabbar -->
     <view class='d-flex item-center content-center w100'>
-      <view class='tab-active header-md w50 text-center py mb'>Upcoming ({{signups.length}})</view>
-      <view class='tab-inactive header-md text-grey w50 text-center py mb' bindtap="showPastSignups">Past ({{pastSignups.length}})</view>
+      <view class='tab-active header-md w50 text-center py'>Upcoming ({{signups.length}})</view>
+      <view class='tab-inactive header-md text-grey w50 text-center py' bindtap="showPastSignups">Past ({{pastSignups.length}})</view>
     </view>
+  </block>
 
+  <block wx:if="{{isUpcoming === false}}">
+    <!-- tabbar -->
+    <view class='d-flex item-center content-center w100'>
+      <view class='tab-inactive header-md text-grey w50 text-center py' bindtap="showSignups">Upcoming ({{signups.length}})</view>
+      <view class='tab-active header-md w50 text-center py'>Past ({{pastSignups.length}})</view>
+    </view>
+  </block>
+</view>
+
+<!-- UPCOMING BLOCK -->
+<block wx:if="{{isUpcoming === true}}">
+  <view class='container'>
     <view class='card' wx:for="{{signups}}" wx:for-item="signup" wx:key="{{signup.id}}" data-game_id="{{signup.game.id}}" bindtap="showGame">
       <view class='card-content mb'>
         <!-- TOP -->
@@ -39,16 +50,14 @@
         </view>
       </view>
     </view>
-  </block>
+  </view>
+</block>
 
-  <!-- PAST BLOCK -->
-  <block wx:if="{{isUpcoming === false}}">
-  <!-- tabbar -->
-    <view class='d-flex item-center content-center w100'>
-      <view class='tab-inactive header-md text-grey w50 text-center py mb' bindtap="showSignups">Upcoming ({{signups.length}})</view>
-      <view class='tab-active header-md w50 text-center py mb'>Past ({{pastSignups.length}})</view>
-      
-    </view>
+<!-- PAST BLOCK -->
+<block wx:if="{{isUpcoming === false}}">
+
+
+  <view class='container'>
 
     <view class='card' wx:for="{{pastSignups}}" wx:for-item="signup" wx:key="{{signup.id}}" data-game_id="{{signup.game.id}}" bindtap="showGame">
       <view class='card-content mb'>
@@ -75,5 +84,5 @@
         </view>
       </view>
     </view>
-  </block>
-</view>
+  </view>
+</block>

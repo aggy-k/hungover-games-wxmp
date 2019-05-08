@@ -59,6 +59,15 @@ button {
   flex-direction: row;
 }
 
+/* TABBAR */
+.tabbar {
+  position:sticky;
+  top:0;
+  background-color:white;
+  z-index: 99999;
+}
+
+
 /* CARD */
 .card {
   width:100%;
