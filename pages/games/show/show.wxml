@@ -45,7 +45,7 @@
   <view class='card' wx:if="{{(gameInfo.announcement !== '')}}">
     <view class='card-content'>
       <view class='d-flex flex-column text-center item-center'>
-        <image src='../../../images/announcement.png' class='icon'></image>
+        <image src='/images/announcement.png' class='icon'></image>
         <text class='header-sm bold mb'>Announcements</text>
       </view>
       <view>
@@ -58,7 +58,7 @@
   <view class='card' wx:if="{{gameInfo.description !== ''}}">
     <view class='card-content'>
       <view class='d-flex flex-column text-center item-center'>
-        <image src='../../../images/description.png' class='icon'></image>
+        <image src='/images/description.png' class='icon'></image>
         <text class='header-sm bold mb'>Description</text>
       </view>
       <view>
@@ -71,15 +71,18 @@
   <view class='card pos-relative'>
     <view class='card-content'>
       <view class='d-flex flex-column text-center item-center'>
-        <image src='../../../images/location.png' class='icon'></image>
+        <image src='/images/location.png' class='icon'></image>
         <text class='header-sm bold mb'>Location</text>
       </view>
       <view>
         <!-- MAP -->
         <text class='header-sm'>{{gameInfo.location}}</text>
-        <image src='/images/map.png' class='rounded w100'></image>
+        <map bindtap="mapShow" class='w100' style="height: 500rpx;" latitude='31.235168' longitude='121.452879' markers='{{markers}}'>
+        </map>
+
+        <!-- <image src='/images/map.png' class='rounded w100'></image> -->
         <!-- <image src='/images/map-marker-point.png' class='map-marker'></image> -->
-        <image src='/images/hg_logo.jpg' class='avatar-sm border-orange pos-fixed-map'></image>
+        <!-- <image src='/images/hg_logo.jpg' class='avatar-sm border-orange pos-fixed-map'></image> -->
       </view>
     </view>
   </view>
