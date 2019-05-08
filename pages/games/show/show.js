@@ -1,3 +1,5 @@
+var order = ['pic1', 'pic2', 'pic3', 'pic4']
+
 // pages/games/show/show.js
 const app = getApp();
 
@@ -8,7 +10,14 @@ Page({
    */
   data: {
     week: app.globalData.week,
-    month: app.globalData.month
+    month: app.globalData.month,
+    // TEST
+    toView: 'pic1',
+    scrollTop: 100,
+    inputShowed: false,
+    inputVal: "",
+    trueStatement: true,
+    falseStatement: false
   },
 
   /**
@@ -102,8 +111,9 @@ Page({
 
     const url = app.globalData.url;
     const game_id = e.target.dataset.game_id
-    console.log('signing up for game id' + game_id)
+    console.log('signing up for game id ' + game_id)
     const user_id = app.globalData.userId; 
+
 
     // const attendee_status = ((this.data.gameInfo.maxCapacity >= this.data.gameInfo.attendeesCount) ? 'Signed-up' : 'Waitlisted')
     // console.log('attendee status', attendee_status)
@@ -120,4 +130,30 @@ Page({
     });
     
   },
+
+  // TEST
+  upper: function (e) {
+    console.log(e)
+  },
+  lower: function (e) {
+    console.log(e)
+  },
+  scroll: function (e) {
+    console.log(e)
+  },
+  tap: function (e) {
+    for (var i = 0; i < order.length; ++i) {
+      if (order[i] === this.data.toView) {
+        this.setData({
+          toView: order[i + 1]
+        })
+        break
+      }
+    }
+  },
+  tapMove: function (e) {
+    this.setData({
+      scrollTop: this.data.scrollTop + 10
+    })
+  }
 })

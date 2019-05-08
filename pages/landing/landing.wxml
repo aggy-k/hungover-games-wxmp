@@ -1,14 +1,12 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<view class='landing-bg' style="background-image: url('../../images/archery.jpg')">
+  <view class="container">
+    <view class='landing-top d-flex flex-column item-center'>
+      <image src='/images/hg_logo.jpg' class='avatar-lg pos-middle border-white mb'></image>  
+      <text class='text-white bold mt'>Hungover Games</text>
+    </view>
+    <view class='landing-bottom w70'>
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='btn-orange w70'>Enter</button>
+    </view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='btn-orange'>Enter</button>
 </view>

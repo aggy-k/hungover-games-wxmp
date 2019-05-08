@@ -9,6 +9,24 @@
   box-sizing: border-box;
 } 
 
+.landing-bg {
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+  height:100vh;
+  font-size: 28px;
+}
+
+.landing-top {
+  height:50%;
+  justify-content:center;
+  margin-top:50rpx;
+}
+
+.landing-bottom {
+  margin-bottom:160rpx;
+}
+
 text {
   color: #535353;
 }
