@@ -7,7 +7,7 @@
 
     <view class='d-flex flex-column item-center mt'>
       <button class='btn btn-ghost-orange w100 my' bindtap='gameRules'>Game rules</button>
-      <button class='btn btn-ghost-orange w100 my' bindtap='manageIndex'>Manage games</button> 
+      <button wx:if="{{userAdmin === true}}" class='btn btn-ghost-orange w100 my' bindtap='manageIndex'>Manage games</button> 
     </view>
   </view>
 
@@ -16,5 +16,4 @@
     <view class='tab-inactive header-md text-grey w50 text-center py'>Admin</view>
   </view> -->
   
-
 </view>

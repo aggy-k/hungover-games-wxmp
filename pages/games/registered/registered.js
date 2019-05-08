@@ -144,5 +144,13 @@ Page({
 
   showSignups() {
     this.setData({isUpcoming: true})
+  }, 
+
+  showGame: function (e) {
+    // const game_id = e.currentTarget.dataset.space.id
+    const game_id = e.currentTarget.dataset.game_id
+    wx.navigateTo({
+      url: `../show/show?id=${game_id}`,
+    })
   }
 })

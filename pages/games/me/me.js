@@ -15,8 +15,12 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      userInfo: app.globalData.userInfo
-    })
+      userInfo: app.globalData.userInfo,
+      userAdmin: app.globalData.userAdmin
+    });
+    console.log('hello from console')
+    console.log(this.data.userInfo)
+    console.log(app.globalData.userAdmin)
   },
 
   /**

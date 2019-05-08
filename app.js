@@ -25,6 +25,7 @@ App({
           success: (res) => {
             console.log(11, res)
             this.globalData.userId = res.data.userId
+            this.globalData.userAdmin = res.data.userAdmin
           },
           fail: (res) => {
             console.log(12, res)

@@ -9,7 +9,7 @@
       <view class='tab-inactive header-md text-grey w50 text-center py mb' bindtap="showPastSignups">Past ({{pastSignups.length}})</view>
     </view>
 
-    <view class='card' wx:for="{{signups}}" wx:for-item="signup" wx:key="{{signup.id}}">
+    <view class='card' wx:for="{{signups}}" wx:for-item="signup" wx:key="{{signup.id}}" data-game_id="{{signup.game.id}}" bindtap="showGame">
       <view class='card-content mb'>
         <!-- TOP -->
         <view class='d-flex space-between'>
@@ -50,7 +50,7 @@
       
     </view>
 
-    <view class='card' wx:for="{{pastSignups}}" wx:for-item="signup" wx:key="{{signup.id}}">
+    <view class='card' wx:for="{{pastSignups}}" wx:for-item="signup" wx:key="{{signup.id}}" data-game_id="{{signup.game.id}}" bindtap="showGame">
       <view class='card-content mb'>
         <!-- TOP -->
         <view class='d-flex space-between'>
@@ -73,9 +73,7 @@
             <image src='../../../images/archery.jpg' class='avatar-sm mr'></image>
           </view>
         </view>
-
       </view>
     </view>
   </block>
-
 </view>
