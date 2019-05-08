@@ -19,11 +19,19 @@
       <text class='header-sm'>Attendees: {{gameInfo.signedUpCount}}/{{gameInfo.maxCapacity}}</text>
       <text class='text-orange header-sm'>Waiting: {{gameInfo.waitlistCount}}</text>
     </view>
-    <view>
+    <!-- <view>
       <image src='../../../images/archery.jpg' class='avatar-md mr'></image>
       <image src='../../../images/archery.jpg' class='avatar-md mr'></image>
-    </view>
+    </view> -->
+     <!-- AVATAR SCROLL -->
+    <scroll-view scroll-x style="width: 100%">   
+      <view class='scroll-row'>
+        <image wx:for="{{gameInfo.attendees}}" wx:for-item="signup" data-signup="{{signup}}" 
+      wx:if="{{signup.attendeeStatus === 'Signed-up'}}" src='{{signup.profileImage}}' class='avatar-md mr my'></image>
+      </view>
+    </scroll-view>
   </view>
+
   <view class='w100 d-flex'>
     <navigator url="/pages/manage/signup/signup?game_id={{gameInfo.id}}" class='header-sm text-orange ma' style="margin-left: 0px;" data-game_id="{{gameInfo.id}}">
       Manage attendees >

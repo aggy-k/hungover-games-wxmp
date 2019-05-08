@@ -6,6 +6,7 @@
     "pages/games/show/show",
     "pages/games/registered/registered",
     "pages/games/me/me",
+    "pages/games/signup/signup",
     "pages/manage/index/index",
     "pages/manage/create/create",
     "pages/manage/edit/edit",

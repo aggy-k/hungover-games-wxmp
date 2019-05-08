@@ -4,7 +4,8 @@
 
   <view class='d-flex item-center grid-box mb pos-relative'>
     <!-- <navigator url='/pages/manage/signup_edit/signup_edit?id={{attendee.id}}'> -->
-      <image data-id="{{attendee.id}}" bindtap="editAttendeeStatus" src='/images/edit.png' class='icon-sm float-right-bottom'></image>
+      <!-- <image data-id="{{attendee.id}}" bindtap="editAttendeeStatus" src='/images/edit.png' class='icon-sm float-right-bottom'></image> -->
+      <view wx:if="{{attendee.userId === userId}}" class='bg-red rounded px text-white float-right-bottom header-sm' data-id="{{attendee.id}}" data-last_status="{{attendee.attendeeStatus}}" data-start_time="{{start_time}}" data-game_id="{{id}}" bindtap="cancelGame">Cancel</view>
     <!-- </navigator> -->
     <view class='my ml'>
       <image src="{{attendee.profileImage}}" class='avatar-md'></image>
@@ -26,7 +27,8 @@
 
   <view class='d-flex item-center grid-box mb pos-relative'>
      <!-- <navigator url='/pages/manage/signup_edit/signup_edit?id={{attendee.id}}'> -->
-      <image data-id="{{attendee.id}}" bindtap="editAttendeeStatus" src='/images/edit.png' class='icon-sm float-right-bottom'></image>
+      <!-- <image data-id="{{attendee.id}}" bindtap="editAttendeeStatus" src='/images/edit.png' class='icon-sm float-right-bottom'></image> -->
+      <view wx:if="{{attendee.userId === userId}}" class='bg-red rounded px text-white float-right-bottom header-sm' data-id="{{attendee.id}}" data-last_status="{{attendee.attendeeStatus}}" data-start_time="{{start_time}}" data-game_id="{{id}}" bindtap="cancelGame">Cancel</view>
     <!-- </navigator> -->
     <view class='my ml'>
       <image src="{{attendee.profileImage}}" class='avatar-md'></image>
@@ -48,7 +50,7 @@
 
   <view class='d-flex item-center grid-box mb pos-relative'>
      <!-- <navigator url='/pages/manage/signup_edit/signup_edit?id={{attendee.id}}'> -->
-      <image data-id="{{attendee.id}}" bindtap="editAttendeeStatus" src='/images/edit.png' class='icon-sm float-right-bottom'></image>
+      <!-- <image data-id="{{attendee.id}}" bindtap="editAttendeeStatus" src='/images/edit.png' class='icon-sm float-right-bottom'></image> -->
     <!-- </navigator> -->
     <view class='my ml'>
       <image src="{{attendee.profileImage}}" class='avatar-md'></image>

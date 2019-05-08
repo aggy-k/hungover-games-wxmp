@@ -1,4 +1,4 @@
-// pages/games/registered/registered.js
+// pages/manage/signup/signup.js
 const app = getApp();
 
 Page({
@@ -7,39 +7,29 @@ Page({
    * Page initial data
    */
   data: {
-    cancelText: ["I'm lame", "I'm a chicken"],
-    isUpcoming: true
-  },
 
-  test: function () {
-    const array = ["I'm lame", "I'm a chicken"]
-    const num = Math.floor(Math.random() * array.length)
-    return array[num]
-  }, 
+  },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    this.setData({
+      userId: app.globalData.userId
+    })
+
+    console.log('userId', this.data.userId)
+    console.log('onLoad options is', options)
+    const game_id = options.game_id;
+    this.setData({ game_id: game_id })
     const url = app.globalData.url;
     const page = this;
-    const user_id = app.globalData.userId;
-    // const user_id = 1;
 
     wx.request({
-      url: `${url}users/${user_id}/signups`,
-      method: 'GET',
+      url: `${url}games/${game_id}`,
       success(res) {
         console.log('res', res);
-        const signups = res.data.signups
-        const pastSignups = res.data.pastSignups
-
-        page.setData({
-          signups: signups,
-          pastSignups: pastSignups
-          });
-        console.log('signups', signups)
-        console.log('past signups', pastSignups)
+        page.setData(res.data)
       }
     })
   },
@@ -55,20 +45,7 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
-    // const page = this
-    // wx.request({
-    //   url: 'http://localhost:3000/api/v1/games',
-    //   success: function (res) {
-    //     const games = res.data
-    //     games.forEach(function (game) {
-    //       game.start_time = page.setDateTime(game.start_time)
-    //       game.end_time = page.setDateTime(game.end_time)
-    //       game.signup_date = page.setDateTime(game.signup_date)
-    //     });
-    //     page.setData({ games: games });
-    //     console.log(page.data.games)
-    //   },
-    // })
+
   },
 
   /**
@@ -106,7 +83,16 @@ Page({
 
   },
 
-  cancelGame: function(e) {
+  back: function (e) {
+    console.log(e)
+    const game_id = e.currentTarget.dataset.game_id;
+
+    wx.navigateTo({
+      url: `/pages/manage/show/show?id=${game_id}`,
+    })
+  },
+
+  cancelGame: function (e) {
     const url = app.globalData.url;
     console.log(e)
     const id = e.currentTarget.dataset.id
@@ -118,13 +104,13 @@ Page({
 
     const last_status = e.currentTarget.dataset.last_status
     console.log('last status', last_status)
-    
+
     const delta = (start_time - (new Date())) / 3600 / 1000;
     // console.log('delta', delta)
     // console.log(delta < 24)
     const attendee_status = (((delta < 24) && (last_status === 'Signed-up')) ? 'Late-cancelled' : 'Cancelled')
     console.log(attendee_status)
-    
+
     wx.showModal({
       title: 'Warning',
       content: 'Do you really want to cancel?',
@@ -149,21 +135,7 @@ Page({
         }
       }
     })
+
+    
   },
-
-  showPastSignups() {
-    this.setData({isUpcoming: false})
-  },
-
-  showSignups() {
-    this.setData({isUpcoming: true})
-  }, 
-
-  showGame: function (e) {
-    // const game_id = e.currentTarget.dataset.space.id
-    const game_id = e.currentTarget.dataset.game_id
-    wx.navigateTo({
-      url: `../show/show?id=${game_id}`,
-    })
-  }
 })
