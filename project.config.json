@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 7,
 			"list": [
 				{
 					"id": 0,
@@ -89,6 +89,12 @@
 					"name": "test",
 					"pathName": "pages/manage/test/test",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "map",
+					"pathName": "pages/games/map/map",
 					"scene": null
 				}
 			]

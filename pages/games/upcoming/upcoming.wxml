@@ -21,8 +21,10 @@
           <text class='header-mini text-grey'>Waiting: {{game.waitlist_count}}</text>
         </view>
 
-        <scroll-view class='scroll-view_H' scroll-x style="width: 100%">   
-          <image wx:for="{{game.signups}}" wx:for-item="signup" wx:key="unique" data-signup="{{signup}}" wx:if="{{signup.signup_status === 'Signed-up'}}" src='{{signup.profile_image}}' class='avatar-sm mr my'></image>
+        <scroll-view scroll-x style="width: 100%">
+          <view class='scroll-row'>
+            <image wx:for="{{game.signups}}" wx:for-item="signup" wx:key="unique" data-signup="{{signup}}" wx:if="{{signup.signup_status === 'Signed-up'}}" src='{{signup.profile_image}}' class='avatar-sm mr my'></image>
+          </view>
         </scroll-view>
       
       </view>

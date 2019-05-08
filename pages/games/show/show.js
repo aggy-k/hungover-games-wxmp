@@ -1,5 +1,3 @@
-var order = ['pic1', 'pic2', 'pic3', 'pic4']
-
 // pages/games/show/show.js
 const app = getApp();
 
@@ -11,13 +9,23 @@ Page({
   data: {
     week: app.globalData.week,
     month: app.globalData.month,
-    // TEST
-    toView: 'pic1',
-    scrollTop: 100,
-    inputShowed: false,
-    inputVal: "",
-    trueStatement: true,
-    falseStatement: false
+    markers: [{
+      iconPath: "/images/hg_logo_marker.png",
+      id: 0,
+      latitude: 31.235168,
+      longitude: 121.452879,
+      width: 30,
+      height: 30
+    }],
+  },
+
+  mapShow: function () {
+    wx.openLocation({//​使用微信内置地图查看位置。
+      latitude: 31.235168,//要去的纬度-地址
+      longitude: 121.452879,//要去的经度-地址
+      name: "Cages",
+      address: "3F, Jing'An Sports Center, Jiangning road 428 江宁路428号静安体育中心3层"
+    })
   },
 
   /**
@@ -129,31 +137,5 @@ Page({
       }
     });
     
-  },
-
-  // TEST
-  upper: function (e) {
-    console.log(e)
-  },
-  lower: function (e) {
-    console.log(e)
-  },
-  scroll: function (e) {
-    console.log(e)
-  },
-  tap: function (e) {
-    for (var i = 0; i < order.length; ++i) {
-      if (order[i] === this.data.toView) {
-        this.setData({
-          toView: order[i + 1]
-        })
-        break
-      }
-    }
-  },
-  tapMove: function (e) {
-    this.setData({
-      scrollTop: this.data.scrollTop + 10
-    })
   }
 })

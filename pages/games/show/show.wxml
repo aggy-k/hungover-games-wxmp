@@ -30,50 +30,22 @@
       <text class='header-mini text-grey'>Attendees: {{gameInfo.signedUpCount}}/{{gameInfo.maxCapacity}}</text>
       <text class='text-orange header-mini'>Waiting: {{gameInfo.waitlistCount}}</text>
     </view>
-    <scroll-view class='scroll-view_H' scroll-x style="width: 100%">   
 
-      <image wx:for="{{gameInfo.attendees}}" wx:for-item="signup" data-signup="{{signup}}" 
-      wx:if="{{signup.attendeeStatus === 'Signed-up'}}" src='{{signup.profileImage}}' class='avatar-md mr my'></image>
-
-    </scroll-view>
-  </view>
-  
-  <!-- TEST -->
-<scroll-view class="scroll-view" scroll-x>
+    <!-- AVATAR SCROLL -->
+    <scroll-view scroll-x style="width: 100%">   
       <view class='scroll-row'>
-        <view id="pic1" class="scroll-view-item_H bc_1">
-          <view class="card-sport">
-            <image mode="aspectFill" src="https://images.unsplash.com/photo-1485908953667-cf6d88997642?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1440&q=80"></image>
-            <text>Tennis</text>
-          </view>
-        </view>
-        <view id="pic2"  class="scroll-view-item_H bc_2">
-          <view class="card-sport">
-            <image mode="aspectFill" src="https://images.unsplash.com/photo-1519317245869-d6943e4a4f9a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"></image>
-            <text>Fitness</text>
-          </view>
-        </view>
-        <view id="pic3" class="scroll-view-item_H bc_3">
-          <view class="card-sport">
-            <image mode="aspectFill" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1067&q=80"></image>
-            <text>Basketball</text>
-          </view>
-        </view>
-      <view id="pic4" class="scroll-view-item_H bc_4">
-          <view class="card">
-            <image mode="aspectFill" src="https://images.unsplash.com/photo-1535469420027-517674dad7a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"></image>
-            <text>Boxing</text>
-          </view>
-        </view>
+        <image wx:for="{{gameInfo.attendees}}" wx:for-item="signup" data-signup="{{signup}}" 
+      wx:if="{{signup.attendeeStatus === 'Signed-up'}}" src='{{signup.profileImage}}' class='avatar-md mr my'></image>
       </view>
     </scroll-view>
+  </view>
 
   <!-- CARDS -->
   <!-- ANNOUNCEMENTS -->
   <view class='card' wx:if="{{(gameInfo.announcement !== '')}}">
     <view class='card-content'>
       <view class='d-flex flex-column text-center item-center'>
-        <image src='../../../images/announcement.png' class='icon'></image>
+        <image src='/images/announcement.png' class='icon'></image>
         <text class='header-sm bold mb'>Announcements</text>
       </view>
       <view>
@@ -86,7 +58,7 @@
   <view class='card' wx:if="{{gameInfo.description !== ''}}">
     <view class='card-content'>
       <view class='d-flex flex-column text-center item-center'>
-        <image src='../../../images/description.png' class='icon'></image>
+        <image src='/images/description.png' class='icon'></image>
         <text class='header-sm bold mb'>Description</text>
       </view>
       <view>
@@ -99,15 +71,18 @@
   <view class='card pos-relative'>
     <view class='card-content'>
       <view class='d-flex flex-column text-center item-center'>
-        <image src='../../../images/location.png' class='icon'></image>
+        <image src='/images/location.png' class='icon'></image>
         <text class='header-sm bold mb'>Location</text>
       </view>
       <view>
         <!-- MAP -->
         <text class='header-sm'>{{gameInfo.location}}</text>
-        <image src='/images/map.png' class='rounded w100'></image>
+        <map bindtap="mapShow" class='w100' style="height: 500rpx;" latitude='31.235168' longitude='121.452879' markers='{{markers}}'>
+        </map>
+
+        <!-- <image src='/images/map.png' class='rounded w100'></image> -->
         <!-- <image src='/images/map-marker-point.png' class='map-marker'></image> -->
-        <image src='/images/hg_logo.jpg' class='avatar-sm border-orange pos-fixed-map'></image>
+        <!-- <image src='/images/hg_logo.jpg' class='avatar-sm border-orange pos-fixed-map'></image> -->
       </view>
     </view>
   </view>

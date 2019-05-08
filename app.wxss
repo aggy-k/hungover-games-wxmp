@@ -53,6 +53,12 @@ button {
   /* margin-bottom:20px; */
 }
 
+/* HORIZONTAL SCROLL */
+.scroll-row {
+  display: flex;
+  flex-direction: row;
+}
+
 /* CARD */
 .card {
   width:100%;
@@ -91,18 +97,24 @@ button {
   width:30px;
   height:30px;
   border-radius:50%;
+  flex-shrink: 0;
+  flex-grow: 0;
 }
 
 .avatar-md {
   width:60px;
   height:60px;
   border-radius:50%;
+  flex-shrink: 0;
+  flex-grow: 0;
 }
 
 .avatar-lg {
   width:120px;
   height:120px;
   border-radius:50%;
+  flex-shrink: 0;
+  flex-grow: 0;
 }
 
 .avatar-shadow {
