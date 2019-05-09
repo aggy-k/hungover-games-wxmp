@@ -126,7 +126,7 @@ Page({
             success(res) {
               console.log(res)
               wx.reLaunch({
-                url: '../registered/registered',
+                url: '../registered/registered?cancelToast=true',
               })
             }
           })

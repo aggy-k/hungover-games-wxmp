@@ -2,3 +2,8 @@
 <view>{{item}}</view>
 </block>
 <view class='btn' bindtap="loadMore">load more</view>
+
+<button type='primary' bindtap='getAccessToken'>Get access</button>
+<form bindsubmit='sendMessage'>
+  <button type='warning' formType='submit' id='send'>Send message</button>
+</form>
