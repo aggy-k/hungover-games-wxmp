@@ -20,29 +20,32 @@
 <!-- UPCOMING BLOCK -->
 <block wx:if="{{isUpcoming === true}}">
   <view class='container'>
-    <view class='card' wx:for="{{signups}}" wx:for-item="signup" wx:key="{{signup.id}}" data-game_id="{{signup.game.id}}" bindtap="showGame">
+    <view class='card' wx:for="{{signups}}" wx:for-item="signup" wx:key="{{signup.id}}">
       <view class='card-content mb'>
         <!-- TOP -->
-        <view class='d-flex space-between'>
-          <view class='d-flex flex-column mb'>
-            <text class='header-md bold'>{{signup.game.date}}</text>
-            <text class='header-md'>12:30 - 14:30</text>
+        <view data-game_id="{{signup.game.id}}" bindtap="showGame">
+          <view class='d-flex space-between'>
+            <view class='d-flex flex-column mb'>
+              <text class='header-md bold'>{{signup.game.date}}</text>
+              <text class='header-md'>12:30 - 14:30</text>
+            </view>
+            <text wx:if="{{signup.attendee_status.name === 'Signed-up'}}" class='text-green header-md'>{{signup.attendee_status.name}}</text>
+            <text wx:if="{{signup.attendee_status.name === 'Waitlisted'}}" class='text-orange header-md'>{{signup.attendee_status.name}}</text>
+            <text wx:if="{{(signup.attendee_status.name !== 'Signed-up') && (signup.attendee_status.name !== 'Waitlisted')}}" class='text-red header-md'>{{signup.attendee_status.name}}</text>
           </view>
-          <text wx:if="{{signup.attendee_status.name === 'Signed-up'}}" class='text-green header-md'>{{signup.attendee_status.name}}</text>
-          <text wx:if="{{signup.attendee_status.name === 'Waitlisted'}}" class='text-orange header-md'>{{signup.attendee_status.name}}</text>
-          <text wx:if="{{(signup.attendee_status.name !== 'Signed-up') && (signup.attendee_status.name !== 'Waitlisted')}}" class='text-red header-md'>{{signup.attendee_status.name}}</text>
+          <!-- ATTENDEES -->
+          <view class='my'>
+            <view class='d-flex space-between mb'>
+              <text class='header-mini text-grey'>Attendees: {{signup.game.attendees_count}}/{{signup.game.max_capacity}}</text>
+              <text class='header-mini text-grey'>Waiting: {{(signup.game.waitlist_count)}}</text>
+            </view>
+            <view>
+              <image src='../../../images/archery.jpg' class='avatar-sm mr'></image>
+              <image src='../../../images/archery.jpg' class='avatar-sm mr'></image>
+            </view>
+          </view>
         </view>
-        <!-- ATTENDEES -->
-        <view class='my'>
-          <view class='d-flex space-between mb'>
-            <text class='header-mini text-grey'>Attendees: {{signup.game.attendees_count}}/{{signup.game.max_capacity}}</text>
-            <text class='header-mini text-grey'>Waiting: {{(signup.game.waitlist_count)}}</text>
-          </view>
-          <view>
-            <image src='../../../images/archery.jpg' class='avatar-sm mr'></image>
-            <image src='../../../images/archery.jpg' class='avatar-sm mr'></image>
-          </view>
-        </view>
+
         <!-- BOTTOM -->
         <view class='d-flex space-between item-center' wx:if="{{(signup.attendee_status.name === 'Signed-up') || (signup.attendee_status.name === 'Waitlisted')}}">
           <text class='text-grey w100 header-sm'>Click to cancel ></text>
