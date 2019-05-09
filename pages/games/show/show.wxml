@@ -46,6 +46,26 @@
     </navigator>
   </view>
 
+  <view class='card' wx:if="{{userSignedUp > 0}}">
+    <view class='card-content'>
+      <!-- <view><text class='header-sm mb'>You're signed up</text></view>  -->
+      <view class='d-flex item-center'>
+        <image src="/images/checked.png" class="avatar-sm mr"></image>
+        <view class='text-dark-grey header-sm'>You have {{userSignedUp}} spot(s) signed up.</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='card' wx:if="{{userWaitlisted > 0}}">
+    <view class='card-content'>
+      <!-- <view><text class='header-sm mb'>You're on the waitlist</text></view>  -->
+      <view class='d-flex item-center'>
+        <image src="/images/warning.png" class="avatar-sm mr"></image>
+        <view class='text-dark-grey header-sm'>You have {{userWaitlisted}} spot(s) on the waitlist.</view>
+      </view>
+    </view>
+  </view>
+
   <!-- CARDS -->
   <!-- ANNOUNCEMENTS -->
   <view class='card' wx:if="{{(gameInfo.announcement !== '')}}">

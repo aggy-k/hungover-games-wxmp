@@ -33,8 +33,13 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
+      userId: app.globalData.userId,
+      avatarUrl: app.globalData.userInfo.avatarUrl,
       game_id: options.id
+
     })
+    console.log('globalData is', app.globalData)
+    console.log('local data', this.data)
     console.log(`game id is ${this.data.game_id}`)
     // load signup data for this game_id if user already signed up
     // How to handle 2 signups?
@@ -51,8 +56,21 @@ Page({
         const long = game.location.long
         const lat = game.location.lat
 
+        let userSignedUp = 0
+        let userWaitlisted = 0
+
+        game.attendees.forEach((a) => {
+          if ((a.userId === app.globalData.userId) && (a.attendeeStatus === "Signed-up")) {
+            userSignedUp += 1
+          } else if ((a.userId === app.globalData.userId) && (a.attendeeStatus === "Waitlisted")) {
+            userWaitlisted += 1
+          }
+        })
+
         page.setData({
           gameInfo: game,
+          userSignedUp: userSignedUp,
+          userWaitlisted: userWaitlisted,
           markers: [{
             height: 30,
             width: 30,
@@ -62,7 +80,7 @@ Page({
             longitude: long
           }]
         });
-        console.log(page.data.gameInfo)
+        console.log('userSignedUp', page.data.userSignedUp)
       },
     })
   },
