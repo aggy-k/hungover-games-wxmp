@@ -24,6 +24,7 @@ Page({
     const url = app.globalData.url;
     const page = this;
     const user_id = app.globalData.userId;
+    page.setData({ userId: user_id })
     // const user_id = 1;
     if (options.toast === 'true') {
       wx.showToast({
@@ -40,21 +41,31 @@ Page({
     }
 
     wx.request({
-      url: `${url}users/${user_id}/signups`,
+      url: `${url}games?user_id=${user_id}`,
       method: 'GET',
       success(res) {
-        console.log('res', res);
-        const signups = res.data.signups
-        const pastSignups = res.data.pastSignups
-
-        page.setData({
-          signups: signups,
-          pastSignups: pastSignups
-          });
-        console.log('signups', signups)
-        console.log('past signups', pastSignups)
+        console.log(res)
+        page.setData(res.data)
+        
       }
     })
+    console.log('page.data', page.data)
+    // wx.request({
+    //   url: `${url}users/${user_id}/signups`,
+    //   method: 'GET',
+    //   success(res) {
+    //     console.log('res', res);
+    //     const signups = res.data.signups
+    //     const pastSignups = res.data.pastSignups
+
+    //     page.setData({
+    //       signups: signups,
+    //       pastSignups: pastSignups
+    //       });
+    //     console.log('signups', signups)
+    //     console.log('past signups', pastSignups)
+    //   }
+    // })
   },
 
   /**

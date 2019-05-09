@@ -144,6 +144,10 @@ button {
   border: solid 2px #F08302;
 }
 
+.border {
+  border: solid 2px #535353;
+}
+
 /* BUTTONS */
 .btn {
   text-align:center;
@@ -257,6 +261,10 @@ button {
 
 .bold {
   font-weight: bold;
+}
+
+.text-dark-grey {
+  color: #535353;
 }
 
 .text-grey {
@@ -479,4 +487,12 @@ button {
 
 .grid-title-red {
   border-bottom: solid 3px #F98A8B;
+}
+
+.grid-title-grey {
+  border-bottom: solid 3px rgba(0,0,0,0.1);
+}
+
+.grid-bottom-ghost-orange {
+  border-top: solid 2px #F08302;
 }
