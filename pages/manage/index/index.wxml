@@ -18,7 +18,7 @@
 
 <!-- UPCOMING BLOCK -->
 <block wx:if="{{isUpcoming === true}}">
-  <view class="container pos-relative" style='justify-content: unset; height: 100vh'>
+  <view class="container pos-relative" style='justify-content: unset; margin-bottom: 50px;'>
 
     <!-- CARDS -->
     <view wx:for="{{games}}" wx:for-item="game" wx:key="game.id" bindtap="showGame" class="card" data-game_id="{{game.id}}">
@@ -54,7 +54,7 @@
 <!-- PAST BLOCK -->
 <block wx:if="{{isUpcoming === false}}">
 
-  <view class="container pos-relative" style='justify-content: unset; height: 100vh'>
+  <view class="container pos-relative" style='justify-content: unset; margin-bottom: 50px;'>
 
     <!-- CARDS -->
     <view wx:for="{{pastGames}}" wx:for-item="game" wx:key="game.id" bindtap="showGame" class="card" data-game_id="{{game.id}}">

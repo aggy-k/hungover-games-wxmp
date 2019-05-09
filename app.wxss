@@ -94,7 +94,8 @@ button {
 }
 
 .button-footer {
-  position:sticky;
+  position:fixed;
+  width: 100%;
   bottom:0;
   background-color:white;
   border-top:solid 1px #f0f0f0;
