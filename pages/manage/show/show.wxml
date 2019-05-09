@@ -75,8 +75,10 @@
       </view>
       <view>
         <!-- MAP -->
-        <text class='header-sm'>{{gameInfo.location}}</text>
-        <image src='../../../images/archery.jpg' class='rounded w100'></image>
+        <view class='header-sm bold'>{{gameInfo.location.name}}</view>
+        <view class='header-sm mb'>{{gameInfo.location.address}}</view>
+        <map bindtap="mapShow" class='w100' style="height: 500rpx;" latitude="{{gameInfo.location.lat}}" longitude="{{gameInfo.location.long}}" markers='{{markers}}'>
+        </map>
       </view>
     </view>
   </view>

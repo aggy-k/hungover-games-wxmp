@@ -157,7 +157,7 @@ Page({
     const end_time = `${data.date} ${data.endTime}`
     const signup_time = `${data.signUpDate} ${data.signUpTime}`
     const max_capacity = parseInt(data.maxCapacity)
-    const location = data.location
+    // const location = data.location
     const description = data.description
     const announcement = data.announcement
 
@@ -173,7 +173,7 @@ Page({
       end_time: end_time,
       signup_time: signup_time,
       max_capacity: max_capacity,
-      location: location,
+      // location: location,
       description: description,
       announcement: announcement,
       user_id: user_id,
