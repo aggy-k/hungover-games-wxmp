@@ -21,10 +21,10 @@ Page({
 
   mapShow: function () {
     wx.openLocation({//​使用微信内置地图查看位置。
-      latitude: 31.235168,//要去的纬度-地址
-      longitude: 121.452879,//要去的经度-地址
-      name: "Cages",
-      address: "3F, Jing'An Sports Center, Jiangning road 428 江宁路428号静安体育中心3层"
+      latitude: this.data.gameInfo.location.lat, // 31.235168,//要去的纬度-地址
+      longitude: this.data.gameInfo.location.long, // 121.452879,//要去的经度-地址
+      name: this.data.gameInfo.location.name,
+      address: this.data.gameInfo.location.address
     })
   },
 
@@ -48,7 +48,20 @@ Page({
         game.end_time = page.setDateTime(game.end_time)
         game.signup_time = page.setDateTime(game.signup_time)
 
-        page.setData({ gameInfo: game });
+        const long = game.location.long
+        const lat = game.location.lat
+
+        page.setData({
+          gameInfo: game,
+          markers: [{
+            height: 30,
+            width: 30,
+            iconPath: "/images/hg_logo_marker.png",
+            id: 0,
+            latitude: lat,
+            longitude: long
+          }]
+        });
         console.log(page.data.gameInfo)
       },
     })

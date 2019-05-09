@@ -86,14 +86,14 @@
       </view>
 
       <!-- INPUT LOCATION -->
-      <view class='form-group'>
+      <!-- <view class='form-group'>
         <view class='form-label'>
           <label class='header-sm bold' for='location'>Location</label>
         </view>
         <view class='form-value'>
           <view><input class='header-sm' id="location" type="text" name= "location" value="{{location}}" placeholder="Location"></input></view>
         </view>
-      </view>
+      </view> -->
 
       <!-- INPUT DESCRIPTION -->
       <view class='form-group'>
