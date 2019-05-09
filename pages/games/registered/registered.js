@@ -25,6 +25,19 @@ Page({
     const page = this;
     const user_id = app.globalData.userId;
     // const user_id = 1;
+    if (options.toast === 'true') {
+      wx.showToast({
+        title: 'Signed-up',
+        icon: 'success',
+        duration: 2000
+      });
+    } else if (options.cancelToast === 'true') {
+      wx.showToast({
+        title: 'Cancelled',
+        icon: 'success',
+        duration: 2000
+      });
+    }
 
     wx.request({
       url: `${url}users/${user_id}/signups`,

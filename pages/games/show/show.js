@@ -145,7 +145,7 @@ Page({
       data: {game_id: game_id, user_id: user_id},
       success(res) {
         wx.reLaunch({
-          url: '../registered/registered',
+          url: '../registered/registered?toast=true',
         })
       }
     });
