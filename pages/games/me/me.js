@@ -7,7 +7,7 @@ Page({
    * Page initial data
    */
   data: {
-
+    adminTab: false
   },
 
   /**
@@ -21,6 +21,19 @@ Page({
     console.log('hello from console')
     console.log(this.data.userInfo)
     console.log(app.globalData.userAdmin)
+
+    const url = app.globalData.url;
+    const page = this;
+    const id = app.globalData.userId;
+
+    wx.request({
+      url: `${url}users/${id}`,
+      success(res) {
+        console.log(res.data)
+        page.setData(res.data)
+      }
+    })
+
   },
 
   /**
@@ -83,4 +96,31 @@ Page({
       url: `../../manage/index/index`,
     })
   },
+
+  toggleAdminTab(e) {
+    if (this.data.adminTab === true) {
+      this.setData({
+        adminTab: false
+      })
+      console.log('adminTab', this.data.adminTab)
+    } else {
+      this.setData({
+        adminTab: true
+      })
+      console.log('adminTab', this.data.adminTab)
+    }
+    
+  },
+
+  gameRules() {
+    wx.navigateTo({
+      url: '/pages/gameRules/index/index',
+    })
+  },
+
+  updateGameRules() {
+    wx.navigateTo({
+      url: '/pages/gameRules/edit/edit',
+    })
+  }
 })

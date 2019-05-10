@@ -1,7 +1,9 @@
 {
   "pages": [
     "pages/landing/landing",
-    "pages/gameRules/gameRules",
+    "pages/users/edit/edit",
+    "pages/gameRules/index/index",
+    "pages/gameRules/edit/edit",
     "pages/games/upcoming/upcoming",
     "pages/games/show/show",
     "pages/games/registered/registered",

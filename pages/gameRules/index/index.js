@@ -1,4 +1,5 @@
-// pages/gameRules/gameRules.js
+// pages/gameRules/index/index.js
+const app = getApp();
 Page({
 
   /**
@@ -12,6 +13,17 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    const url = app.globalData.url;
+    const page = this;
+
+    wx.request({
+      url: `${url}game_rules`,
+      method: 'get',
+      success(res) {
+        console.log(res)
+        page.setData(res.data)
+      }
+    })
 
   },
 
@@ -62,5 +74,12 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  back(e) {
+    console.log(e)
+    wx.reLaunch({
+      url: '/pages/games/me/me',
+    })
   }
 })

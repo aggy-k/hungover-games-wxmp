@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 9,
 			"list": [
 				{
 					"id": 0,
@@ -96,6 +96,19 @@
 					"name": "manager index",
 					"pathName": "pages/manage/index/index",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "game rules",
+					"pathName": "pages/gameRules/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "game rules edit",
+					"pathName": "pages/gameRules/edit/edit",
 					"scene": null
 				}
 			]

@@ -1,0 +1,16 @@
+<view class='container'>
+  <view class='card'>
+    <view class='card-content'>
+      <form bindsubmit='saveRules'>
+        <!-- TITLE -->
+        <input name="title" class='header-md bold mb text-dark-grey' placeholder='Title' value="{{title}}"></input>
+
+        <!-- CONTENT -->
+        <textarea maxlength='-1' auto-height='true' name="content" class='header-sm mb text-dark-grey' placeholder='Content' value="{{content}}"></textarea>
+
+        <!-- SUBMIT -->
+        <button class='btn btn-orange bold' formType="submit">Save</button>
+     </form> 
+    </view>
+  </view>
+</view>
