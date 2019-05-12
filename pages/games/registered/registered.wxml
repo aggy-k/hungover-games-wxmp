@@ -3,38 +3,106 @@
   <block wx:if="{{isUpcoming === true}}">
     <!-- tabbar -->
     <view class='d-flex item-center content-center w100'>
-      <view class='tab-active header-md w50 text-center py'>Upcoming ({{signups.length}})</view>
-      <view class='tab-inactive header-md text-grey w50 text-center py' bindtap="showPastSignups">Past ({{pastSignups.length}})</view>
+      <view class='tab-active header-md w50 text-center py'>Upcoming</view>
+      <view class='tab-inactive header-md text-grey w50 text-center py' bindtap="showPastSignups">Past</view>
     </view>
   </block>
 
   <block wx:if="{{isUpcoming === false}}">
     <!-- tabbar -->
     <view class='d-flex item-center content-center w100'>
-      <view class='tab-inactive header-md text-grey w50 text-center py' bindtap="showSignups">Upcoming ({{signups.length}})</view>
-      <view class='tab-active header-md w50 text-center py'>Past ({{pastSignups.length}})</view>
+      <view class='tab-inactive header-md text-grey w50 text-center py' bindtap="showSignups">Upcoming</view>
+      <view class='tab-active header-md w50 text-center py'>Past</view>
     </view>
   </block>
 </view>
 
-<!-- UPCOMING BLOCK -->
+
 <view class='container'>
 
+  <!-- UPCOMING BLOCK -->
   <block wx:if="{{isUpcoming === true}}">
     <view wx:for="{{games}}" wx:for-item="game" wx:key="unique" class="py card" style='padding-top: 0px;'>
-      <view class='bg-orange pa' style='border-radius: 5px 5px 0px 0px;'>
+      
+      <!-- DATE -->
+      <!-- <view class='bg-orange pa' style='border-radius: 5px 5px 0px 0px;'>
         <view class='header-md bold text-white'>{{game.start_time}}</view>
-      </view>
-      <view wx:for="{{game.signups}}" wx:for-item="attendee" wx:key="unique">
-        <view wx:if="{{attendee.user_id === userId}}" class='card-content header-sm text-dark-grey pa pos-relative'>
-          {{attendee.attendee}} - {{attendee.signup_status}}
-          <view wx:if="{{(attendee.signup_status === 'Signed-up') || (attendee.signup_status === 'Waitlisted')}}"class='pos-absolute bg-red text-white px rounded' style='right: 1px; top: 10px;'>Cancel</view>
+      </view> -->
+      <view class='card-content'>
+        <!-- DATE -->
+        <view>
+          <view class='header-md bold'>{{game.start_time.weekDay}}, {{game.start_time.day}} {{game.start_time.month}}</view>
+          <view class='header-md mb'>{{game.start_time.time}} - {{game.end_time.time}}</view>
+        </view>
+
+        <!-- ATTENDEE SIGN UP STATUSES -->
+        <view class='header-md'>
+          <view class='d-flex space-between mb'>
+            <view class='card-link' data-game-id='{{game.id}}' bindtap='showGame'></view>
+            
+            <view class='d-flex space-between w40'>
+              <text class='text-green'>Signed up</text>
+              <text class='text-green'>{{game.userSignedUp}}</text>
+            </view>
+            
+            <view class='cancel-link bg-red text-white px rounded' bindtap='cancelSignUp' data-game-id="{{game.id}}">Cancel a spot</view>
+          </view>
+
+          <view class='d-flex space-between mb'>
+            <view class='d-flex space-between w40'>
+              <text class='text-orange'>Waitlisted</text>
+              <text class='text-orange'>{{game.userWaitlisted}}</text>
+            </view>
+            <view class='cancel-link bg-red text-white px rounded' bindtap='cancelWaitlist' data-game-id="{{game.id}}">Cancel a spot</view>
+          </view>
+
+          <view class='d-flex space-between w40'>
+            <text class='text-red'>Cancelled</text>
+            <text class='text-red'>{{game.userCancelled}}</text>
+          </view>
         </view>
       </view>
-      <!-- <view class='grid-bottom-ghost-orange py d-flex content-center item-center'>
-        <text class='header-md text-orange bold'>View game</text>
-      </view> -->
     </view>
-    
   </block>
+
+  <!-- PAST BLOCK -->
+  <block wx:if="{{isUpcoming === false}}">
+    <view wx:for="{{pastGames}}" wx:for-item="game" wx:key="unique" class="py card" style='padding-top: 0px;'>
+      
+      <!-- DATE -->
+      <!-- <view class='bg-orange pa' style='border-radius: 5px 5px 0px 0px;'>
+        <view class='header-md bold text-white'>{{game.start_time}}</view>
+      </view> -->
+      <view class='card-content'>
+        <!-- DATE -->
+        <view>
+          <view class='header-md bold'>{{game.start_time.weekDay}}, {{game.start_time.day}} {{game.start_time.month}}</view>
+          <view class='header-md mb'>{{game.start_time.time}} - {{game.end_time.time}}</view>
+        </view>
+
+        <!-- ATTENDEE SIGN UP STATUSES -->
+        <view class='header-md'>
+          <view class='d-flex space-between mb'>
+            <view class='card-link' data-game-id='{{game.id}}' bindtap='showGame'></view>
+            
+            <view class='d-flex space-between w50'>
+              <text class='text-green'>Signed up</text>
+              <text class='text-green'>{{game.userSignedUp}}</text>
+            </view>
+          </view>
+
+          <view class='d-flex space-between w50 mb'>
+            <text class='text-orange'>Waitlisted</text>
+            <text class='text-orange'>{{game.userWaitlisted}}</text>
+          </view>
+
+          <view class='d-flex space-between w50'>
+            <text class='text-red'>Cancelled</text>
+            <text class='text-red'>{{game.userCancelled}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
 </view>
