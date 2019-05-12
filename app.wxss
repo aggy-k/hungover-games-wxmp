@@ -257,6 +257,7 @@ button {
 }
 
 .content {
+  font-size: 14px;
 }
 
 .bold {
@@ -400,6 +401,10 @@ button {
 
 .w50 {
   width: 50%;
+}
+
+.w40 {
+  width: 40%
 }
 
 /* COLORS */

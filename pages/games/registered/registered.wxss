@@ -1,1 +1,19 @@
 /* pages/games/registered/registered.wxss */
+.card-link {
+  position:absolute;
+  /* background-color:yellow; */
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  /* z-index:0; */
+}
+
+.card {
+  position: relative;
+}
+
+.cancel-link {
+  /* z-index: 1; */
+  position: relative;
+}

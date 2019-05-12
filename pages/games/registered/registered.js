@@ -18,9 +18,11 @@ Page({
   onLoad: function (options) {
     const url = app.globalData.url;
     const page = this;
-    const user_id = app.globalData.userId;
+    // const user_id = app.globalData.userId;
+    const user_id = 9;
+
     page.setData({ userId: user_id })
-    // const user_id = 1;
+
     if (options.toast === 'true') {
       wx.showToast({
         title: 'Signed-up',
@@ -120,7 +122,7 @@ Page({
     const date = new Date(dateString);
     const weekDay = this.data.week[date.getDay()];
     const day = date.getDate();
-    const month = this.data.month[date.getMonth()].slice(0, 3);
+    const month = this.data.month[date.getMonth()];
     const year = date.getFullYear();
     const time = `${date.getHours()}:${('0' + date.getMinutes()).slice(-2)}`;
 
@@ -181,14 +183,14 @@ Page({
   }, 
 
   showGame: function (e) {
-    // const game_id = e.currentTarget.dataset.space.id
-    const game_id = e.currentTarget.dataset.game_id
+    const game_id = e.currentTarget.dataset.gameId
     wx.navigateTo({
       url: `../show/show?id=${game_id}`,
     })
   },
 
   cancelSignUp: function (e) {
+    const page = this
     console.log('cancel sign up')
     const gameId = e.currentTarget.dataset.gameId
     const userId = this.data.userId
@@ -199,21 +201,25 @@ Page({
       attendee_status: attendeeStatus
     }
     console.log(data)
-    const url = app.globalData.url;
-    wx.request({
-      url: `${url}signupcancel`,
-      method: 'PUT',
-      data: data,
-      success(res) {
-        console.log(res)
-        wx.reLaunch({
-          url: './registered',
-        })
+
+    wx.showModal({
+      title: 'Warning',
+      content: 'Do you really want to cancel?',
+      cancelText: 'No',
+      confirmText: 'Yes',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('User clicks confirm')
+          page.signupCancel(data)
+        } else if (res.cancel) {
+          console.log('User clicks cancel')
+        }
       }
-    })
+    })  
   }, 
 
   cancelWaitlist: function (e) {
+    const page = this
     console.log('cancel waitlist')
     const gameId = e.currentTarget.dataset.gameId
     const userId = this.data.userId
@@ -224,6 +230,25 @@ Page({
       attendee_status: attendeeStatus
     }
     console.log(data)
+
+
+    wx.showModal({
+      title: 'Warning',
+      content: 'Do you really want to cancel?',
+      cancelText: 'No',
+      confirmText: 'Yes',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('User clicks confirm')
+          page.signupCancel(data)
+        } else if (res.cancel) {
+          console.log('User clicks cancel')
+        }
+      }
+    })  
+  },
+
+  signupCancel: function (data) {
     const url = app.globalData.url;
     wx.request({
       url: `${url}signupcancel`,
@@ -236,5 +261,9 @@ Page({
         })
       }
     })
+  },
+
+  confirmModal: function () {
+    
   }
 })

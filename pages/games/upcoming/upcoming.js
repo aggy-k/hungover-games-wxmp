@@ -59,6 +59,7 @@ Page({
         console.log('signup time vs now', (page.data.now >= page.data.games[0].signup_time))
       },
     })
+    console.log('page data', this.data)
   },
 
   setDateTime: function(dateString) {
