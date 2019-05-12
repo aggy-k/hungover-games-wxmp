@@ -18,8 +18,8 @@ Page({
   onLoad: function (options) {
     const url = app.globalData.url;
     const page = this;
-    // const user_id = app.globalData.userId;
-    const user_id = 9;
+    const user_id = app.globalData.userId;
+    // const user_id = 9;
 
     page.setData({ userId: user_id })
 
