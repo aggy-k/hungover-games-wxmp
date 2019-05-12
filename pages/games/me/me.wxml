@@ -5,15 +5,52 @@
       <text class='header-lg bold mb'>{{userInfo.nickName}}</text> 
     </view>
 
-    <view class='d-flex flex-column item-center mt'>
-      <button class='btn btn-ghost-orange w100 my' bindtap='gameRules'>Game rules</button>
-      <button wx:if="{{userAdmin === true}}" class='btn btn-ghost-orange w100 my' bindtap='manageIndex'>Manage games</button> 
-    </view>
   </view>
-
-  <!-- <view class='d-flex item-center content-center w100'>
-    <view class='tab-active header-md w50 text-center py'>Profile</view>
-    <view class='tab-inactive header-md text-grey w50 text-center py'>Admin</view>
-  </view> -->
+  <button class='btn btn-ghost-orange w100 my' bindtap='gameRules'>Read game rules</button>
+  <block wx:if="{{userAdmin !== true}}">
   
+    <view class='d-flex w100 mb'>
+      <view class='tab-active w100 text-center header-sm pa'>Profile</view>
+    </view>
+
+  </block>
+
+  <block wx:if="{{userAdmin === true}}">
+    <view class='d-flex w100 mb' wx:if="{{adminTab === false}}">
+      <view class='tab-active w100 text-center header-sm pa'>Profile</view>
+      <view bindtap="toggleAdminTab" class='tab-inactive w100 text-grey text-center header-sm pa'>Admin</view>
+    </view>
+    <view class='d-flex w100 mb' wx:if="{{adminTab === true}}">
+      <view bindtap="toggleAdminTab" class='tab-inactive w100 text-grey text-center header-sm pa'>Profile</view>
+      <view class='tab-active w100 text-center header-sm pa'>Admin</view>
+    </view>
+  </block>
+
+  <block wx:if="{{(userAdmin !== true) || ((userAdmin === true) && (adminTab === false))}}">
+    <view class='card mt pos-relative'>
+      <image src='/images/edit.png' class='icon-sm pos-absolute' style="right:10px; top:10px;"></image>
+      <view class='card-content'>
+
+        <view class='grid-container'>
+          <view class='header-sm text-dark-grey mt mr text-right'>Name</view>
+          <view class='header-sm text-dark-grey w100 mt ml'>Agnes Selvita</view>
+          <view class='header-sm text-dark-grey mt mr text-right'>Stats</view>
+          <view class='header-sm text-dark-grey w100 mt ml'>{{signup_count}} games played</view>
+          <view class='header-sm text-dark-grey mt mr text-right'>First game</view>
+          <view class='header-sm text-dark-grey w100 mt ml'>Thu, Apr 7th, 2018</view>
+          <view class='header-sm text-dark-grey mt mr text-right'>Last game</view>
+          <view class='header-sm text-dark-grey w100 mt ml'>Thu, Jun 7th, 2018</view>
+          <view class='header-sm text-dark-grey mt mr text-right'>Archery quote</view>
+          <view class='header-sm text-dark-grey w100 mt ml'>{{quote}}</view>
+        </view>
+
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{((userAdmin === true) && (adminTab === true))}}">
+    <button class='btn btn-ghost-orange w100 my' bindtap='manageIndex'>Manage games</button>
+    <button class='btn btn-ghost-orange w100 my' bindtap='updateGameRules'>Update game rules</button>
+
+  </block>
 </view>

@@ -317,6 +317,10 @@ button {
   text-align: left;
 }
 
+.text-right {
+  text-align: right;
+}
+
 .item-center {
   align-items: center;
 }

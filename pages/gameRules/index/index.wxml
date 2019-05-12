@@ -1,0 +1,19 @@
+<view class='container' style='margin-bottom: 50px;'>
+  <view class='card'>
+    <view class='card-content'>
+      <!-- TITLE -->
+      <view class='header-md bold text-dark-grey mb'>{{title}}</view>
+
+      <!-- CONTENT -->
+      <text class='header-sm text-dark-grey'>
+        {{content}}
+      </text>
+      <view class='header-mini text-grey bold mt'>Last update:</view>
+      <view class='header-mini text-grey'>By {{user.username}}, on {{updated_at}}</view>
+    </view>
+  </view>
+</view>
+
+<cover-view class='button-footer d-flex'>
+   <button bindtap='back' class='w100 ma btn btn-transparent'>Back</button>
+</cover-view>
