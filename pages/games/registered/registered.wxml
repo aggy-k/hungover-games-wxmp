@@ -37,7 +37,7 @@
 
         <!-- ATTENDEE SIGN UP STATUSES -->
         <view class='header-md'>
-          <view class='d-flex space-between mb'>
+          <view class='d-flex space-between mb item-center'>
             <view class='card-link' data-game-id='{{game.id}}' bindtap='showGame'></view>
             
             <view class='d-flex space-between w40'>
@@ -45,18 +45,18 @@
               <text class='text-green'>{{game.userSignedUp}}</text>
             </view>
             
-            <view class='cancel-link bg-red text-white px rounded' bindtap='cancelSignUp' data-game-id="{{game.id}}">Cancel a spot</view>
+            <view class='cancel-link bg-pink text-red px rounded' bindtap='cancelSignUp' data-game-id="{{game.id}}">Cancel a spot</view>
           </view>
 
-          <view class='d-flex space-between mb'>
+          <view class='d-flex space-between mb item-center'>
             <view class='d-flex space-between w40'>
               <text class='text-orange'>Waitlisted</text>
               <text class='text-orange'>{{game.userWaitlisted}}</text>
             </view>
-            <view class='cancel-link bg-red text-white px rounded' bindtap='cancelWaitlist' data-game-id="{{game.id}}">Cancel a spot</view>
+            <view class='cancel-link bg-pink text-red px rounded' bindtap='cancelWaitlist' data-game-id="{{game.id}}">Cancel a spot</view>
           </view>
 
-          <view class='d-flex space-between w40'>
+          <view class='d-flex space-between w40' style='margin-top: 5px;'>
             <text class='text-red'>Cancelled</text>
             <text class='text-red'>{{game.userCancelled}}</text>
           </view>

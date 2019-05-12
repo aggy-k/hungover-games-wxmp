@@ -420,6 +420,10 @@ button {
   background: #FF8C8C;
 }
 
+.bg-pink {
+  background: #FFEFEF;
+}
+
 .bg-green {
   background: #67C180;
 }

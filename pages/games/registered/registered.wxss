@@ -16,4 +16,6 @@
 .cancel-link {
   /* z-index: 1; */
   position: relative;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
