@@ -55,7 +55,7 @@
 
         <scroll-view scroll-x style="width: 100%">
           <view class='scroll-row'>
-            <image wx:for="{{game.signups}}" wx:for-item="signup" wx:key="unique" data-signup="{{signup}}" src='../../../images/archery.jpg' class='avatar-sm mr my'></image>
+            <image wx:for="{{game.signups}}" wx:for-item="signup" wx:key="unique" data-signup="{{signup}}" src='{{signup.profile_image}}' class='avatar-sm mr my'></image>
           </view>
         </scroll-view>
       </view>
