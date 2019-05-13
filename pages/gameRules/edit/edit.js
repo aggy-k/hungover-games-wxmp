@@ -16,7 +16,7 @@ Page({
   onLoad: function (options) {
     const url = app.globalData.url;
     const page = this;
-    
+
     wx.request({
       url: `${url}game_rules`,
       method: 'get',
@@ -33,7 +33,7 @@ Page({
 
     const title = e.detail.value.title
     const content = e.detail.value.content
-    const data = { title: title, content: content, user_id: 4}
+    const data = { title: title, content: content, user_id: 4 }
     console.log(data)
 
     wx.request({
