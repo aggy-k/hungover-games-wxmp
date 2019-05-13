@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class='landing-bg' style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/images/archery2.jpg);">
+<view class='landing-bg' style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://hungover-games.tuitu-tech.cn/assets/archery2-5fc743d1cce8f7f74e2be2daa6dcc10cc478375c9edf439e2ee473cb274a64db.jpg');">
   <view class="container">
     <view class='landing-top d-flex flex-column item-center'>
       <image src='/images/hg_logo.jpg' class='avatar-lg pos-middle border-white mb'></image>  

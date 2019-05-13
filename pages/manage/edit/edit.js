@@ -153,9 +153,9 @@ Page({
 
     const data = e.detail.value
     const date = data.date
-    const start_time = `${data.date} ${data.startTime}`
-    const end_time = `${data.date} ${data.endTime}`
-    const signup_time = `${data.signUpDate} ${data.signUpTime}`
+    const start_time = `${data.date} ${data.startTime} +0800`
+    const end_time = `${data.date} ${data.endTime} +0800`
+    const signup_time = `${data.signUpDate} ${data.signUpTime} +0800`
     const max_capacity = parseInt(data.maxCapacity)
     // const location = data.location
     const description = data.description

@@ -102,7 +102,7 @@
         </view>
         <view class='form-value'>
           <!-- <view><input id="description" type="text" name= "description" value="{{description}}" placeholder="Description"></input></view> -->
-          <view><textarea class='header-sm' id="description" type="text" name= "description" value="{{description}}" placeholder=""></textarea></view>
+          <view><textarea maxlength="-1" class='header-sm' id="description" type="text" name= "description" value="{{description}}" placeholder=""></textarea></view>
         </view>
       </view>
 
@@ -113,7 +113,7 @@
         </view>
         <view class='form-value'>
           <!-- <view><input id="announcement" type="text" name= "announcement" value="{{announcement}}" placeholder="Announcement"></input></view> -->
-          <view><textarea class='header-sm' id="announcement" type="text" name= "announcement" value="{{announcement}}" placeholder=""></textarea></view>
+          <view><textarea maxlength="-1" class='header-sm' id="announcement" type="text" name= "announcement" value="{{announcement}}" placeholder=""></textarea></view>
         </view>
       </view>
 
