@@ -62,9 +62,16 @@
       <!-- STATUS -->
       <view class='w100 mt'>
         <!-- signup not open -->
-        <view class='text-center card-status bg-grey'>
-          <text class='text-white'>Signup opens {{game.signup_date.day}} {{game.signup_date.month}}, {{game.signup_date.time}}</text>
-        </view>
+        <block wx:if="{{game.game_status.name !== 'Active'}}">
+          <view class='text-center card-status bg-grey'>
+            <text class='text-white'>Cancelled</text>
+          </view>
+        </block>
+        <block wx:else>
+          <view class='text-center card-status bg-grey'>
+            <text class='text-white'>Signup opens {{game.signup_date.day}} {{game.signup_date.month}}, {{game.signup_date.time}}</text>
+          </view>
+        </block>
       </view>
     </view>
   </view>
