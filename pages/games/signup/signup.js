@@ -88,7 +88,7 @@ Page({
     const game_id = e.currentTarget.dataset.game_id;
 
     wx.navigateTo({
-      url: `/pages/manage/show/show?id=${game_id}`,
+      url: `/pages/games/show/show?id=${game_id}`,
     })
   },
 
