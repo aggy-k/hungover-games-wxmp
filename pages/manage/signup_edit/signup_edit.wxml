@@ -1,18 +1,19 @@
-<view class="section">
-  <form bindsubmit="formSubmit">
-    <view>{{user.username}}</view>
-    <view class="section__title">Signup Status</view>
-    <radio-group name='attendeeStatus' class="radio-group" bindchange="radioChange">
-      <label class="radio" wx:for="{{array}}" wx:for-index="idx" wx:key="unique">
-        <view><radio value="{{item}}" checked="{{idx === index}}"/>{{item}}</view>
-      </label>
-    </radio-group>
-    <!-- SUBMIT BUTTONS -->
-    <view class='d-flex content-center item-center mt'>       
-      <button class='w100 mr btn-ghost-orange' style="margin-bottom:20px" bindtap="cancelSubmit">Cancel</button>     
-      <button style="margin-bottom:20px" formType="submit" loading="{{loading}}" class='w100 btn-orange'>Publish</button>
-    </view>
+<view class='container'>
+  <view class="w100 pa">
+    <form bindsubmit="formSubmit">
+      <view class="text-dark-grey header-md bold pb mb grid-title-orange">Update Signup Status</view>
+      <radio-group name='attendeeStatus' class="radio-group" bindchange="radioChange">
+        <label class="radio header-sm" wx:for="{{array}}" wx:for-index="idx" wx:key="unique">
+          <view class='pb text-dark-grey'><radio value="{{item}}" checked="{{idx === index}}"/>{{item}}</view>
+        </label>
+      </radio-group>
+      <!-- SUBMIT BUTTONS -->
+      <view class='d-flex content-center item-center mt'>       
+        <button class='w100 mr btn-ghost-orange' style="margin-bottom:20px" bindtap="cancelSubmit">Cancel</button>     
+        <button style="margin-bottom:20px" formType="submit" loading="{{loading}}" class='w100 btn-orange'>Publish</button>
+      </view>
 
-  </form>
+    </form>
+  </view>
 </view>
 
