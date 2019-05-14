@@ -49,10 +49,6 @@ Page({
     const url = app.globalData.url;
     const id = app.globalData.userId;
 
-
-    console.log('rawdata', e.detail.rawData)
-    console.log('e', e)
-    console.log('userInfo', e.detail.userInfo)
     app.globalData.userInfo = e.detail.userInfo
 
     const avatarUrl = e.detail.userInfo.avatarUrl;
@@ -70,9 +66,7 @@ Page({
       url: `${url}users/${id}`,
       method: 'PUT',
       data: data,
-      success(res) {
-        console.log(res)
-        
+      success(res) {        
         wx.switchTab({
           url: '../games/upcoming/upcoming',
         });

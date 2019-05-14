@@ -7,13 +7,6 @@
 
   </view>
   <button class='btn btn-ghost-orange w100 my' bindtap='gameRules'>Read game rules</button>
-  <block wx:if="{{userAdmin !== true}}">
-  
-    <view class='d-flex w100 mb'>
-      <view class='tab-active w100 text-center header-sm pa'>Profile</view>
-    </view>
-
-  </block>
 
   <block wx:if="{{userAdmin === true}}">
     <view class='d-flex w100 mb' wx:if="{{adminTab === false}}">

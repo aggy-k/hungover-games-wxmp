@@ -133,17 +133,13 @@ Page({
     console.log(e)
     const id = e.currentTarget.dataset.id
     const game_id = e.currentTarget.dataset.game_id
-    // const now = new Date();
-    // console.log('now', now)
     const start_time = new Date(`${e.currentTarget.dataset.start_time}`);
-    // console.log('starttime', start_time)
 
     const last_status = e.currentTarget.dataset.last_status
     console.log('last status', last_status)
     
     const delta = (start_time - (new Date())) / 3600 / 1000;
-    // console.log('delta', delta)
-    // console.log(delta < 24)
+
     const attendee_status = (((delta < 24) && (last_status === 'Signed-up')) ? 'Late-cancelled' : 'Cancelled')
     console.log(attendee_status)
     
@@ -254,7 +250,6 @@ Page({
       method: 'PUT',
       data: data,
       success(res) {
-        console.log(res)
         wx.reLaunch({
           url: './registered',
         })

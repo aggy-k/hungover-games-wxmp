@@ -30,7 +30,7 @@
       </view>
       <!-- STATUS -->
       <view class='w100 mt'>
-        <view class='text-center card-status bg-orange'>
+        <view class='text-center card-status bg-green'>
           <text class='text-white'>Signup open</text>
         </view>
       </view>
