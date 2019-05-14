@@ -107,5 +107,13 @@ Page({
         })
       }
     })
+  },
+
+  cancelSubmit() {
+    const game_id = this.data.game.id;
+
+    wx.navigateTo({
+      url: `/pages/manage/signup/signup?game_id=${game_id}`,
+    })
   }
 })
