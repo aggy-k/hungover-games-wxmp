@@ -72,7 +72,7 @@ button {
 /* CARD */
 .card {
   width:100%;
-  box-shadow:2px 2px 30px rgba(0,0,0,0.15);
+  box-shadow:2px 2px 20px rgba(0,0,0,0.15);
   border-radius:5px;
   margin-bottom: 20px;
 }
@@ -438,6 +438,10 @@ button {
 }
 
 .bg-white {
+  background: #FFF;
+}
+
+.bg-white-light {
   background: #FFF;
 }
 
