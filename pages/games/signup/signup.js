@@ -7,7 +7,7 @@ Page({
    * Page initial data
    */
   data: {
-
+    editPlayer: false
   },
 
   /**
@@ -135,7 +135,46 @@ Page({
         }
       }
     })
+  },
 
+  changePlayer(e) {
+    console.log(e)
+    this.setData({
+      editPlayer: true,
+      editPlayerSignupId: e.currentTarget.dataset.signup_id,
+      editPlayerName: e.currentTarget.dataset.player_name,
+      editPlayerGameId: e.currentTarget.dataset.game_id
+    })
+  },
+
+  updatePlayer(e) {
+    const url = app.globalData.url;
+    const page = this; 
+    const signup_id = this.data.editPlayerSignupId;
+    const game_id = this.data.editPlayerGameId;
+    const name = e.detail.value.name
+    console.log('name', name)
+    console.log('id', signup_id)
+
+    wx.request({
+      url: `${url}signups/${signup_id}`,
+      method: 'PUT',
+      data: {player: name, game_id: game_id},
+      success(res) {
+        page.setData({
+          editPlayer: false
+        })
+        wx.reLaunch({
+          url: `/pages/games/signup/signup?game_id=${game_id}`,
+        })
+      }
+    })
     
   },
+
+  closePopup() {
+    this.setData({
+      editPlayer: false
+    })
+  }
 })

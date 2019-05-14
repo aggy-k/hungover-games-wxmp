@@ -1,0 +1,42 @@
+<view class='container'>
+
+  <form class='w100' bindsubmit="formSubmit" bindreset="formReset">
+
+    <view class='form-group w100'>
+      <view class='form-label'>
+        <label class='header-sm bold' for='firstName'>First name</label>
+      </view>
+      <view class='form-value'>
+        <view><input class='header-sm' id="firstName" type="text" name= "firstName" value="{{first_name}}" placeholder="First name"></input></view>
+      </view>   
+    </view>
+
+    <view class='form-group w100'>
+      <view class='form-label'>
+        <label class='header-sm bold' for='lastName'>Last name</label>
+      </view>
+      <view class='form-value'>
+        <view><input class='header-sm' id="lastName" type="text" name= "lastName" value="{{last_name}}" placeholder="Last name"></input></view>
+      </view>   
+    </view>
+
+    <view class='form-group w100'>
+      <view class='form-label'>
+        <label class='header-sm bold' for='quote'>Quote</label>
+      </view>
+      <view class='form-value'>
+        <view><input class='header-sm' id="quote" type="text" name= "quote" value="{{quote}}" placeholder="Quote"></input></view>
+      </view>   
+    </view>
+
+    <!-- SUBMIT BUTTONS -->
+    <view class='d-flex content-center item-center mt w100'>       
+      <button class='w100 mr btn-ghost-orange' style="margin-bottom:20px" bindtap="cancelSubmit" data-id="{{id}}">Cancel</button>     
+      <button style="margin-bottom:20px" formType="submit" loading="{{loading}}" class='w100 btn-orange'>Save</button>
+    </view>
+
+  </form>
+
+
+</view>
+

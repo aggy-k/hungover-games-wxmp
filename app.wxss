@@ -72,7 +72,7 @@ button {
 /* CARD */
 .card {
   width:100%;
-  box-shadow:2px 2px 20px rgba(0,0,0,0.15);
+  box-shadow:2px 2px 30px rgba(0,0,0,0.15);
   border-radius:5px;
   margin-bottom: 20px;
 }
@@ -437,6 +437,10 @@ button {
   background: #6AC9E7;
 }
 
+.bg-white {
+  background: #FFF;
+}
+
 /* POSITIONS */
 .pos-relative {
   position: relative;
@@ -518,4 +522,10 @@ button {
 
 .box-h70px {
   min-height: 70px;
+}
+
+.popup-form {
+  z-index: 99;
+  min-height: 200px;
+  width: 70%;
 }

@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 11,
 			"list": [
 				{
 					"id": 0,
@@ -116,6 +116,13 @@
 					"id": -1,
 					"name": "edit attendee status",
 					"pathName": "pages/manage/signup_edit/signup_edit",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "edit me",
+					"pathName": "pages/games/me_edit/me_edit",
 					"scene": null
 				}
 			]

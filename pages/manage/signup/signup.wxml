@@ -1,3 +1,17 @@
+<view wx:if="{{editPlayer === true}}" class='container pos-absolute w100 d-flex content-center item-center' style='height: 100vh; top: 0px; left: 0px; z-index: 99;'>
+  <view class='rounded card bg-white pos-relative'>
+    <image src='/images/close.png' class='icon-sm pos-absolute' style="top:10px; right:5px;" bindtap="closePopup"></image>
+    <view class='card-content'>
+      <form bindsubmit="updatePlayer">
+        <view class='header-sm bold'>Change player's name</view>
+        <input class='form-value header-sm' name="name" placeholder="Player's name" value="{{editPlayerName}}"></input>
+        <button class='btn btn-ghost-orange mt' formType="submit">OK</button>
+      </form>
+    </view>
+  </view>
+  
+</view>
+
 <view>
   <!-- SIGNED-UP -->
   <view wx:if="{{signedUpCount > 0}}" class='grid-title-green header-md bold pa'>Signed-up ({{signedUpCount}}/{{maxCapacity}})</view>
@@ -12,8 +26,10 @@
       </view>
       <view class='d-flex space-between ml w100'>
         <view>
-          <view class='header-md bold'>{{attendee.username}}</view>
-          <view class='header-mini text-grey'>{{attendee.updated_at}}</view>
+          <view class='header-md bold' style="padding-left: 25px;">{{attendee.player}}</view>
+          <image src='/images/edit.png' class='icon-sm pos-absolute' style="left:80px; top:25px;" bindtap='changePlayer' data-signup_id="{{attendee.id}}" data-player_name="{{attendee.player}}" data-game_id="{{id}}"></image>
+
+          <view class='header-mini text-grey'>{{attendee.created_at}}</view>
         </view>
         <view class='header-mini mr text-green'>{{attendee.attendeeStatus}}</view>
       </view>
@@ -34,8 +50,10 @@
       </view>
       <view class='d-flex space-between ml w100'>
         <view>
-          <view class='header-md bold'>{{attendee.username}}</view>
-          <view class='header-mini text-grey'>{{attendee.updated_at}}</view>
+          <view class='header-md bold' style="padding-left: 25px;">{{attendee.player}}</view>
+          <image src='/images/edit.png' class='icon-sm pos-absolute' style="left:80px; top:25px;" bindtap='changePlayer' data-signup_id="{{attendee.id}}" data-player_name="{{attendee.player}}" data-game_id="{{id}}"></image>
+
+          <view class='header-mini text-grey'>{{attendee.created_at}}</view>
         </view>
         <view class='header-mini mr text-orange'>{{attendee.attendeeStatus}}</view>
       </view>
@@ -56,8 +74,9 @@
       </view>
       <view class='d-flex space-between ml w100'>
         <view>
-          <view class='header-md bold'>{{attendee.username}}</view>
-          <view class='header-mini text-grey'>{{attendee.updated_at}}</view>
+          <view class='header-md bold' style="padding-left: 25px;">{{attendee.player}}</view>
+          <image src='/images/edit.png' class='icon-sm pos-absolute' style="left:80px; top:25px;" bindtap='changePlayer' data-signup_id="{{attendee.id}}" data-player_name="{{attendee.player}}" data-game_id="{{id}}"></image>
+          <view class='header-mini text-grey'>{{attendee.created_at}}</view>
         </view>
         <view class='header-mini mr text-red'>{{attendee.attendeeStatus}}</view>
       </view>
