@@ -1,68 +1,72 @@
-<!-- SIGNED-UP -->
-<view wx:if="{{signedUpCount > 0}}" class='grid-title-green header-md bold pa'>Signed-up ({{signedUpCount}}/{{maxCapacity}})</view>
-<block wx:for="{{attendees}}" wx:for-item="attendee" wx:key="unique" wx:if="{{attendee.attendeeStatus === 'Signed-up'}}">
+<view>
+  <!-- SIGNED-UP -->
+  <view wx:if="{{signedUpCount > 0}}" class='grid-title-green header-md bold pa'>Signed-up ({{signedUpCount}}/{{maxCapacity}})</view>
+  <block wx:for="{{attendees}}" wx:for-item="attendee" wx:key="unique" wx:if="{{attendee.attendeeStatus === 'Signed-up'}}">
 
-  <view class='d-flex item-center grid-box mb pos-relative'>
-    <!-- <navigator url='/pages/manage/signup_edit/signup_edit?id={{attendee.id}}'> -->
-      <image data-id="{{attendee.id}}" bindtap="editAttendeeStatus" src='/images/edit.png' class='icon-sm float-right-bottom'></image>
-    <!-- </navigator> -->
-    <view class='my ml'>
-      <image src="{{attendee.profileImage}}" class='avatar-md'></image>
-    </view>
-    <view class='d-flex space-between ml w100'>
-      <view>
-        <view class='header-md bold'>{{attendee.username}}</view>
-        <view class='header-mini text-grey'>{{attendee.updated_at}}</view>
+    <view class='d-flex item-center grid-box mb pos-relative'>
+      <!-- <navigator url='/pages/manage/signup_edit/signup_edit?id={{attendee.id}}'> -->
+        <image data-id="{{attendee.id}}" bindtap="editAttendeeStatus" src='/images/edit.png' class='icon-sm float-right-bottom'></image>
+      <!-- </navigator> -->
+      <view class='my ml'>
+        <image src="{{attendee.profileImage}}" class='avatar-md'></image>
       </view>
-      <view class='header-mini mr text-green'>{{attendee.attendeeStatus}}</view>
-    </view>
-  </view>
-
-</block>
-
-<!-- WAITLISTED -->
-<view wx:if="{{waitlistCount > 0}}" class='grid-title-orange header-md bold pa'>Waitlisted ({{waitlistCount}})</view>
-<block wx:for="{{attendees}}" wx:for-item="attendee" wx:key="unique" wx:if="{{attendee.attendeeStatus === 'Waitlisted'}}">
-
-  <view class='d-flex item-center grid-box mb pos-relative'>
-     <!-- <navigator url='/pages/manage/signup_edit/signup_edit?id={{attendee.id}}'> -->
-      <image data-id="{{attendee.id}}" bindtap="editAttendeeStatus" src='/images/edit.png' class='icon-sm float-right-bottom'></image>
-    <!-- </navigator> -->
-    <view class='my ml'>
-      <image src="{{attendee.profileImage}}" class='avatar-md'></image>
-    </view>
-    <view class='d-flex space-between ml w100'>
-      <view>
-        <view class='header-md bold'>{{attendee.username}}</view>
-        <view class='header-mini text-grey'>{{attendee.updated_at}}</view>
+      <view class='d-flex space-between ml w100'>
+        <view>
+          <view class='header-md bold'>{{attendee.username}}</view>
+          <view class='header-mini text-grey'>{{attendee.updated_at}}</view>
+        </view>
+        <view class='header-mini mr text-green'>{{attendee.attendeeStatus}}</view>
       </view>
-      <view class='header-mini mr text-orange'>{{attendee.attendeeStatus}}</view>
     </view>
-  </view>
 
-</block>
+  </block>
 
-<!-- OTHER STATUSES -->
-<view wx:if="{{(cancelledCount > 0) || (lateCancelledCount > 0) || (noShowCount > 0) || (removedCount > 0)}}" class='grid-title-red header-md bold pa'>Others ({{(cancelledCount + lateCancelledCount + noShowCount + removedCount)}})</view>
-<block wx:for="{{attendees}}" wx:for-item="attendee" wx:key="unique" wx:if="{{(attendee.attendeeStatus !== 'Signed-up') && (attendee.attendeeStatus !== 'Waitlisted')}}">
+  <!-- WAITLISTED -->
+  <view wx:if="{{waitlistCount > 0}}" class='grid-title-orange header-md bold pa'>Waitlisted ({{waitlistCount}})</view>
+  <block wx:for="{{attendees}}" wx:for-item="attendee" wx:key="unique" wx:if="{{attendee.attendeeStatus === 'Waitlisted'}}">
 
-  <view class='d-flex item-center grid-box mb pos-relative'>
-     <!-- <navigator url='/pages/manage/signup_edit/signup_edit?id={{attendee.id}}'> -->
-      <image data-id="{{attendee.id}}" bindtap="editAttendeeStatus" src='/images/edit.png' class='icon-sm float-right-bottom'></image>
-    <!-- </navigator> -->
-    <view class='my ml'>
-      <image src="{{attendee.profileImage}}" class='avatar-md'></image>
-    </view>
-    <view class='d-flex space-between ml w100'>
-      <view>
-        <view class='header-md bold'>{{attendee.username}}</view>
-        <view class='header-mini text-grey'>{{attendee.updated_at}}</view>
+    <view class='d-flex item-center grid-box mb pos-relative'>
+      <!-- <navigator url='/pages/manage/signup_edit/signup_edit?id={{attendee.id}}'> -->
+        <image data-id="{{attendee.id}}" bindtap="editAttendeeStatus" src='/images/edit.png' class='icon-sm float-right-bottom'></image>
+      <!-- </navigator> -->
+      <view class='my ml'>
+        <image src="{{attendee.profileImage}}" class='avatar-md'></image>
       </view>
-      <view class='header-mini mr text-red'>{{attendee.attendeeStatus}}</view>
+      <view class='d-flex space-between ml w100'>
+        <view>
+          <view class='header-md bold'>{{attendee.username}}</view>
+          <view class='header-mini text-grey'>{{attendee.updated_at}}</view>
+        </view>
+        <view class='header-mini mr text-orange'>{{attendee.attendeeStatus}}</view>
+      </view>
     </view>
-  </view>
 
-</block>
+  </block>
+
+  <!-- OTHER STATUSES -->
+  <view wx:if="{{(cancelledCount > 0) || (lateCancelledCount > 0) || (noShowCount > 0) || (removedCount > 0)}}" class='grid-title-red header-md bold pa'>Others ({{(cancelledCount + lateCancelledCount + noShowCount + removedCount)}})</view>
+  <block wx:for="{{attendees}}" wx:for-item="attendee" wx:key="unique" wx:if="{{(attendee.attendeeStatus !== 'Signed-up') && (attendee.attendeeStatus !== 'Waitlisted')}}">
+
+    <view class='d-flex item-center grid-box mb pos-relative'>
+      <!-- <navigator url='/pages/manage/signup_edit/signup_edit?id={{attendee.id}}'> -->
+        <image data-id="{{attendee.id}}" bindtap="editAttendeeStatus" src='/images/edit.png' class='icon-sm float-right-bottom'></image>
+      <!-- </navigator> -->
+      <view class='my ml'>
+        <image src="{{attendee.profileImage}}" class='avatar-md'></image>
+      </view>
+      <view class='d-flex space-between ml w100'>
+        <view>
+          <view class='header-md bold'>{{attendee.username}}</view>
+          <view class='header-mini text-grey'>{{attendee.updated_at}}</view>
+        </view>
+        <view class='header-mini mr text-red'>{{attendee.attendeeStatus}}</view>
+      </view>
+    </view>
+
+  </block>
+</view>
+
+<view class='box-h70px'></view>
 
 <view class='button-footer d-flex'>
   <!-- <button class='w100 ma btn btn-transparent' bindtap="back">Back</button> -->

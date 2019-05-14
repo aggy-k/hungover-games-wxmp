@@ -7,6 +7,7 @@
   justify-content: space-between;
   padding: 20rpx 30rpx;
   box-sizing: border-box;
+  /* margin-bottom: 50px; */
 } 
 
 .landing-bg {
@@ -508,4 +509,13 @@ button {
 
 .grid-bottom-ghost-orange {
   border-top: solid 2px #F08302;
+}
+
+.margin-bottom-no-tabbar {
+  height: calc(100vh - 100px);
+  box-sizing: border-box;
+}
+
+.box-h70px {
+  min-height: 70px;
 }

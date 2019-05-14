@@ -84,8 +84,9 @@
   </view>
 </view>
 
+<view class='box-h70px'></view>
 
-<view class='button-footer d-flex'>
+<cover-view class='button-footer d-flex'>
   <button class='w100 ma btn btn-transparent' bindtap="back">Back</button>
   <button class='w100 ma btn btn-orange' bindtap="editGame" data-game_id="{{game_id}}">Edit Game</button>
-</view>
+</cover-view>

@@ -93,6 +93,7 @@
   <!-- <image src='/images/plus.png' class='avatar-md border-white fixed-right-bottom avatar-shadow' bindtap="gameCreate"></image> -->
 
 
+<view class='box-h70px'></view>
 
 
 
