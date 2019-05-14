@@ -28,20 +28,20 @@
 
   <block wx:if="{{(userAdmin !== true) || ((userAdmin === true) && (adminTab === false))}}">
     <view class='card mt pos-relative'>
-      <image src='/images/edit.png' class='icon-sm pos-absolute' style="right:10px; top:10px;"></image>
+      <image src='/images/edit.png' class='icon-sm pos-absolute' style="right:10px; top:10px;" bindtap='meEdit'></image>
       <view class='card-content'>
 
         <view class='grid-container'>
-          <view class='header-sm text-dark-grey mt mr text-right'>Name</view>
-          <view class='header-sm text-dark-grey w100 mt ml'>Agnes Selvita</view>
+          <view class='header-sm text-dark-grey mt mr text-right'>First name</view>
+          <view class='header-sm text-dark-grey w100 mt ml'>{{(first_name === null) ? '-' : first_name}}</view>
+          <view class='header-sm text-dark-grey mt mr text-right'>Last name</view>
+          <view class='header-sm text-dark-grey w100 mt ml'>{{(last_name === null) ? '-' : last_name}}</view>
           <view class='header-sm text-dark-grey mt mr text-right'>Stats</view>
           <view class='header-sm text-dark-grey w100 mt ml'>{{signup_count}} games played</view>
           <view class='header-sm text-dark-grey mt mr text-right'>First game</view>
-          <view class='header-sm text-dark-grey w100 mt ml'>Thu, Apr 7th, 2018</view>
-          <view class='header-sm text-dark-grey mt mr text-right'>Last game</view>
-          <view class='header-sm text-dark-grey w100 mt ml'>Thu, Jun 7th, 2018</view>
+          <view class='header-sm text-dark-grey w100 mt ml'>{{first_date}}</view>
           <view class='header-sm text-dark-grey mt mr text-right'>Archery quote</view>
-          <view class='header-sm text-dark-grey w100 mt ml'>{{quote}}</view>
+          <view class='header-sm text-dark-grey w100 mt ml'>{{(quote === null) ? '-' : quote}}</view>
         </view>
 
       </view>

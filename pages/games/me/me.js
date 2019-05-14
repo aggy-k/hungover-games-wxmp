@@ -130,5 +130,13 @@ Page({
     wx.navigateTo({
       url: '/pages/gameRules/edit/edit',
     })
+  },
+
+  meEdit(e) {
+    const user_id = app.globalData.userId;
+
+    wx.navigateTo({
+      url: '/pages/games/me_edit/me_edit?user_id=' + user_id
+    })
   }
 })

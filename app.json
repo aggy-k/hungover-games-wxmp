@@ -8,6 +8,7 @@
     "pages/games/show/show",
     "pages/games/registered/registered",
     "pages/games/me/me",
+    "pages/games/me_edit/me_edit",
     "pages/games/signup/signup",
     "pages/manage/index/index",
     "pages/manage/create/create",
