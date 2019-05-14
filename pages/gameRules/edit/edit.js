@@ -30,10 +30,11 @@ Page({
   saveRules(e) {
     const url = app.globalData.url;
     const page = this;
+    const user_id = app.globalData.userId;
 
     const title = e.detail.value.title
     const content = e.detail.value.content
-    const data = { title: title, content: content, user_id: 4 }
+    const data = { title: title, content: content, user_id: user_id }
     console.log(data)
 
     wx.request({
