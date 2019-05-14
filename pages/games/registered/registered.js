@@ -16,12 +16,19 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-    const url = app.globalData.url;
-    const page = this;
-    const user_id = app.globalData.userId;
-    // const user_id = 9;
+    if (app.globalData.userId) {
+      console.log('logged in through app.js')
+      this.setData({ userId: app.globalData.userId })
+      this.getSignups()
+    } else {
+      app.toLogin().then((res) => {
+        console.log('logged in through #page.js')
+        this.setData({ userId: app.globalData.userId })
+        this.getSignups()
+      });
+    }
 
-    page.setData({ userId: user_id })
+    console.log('page data', this.data)
 
     if (options.toast === 'true') {
       wx.showToast({
@@ -36,6 +43,12 @@ Page({
         duration: 2000
       });
     }
+  },
+
+  getSignups: function() {
+    const url = app.globalData.url
+    const user_id = this.data.userId
+    const page = this;
 
     wx.request({
       url: `${url}games?user_id=${user_id}`,
@@ -53,7 +66,6 @@ Page({
         page.setData(data)
       }
     })
-    console.log('page.data', page.data)
   },
 
   /**
@@ -67,20 +79,7 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
-    // const page = this
-    // wx.request({
-    //   url: 'http://localhost:3000/api/v1/games',
-    //   success: function (res) {
-    //     const games = res.data
-    //     games.forEach(function (game) {
-    //       game.start_time = page.setDateTime(game.start_time)
-    //       game.end_time = page.setDateTime(game.end_time)
-    //       game.signup_date = page.setDateTime(game.signup_date)
-    //     });
-    //     page.setData({ games: games });
-    //     console.log(page.data.games)
-    //   },
-    // })
+
   },
 
   /**

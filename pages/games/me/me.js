@@ -14,13 +14,22 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    if (app.globalData.userInfo) {
+      console.log('logged in through app.js')
+      this.loadData()
+    } else {
+      app.toLogin().then((res) => {
+        console.log('logged in through #page.js')
+        this.loadData()
+      });
+    }
+  },
+
+  loadData: function () {
     this.setData({
       userInfo: app.globalData.userInfo,
       userAdmin: app.globalData.userAdmin
     });
-    console.log('hello from console')
-    console.log(this.data.userInfo)
-    console.log(app.globalData.userAdmin)
 
     const url = app.globalData.url;
     const page = this;
@@ -33,7 +42,6 @@ Page({
         page.setData(res.data)
       }
     })
-
   },
 
   /**
