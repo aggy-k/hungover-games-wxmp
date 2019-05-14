@@ -7,7 +7,9 @@ Page({
    * Page initial data
    */
   data: {
-    editPlayer: false
+    editPlayer: false,
+    styleBlur: "z-index:10; filter:blur(3px);",
+    style: "z-index:10;"
   },
 
   /**
@@ -144,6 +146,10 @@ Page({
       editPlayerSignupId: e.currentTarget.dataset.signup_id,
       editPlayerName: e.currentTarget.dataset.player_name,
       editPlayerGameId: e.currentTarget.dataset.game_id
+    })
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 300
     })
   },
 

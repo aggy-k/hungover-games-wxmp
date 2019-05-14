@@ -12,7 +12,10 @@
   
 </view>
 
-<view>
+<view wx:if="{{editPlayer === true}}" class='container pos-absolute w100 bg-grey' style='opacity: 0.7; height: 100vh; top: 0px; left: 0px; z-index: 50;'>
+</view>
+
+<view style="{{(editPlayer === true) ? styleBlur : style}}">
 
   <!-- SIGNED-UP -->
   <view wx:if="{{signedUpCount > 0}}" class='grid-title-green header-md bold pa'>Signed-up ({{signedUpCount}}/{{maxCapacity}})</view>
