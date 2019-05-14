@@ -5,34 +5,35 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    const host = this.globalData.url;
+    this.toLogin()
+    // const host = this.globalData.url;
 
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.log('Logging in');
-        console.log(res)
-        const code = res.code;
-        console.log('code', code)
+    // // 登录
+    // wx.login({
+    //   success: res => {
+    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
+    //     console.log('Logging in');
+    //     console.log(res)
+    //     const code = res.code;
+    //     console.log('code', code)
 
-        wx.request({
-          url: host + 'login',
-          method: 'POST',
-          data: {
-            code: code
-          },
-          success: (res) => {
-            console.log(11, res)
-            this.globalData.userId = res.data.userId
-            this.globalData.userAdmin = res.data.userAdmin
-          },
-          fail: (res) => {
-            console.log(12, res)
-          }
-        })
-      }
-    })
+    //     wx.request({
+    //       url: host + 'login',
+    //       method: 'POST',
+    //       data: {
+    //         code: code
+    //       },
+    //       success: (res) => {
+    //         console.log(11, res)
+    //         this.globalData.userId = res.data.userId
+    //         this.globalData.userAdmin = res.data.userAdmin
+    //       },
+    //       fail: (res) => {
+    //         console.log(12, res)
+    //       }
+    //     })
+    //   }
+    // })
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -54,6 +55,42 @@ App({
       }
     })
   },
+
+  toLogin: function() {
+    console.log('Called login function in app.js')
+    const host = this.globalData.url;
+    const _this = this
+    return new Promise(function (resolve, reject) {
+      wx.login({
+        success: res => {
+          // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          console.log('Logging in');
+          console.log(res)
+          const code = res.code;
+          console.log('code', code)
+
+          wx.request({
+            url: host + 'login',
+            method: 'POST',
+            data: {
+              code: code
+            },
+            success: (res) => {
+              console.log(11, res)
+              _this.globalData.userId = res.data.userId
+              _this.globalData.userAdmin = res.data.userAdmin
+              resolve(res)
+            },
+            fail: (res) => {
+              console.log(12, res)
+              reject(res)
+            }
+          })
+        }
+      })
+    })
+  },
+
   globalData: {
     userInfo: null,
     // url: 'http://localhost:3000/api/v1/',
