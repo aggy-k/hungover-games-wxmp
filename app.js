@@ -6,34 +6,7 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     this.toLogin()
-    // const host = this.globalData.url;
-
-    // // 登录
-    // wx.login({
-    //   success: res => {
-    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
-    //     console.log('Logging in');
-    //     console.log(res)
-    //     const code = res.code;
-    //     console.log('code', code)
-
-    //     wx.request({
-    //       url: host + 'login',
-    //       method: 'POST',
-    //       data: {
-    //         code: code
-    //       },
-    //       success: (res) => {
-    //         console.log(11, res)
-    //         this.globalData.userId = res.data.userId
-    //         this.globalData.userAdmin = res.data.userAdmin
-    //       },
-    //       fail: (res) => {
-    //         console.log(12, res)
-    //       }
-    //     })
-    //   }
-    // })
+    
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -93,8 +66,8 @@ App({
 
   globalData: {
     userInfo: null,
-    url: 'http://localhost:3000/api/v1/',
-    // url: 'https://hungover-games.tuitu-tech.cn/api/v1/',
+    // url: 'http://localhost:3000/api/v1/',
+    url: 'https://hungover-games.tuitu-tech.cn/api/v1/',
     week: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
     month: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
     attendeesStatuses: ['Signed-up', 'Waitlisted', 'Cancelled', 'Late-cancelled', 'No-show', 'Removed',]
