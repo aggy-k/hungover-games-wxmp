@@ -116,6 +116,6 @@
   </view>
 <view class='box-h70px'></view>
 <cover-view class='button-footer d-flex'>
-  <button class='w100 ma btn btn-transparent' open-type="share">Share</button>
+  <button class='w100 ma btn btn-transparent' bindtap='toHome'>Home</button>
   <button class='w100 ma btn btn-orange' bindtap="formSubmit" data-game_id="{{game_id}}">Sign up</button>
 </cover-view>

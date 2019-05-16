@@ -16,7 +16,9 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-
+    wx.setNavigationBarTitle({
+      title: "Games Manager"
+    })
   },
 
   /**
@@ -121,9 +123,7 @@ Page({
   },
 
   back() {
-    wx.switchTab({
-      url: '/pages/games/upcoming/upcoming',
-    })
+    app.toHome()
   },
 
   showPastGames(e) {

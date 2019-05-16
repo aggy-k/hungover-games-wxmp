@@ -36,8 +36,8 @@ Page({
       userId: app.globalData.userId,
       avatarUrl: app.globalData.userInfo.avatarUrl,
       game_id: options.id
-
     })
+    
     console.log('globalData is', app.globalData)
     console.log('local data', this.data)
     console.log(`game id is ${this.data.game_id}`)
@@ -83,6 +83,10 @@ Page({
         console.log('userSignedUp', page.data.userSignedUp)
       },
     })
+
+    // app.userInfoReadyCallback = res => {
+    //   console.log('userInfoReadyCallback: ', res.userInfo);
+    // }
   },
 
   /**
@@ -141,8 +145,15 @@ Page({
   /**
    * Called when user click on the top right corner to share
    */
-  onShareAppMessage: function () {
-    
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // From the forward button within the page
+      console.log(res.target)
+    }
+    return {
+      title: "Custom forward title",
+      path: `/pages/games/show/show?id=${this.data.game_id}`
+    }
   },
 
   formSubmit(e) {
@@ -152,7 +163,6 @@ Page({
     const game_id = e.target.dataset.game_id
     console.log('signing up for game id ' + game_id)
     const user_id = app.globalData.userId; 
-
 
     // const attendee_status = ((this.data.gameInfo.maxCapacity >= this.data.gameInfo.attendeesCount) ? 'Signed-up' : 'Waitlisted')
     // console.log('attendee status', attendee_status)
@@ -167,6 +177,9 @@ Page({
         })
       }
     });
-    
+  },
+
+  toHome() {
+    app.toHome()
   }
 })

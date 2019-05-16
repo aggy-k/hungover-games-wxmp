@@ -1,20 +1,12 @@
 // pages/landing/landing.js
-//index.js
 //获取应用实例
 const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
-  },
-  //事件处理函数
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
   },
   
   onLoad: function () {
@@ -45,33 +37,25 @@ Page({
       })
     }
   },
+
   getUserInfo: function (e) {
     const url = app.globalData.url;
     const id = app.globalData.userId;
 
-    app.globalData.userInfo = e.detail.userInfo
-
+    // DATA TO UPDATE AVATAR & NICKNAME IN DB 
     const avatarUrl = e.detail.userInfo.avatarUrl;
     const nickName = e.detail.userInfo.nickName;
     const data = {username: nickName, profile_image: avatarUrl}
-
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    });
-
-    app.globalData.userInfo = e.detail.userInfo;
 
     wx.request({
       url: `${url}users/${id}`,
       method: 'PUT',
       data: data,
-      success(res) {        
+      success(res) {
         wx.switchTab({
           url: '../games/upcoming/upcoming',
         });
       }
     })
-
   }
 })
