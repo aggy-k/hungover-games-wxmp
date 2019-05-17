@@ -16,6 +16,13 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    app.userInfoReadyCallback = res => {
+      console.log('userInfoReadyCallback: ', res.userInfo);
+    }
+
+    wx.setNavigationBarTitle({
+      title: "Your Games"
+    })
     if (app.globalData.userId) {
       console.log('logged in through app.js')
       this.setData({ userId: app.globalData.userId })

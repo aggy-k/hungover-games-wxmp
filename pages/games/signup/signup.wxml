@@ -81,8 +81,8 @@
       </view>
       <view class='d-flex space-between ml w100'>
         <view>
-          <view class='header-md bold' style="padding-left: 25px;">{{attendee.player}}</view>
           <image wx:if="{{attendee.userId === userId}}" src='/images/edit.png' class='icon-sm pos-absolute' style="left:80px; top:25px;" bindtap='changePlayer' data-signup_id="{{attendee.id}}" data-player_name="{{attendee.player}}" data-game_id="{{id}}"></image>
+          <view class='header-md bold' style="padding-left: 25px;">{{attendee.player}}</view>
           <view class='header-mini text-grey'>{{attendee.created_at}}</view>
         </view>
         <view class='header-mini mr text-red'>{{attendee.attendeeStatus}}</view>

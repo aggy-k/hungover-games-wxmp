@@ -16,17 +16,40 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
                 this.userInfoReadyCallback(res)
+                console.log('app wx.getSetting userInfo callback')
               }
             }
           })
         }
       }
     })
+    console.log('this', this)
+  },
+
+  updateUserInfo: function(e) {
+    const url = this.globalData.url;
+    const id = this.globalData.userId;
+
+    // DATA TO UPDATE AVATAR & NICKNAME IN DB 
+    const avatarUrl = e.detail.userInfo.avatarUrl;
+    const nickName = e.detail.userInfo.nickName;
+    const data = { username: nickName, profile_image: avatarUrl }
+
+    wx.request({
+      url: `${url}users/${id}`,
+      method: 'PUT',
+      data: data,
+      success(res) {
+        console.log('avatar & nickname updated in db')
+        wx.navigateBack({
+        })
+      }
+    })
+    this.globalData.userInfo = e.detail.userInfo
   },
 
   toLogin: function() {
@@ -49,7 +72,6 @@ App({
               code: code
             },
             success: (res) => {
-              console.log(11, res)
               _this.globalData.userId = res.data.userId
               _this.globalData.userAdmin = res.data.userAdmin
               resolve(res)
@@ -61,6 +83,13 @@ App({
           })
         }
       })
+    })
+  },
+
+  toHome: function() {
+    console.log('navigate to home')
+    wx.switchTab({
+      url: '/pages/games/upcoming/upcoming',
     })
   },
 

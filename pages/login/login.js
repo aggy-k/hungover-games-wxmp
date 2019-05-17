@@ -8,7 +8,7 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  
+
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
@@ -39,29 +39,11 @@ Page({
   },
 
   getUserInfo: function (e) {
-    const url = app.globalData.url;
-    const id = app.globalData.userId;
-
-    const avatarUrl = e.detail.userInfo.avatarUrl;
-    const nickName = e.detail.userInfo.nickName;
-    const data = { username: nickName, profile_image: avatarUrl }
+    app.updateUserInfo(e)
 
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     });
-
-    app.globalData.userInfo = e.detail.userInfo;
-
-    wx.request({
-      url: `${url}users/${id}`,
-      method: 'PUT',
-      data: data,
-      success(res) {
-        wx.switchTab({
-          url: '../games/upcoming/upcoming',
-        });
-      }
-    })
   }
 })
