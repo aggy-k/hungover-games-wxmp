@@ -7,6 +7,7 @@ Page({
    * Page initial data
    */
   data: {
+    // userInfo: {},
     adminTab: false
   },
 
@@ -14,15 +15,7 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-    if (app.globalData.userInfo) {
-      console.log('logged in through app.js')
-      this.loadData()
-    } else {
-      app.toLogin().then((res) => {
-        console.log('logged in through #page.js')
-        this.loadData()
-      });
-    }
+
   },
 
   loadData: function () {
@@ -38,7 +31,7 @@ Page({
     wx.request({
       url: `${url}users/${id}`,
       success(res) {
-        console.log(res.data)
+        console.log('loaded data', res.data)
         page.setData(res.data)
       }
     })
@@ -54,8 +47,29 @@ Page({
   /**
    * Lifecycle function--Called when page show
    */
-  onShow: function () {
-
+  onShow: function (option) {
+    if (app.globalData.userInfo) {
+      console.log('logged in through app.js')
+      this.loadData()
+    } else {
+      app.toLogin().then((res) => {
+        wx.getSetting({
+          success: res => {
+            if (res.authSetting['scope.userInfo']) {
+              console.log(res)
+            } 
+            // else {
+            //   wx.navigateTo({
+            //     url: '/pages/login/login',
+            //   })
+            // }
+          }
+        })
+        console.log('logged in through #page.js')
+        this.loadData()
+        console.log('saved data', this.data)
+      });
+    }
   },
 
   /**
@@ -137,6 +151,13 @@ Page({
 
     wx.navigateTo({
       url: '/pages/games/me_edit/me_edit?user_id=' + user_id
+    })
+  }, 
+
+  getUserInfo: function(e) {
+    app.updateUserInfo(e)
+    wx.reLaunch({
+      url: '/pages/games/me/me',
     })
   }
 })

@@ -7,6 +7,9 @@ Page({
    * Page initial data
    */
   data: {
+    userInfo: {},
+    hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     week: app.globalData.week,
     month: app.globalData.month,
     markers: [{
@@ -19,30 +22,41 @@ Page({
     }],
   },
 
-  mapShow: function () {
-    wx.openLocation({//​使用微信内置地图查看位置。
-      latitude: this.data.gameInfo.location.lat, // 31.235168,//要去的纬度-地址
-      longitude: this.data.gameInfo.location.long, // 121.452879,//要去的经度-地址
-      name: this.data.gameInfo.location.name,
-      address: this.data.gameInfo.location.address
-    })
-  },
-
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true,
+      })
+    } else if (this.data.canIUse) {
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true,
+        })
+      }
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true,
+          })
+        }
+      })
+    }
+
     this.setData({
-      userId: app.globalData.userId,
-      avatarUrl: app.globalData.userInfo.avatarUrl,
+      // userId: app.globalData.userId,
       game_id: options.id
     })
-    
-    console.log('globalData is', app.globalData)
-    console.log('local data', this.data)
-    console.log(`game id is ${this.data.game_id}`)
-    // load signup data for this game_id if user already signed up
-    // How to handle 2 signups?
 
     const page = this
     wx.request({
@@ -83,10 +97,6 @@ Page({
         console.log('userSignedUp', page.data.userSignedUp)
       },
     })
-
-    // app.userInfoReadyCallback = res => {
-    //   console.log('userInfoReadyCallback: ', res.userInfo);
-    // }
   },
 
   /**
@@ -101,17 +111,6 @@ Page({
    */
   onShow: function () {
 
-  },
-
-  setDateTime: function (dateString) {
-    const date = new Date(dateString);
-    const weekDay = this.data.week[date.getDay()];
-    const day = date.getDate();
-    const month = this.data.month[date.getMonth()];
-    const year = date.getFullYear();
-    const time = `${date.getHours()}:${('0' + date.getMinutes()).slice(-2)}`;
-
-    return { weekDay: weekDay, day: day, month: month, year: year, time: time }
   },
 
   /**
@@ -146,19 +145,12 @@ Page({
    * Called when user click on the top right corner to share
    */
   onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      // From the forward button within the page
-      console.log(res.target)
-    }
-    return {
-      title: "Custom forward title",
-      path: `/pages/games/show/show?id=${this.data.game_id}`
-    }
+
   },
 
-  formSubmit(e) {
+  formSubmit: function(e) {
+    app.updateUserInfo(e)
     const page = this;
-
     const url = app.globalData.url;
     const game_id = e.target.dataset.game_id
     console.log('signing up for game id ' + game_id)
@@ -181,5 +173,25 @@ Page({
 
   toHome() {
     app.toHome()
+  }, 
+
+  mapShow: function () {
+    wx.openLocation({//​使用微信内置地图查看位置。
+      latitude: this.data.gameInfo.location.lat, // 31.235168,//要去的纬度-地址
+      longitude: this.data.gameInfo.location.long, // 121.452879,//要去的经度-地址
+      name: this.data.gameInfo.location.name,
+      address: this.data.gameInfo.location.address
+    })
+  },
+
+  setDateTime: function (dateString) {
+    const date = new Date(dateString);
+    const weekDay = this.data.week[date.getDay()];
+    const day = date.getDate();
+    const month = this.data.month[date.getMonth()];
+    const year = date.getFullYear();
+    const time = `${date.getHours()}:${('0' + date.getMinutes()).slice(-2)}`;
+
+    return { weekDay: weekDay, day: day, month: month, year: year, time: time }
   }
 })

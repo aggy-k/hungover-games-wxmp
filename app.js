@@ -30,13 +30,13 @@ App({
     console.log('this', this)
   },
 
-  updateUserInfo: function() {
+  updateUserInfo: function(e) {
     const url = this.globalData.url;
     const id = this.globalData.userId;
 
     // DATA TO UPDATE AVATAR & NICKNAME IN DB 
-    const avatarUrl = this.userInfo.avatarUrl;
-    const nickName = this.userInfo.nickName;
+    const avatarUrl = e.detail.userInfo.avatarUrl;
+    const nickName = e.detail.userInfo.nickName;
     const data = { username: nickName, profile_image: avatarUrl }
 
     wx.request({
@@ -45,8 +45,11 @@ App({
       data: data,
       success(res) {
         console.log('avatar & nickname updated in db')
+        wx.navigateBack({
+        })
       }
     })
+    this.globalData.userInfo = e.detail.userInfo
   },
 
   toLogin: function() {

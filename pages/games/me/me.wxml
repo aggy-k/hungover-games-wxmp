@@ -1,12 +1,15 @@
 <view class='container'>
-  <view class='d-flex flex-column mt'>  
-    <view class='d-flex flex-column item-center my'>
+  <view class='d-flex flex-column mt w100'>  
+    <view class='d-flex flex-column item-center my w100'>
       <image src="{{userInfo.avatarUrl}}" class='avatar-lg my'></image>
       <text class='header-lg bold mb'>{{userInfo.nickName}}</text> 
+      <block wx:if="{{!userInfo}}">
+        <button class='btn btn-orange w100 my' open-type="getUserInfo" bindgetuserinfo='getUserInfo'>Log in</button>
+      </block>
     </view>
 
+    <button class='btn btn-ghost-orange w100 my' bindtap='gameRules'>Read game rules</button>
   </view>
-  <button class='btn btn-ghost-orange w100 my' bindtap='gameRules'>Read game rules</button>
 
   <block wx:if="{{userAdmin === true}}">
     <view class='d-flex w100 mb' wx:if="{{adminTab === false}}">

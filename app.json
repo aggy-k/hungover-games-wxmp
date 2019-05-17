@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/landing/landing",
+    "pages/login/login",
     "pages/users/edit/edit",
     "pages/gameRules/index/index",
     "pages/gameRules/edit/edit",

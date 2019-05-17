@@ -35,7 +35,7 @@
         <!-- AVATAR SCROLL -->
         <scroll-view scroll-x style="width: 100%">   
           <view class='scroll-row'>
-            <image wx:for="{{gameInfo.attendees}}" wx:for-item="signup" data-signup="{{signup}}" 
+            <image wx:for="{{gameInfo.attendees}}" wx:for-item="signup" wx:key="signup.id" data-signup="{{signup}}" 
           wx:if="{{signup.attendeeStatus === 'Signed-up'}}" src='{{signup.profileImage}}' class='avatar-md mr my'></image>
           </view>
         </scroll-view>
@@ -117,5 +117,5 @@
 <view class='box-h70px'></view>
 <cover-view class='button-footer d-flex'>
   <button class='w100 ma btn btn-transparent' bindtap='toHome'>Home</button>
-  <button class='w100 ma btn btn-orange' bindtap="formSubmit" data-game_id="{{game_id}}">Sign up</button>
+  <button class='w100 ma btn btn-orange' open-type="getUserInfo" bindgetuserinfo='formSubmit' data-game_id="{{game_id}}">Sign up</button>
 </cover-view>

@@ -29,12 +29,6 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
-    // const now = new Date();
-    // console.log(now)
-    // this.setData({
-    //   now: now
-    // })
-
     const page = this
     const url = app.globalData.url;
 
