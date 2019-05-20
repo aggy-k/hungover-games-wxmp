@@ -90,7 +90,9 @@ Page({
    * Page event handler function--Called when user drop down
    */
   onPullDownRefresh: function () {
-
+    wx.showNavigationBarLoading()
+    this.onShow()
+    setTimeout(function () { wx.hideNavigationBarLoading() }, 1500)
   },
 
   /**

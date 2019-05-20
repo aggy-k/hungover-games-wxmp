@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 12,
+			"current": -1,
 			"list": [
 				{
 					"id": 0,
@@ -85,13 +85,6 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "test",
-					"pathName": "pages/manage/test/test",
-					"query": "",
-					"scene": null
-				},
-				{
 					"id": 7,
 					"name": "manager index",
 					"pathName": "pages/manage/index/index",
@@ -130,6 +123,13 @@
 					"id": -1,
 					"name": "log in",
 					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "user signups",
+					"pathName": "pages/games/signup/signup",
 					"query": "",
 					"scene": null
 				}

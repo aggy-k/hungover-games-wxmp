@@ -53,10 +53,12 @@ Page({
       })
     }
 
-    this.setData({
-      // userId: app.globalData.userId,
-      game_id: options.id
-    })
+    if (!this.data.game_id) {
+      this.setData({
+        // userId: app.globalData.userId,
+        game_id: options.id
+      })
+    }
 
     const page = this
     wx.request({
@@ -131,7 +133,9 @@ Page({
    * Page event handler function--Called when user drop down
    */
   onPullDownRefresh: function () {
-
+    wx.showNavigationBarLoading()
+    this.onLoad()
+    setTimeout(function () { wx.hideNavigationBarLoading() }, 1500)
   },
 
   /**

@@ -32,9 +32,11 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-    this.setData({
-      game_id: options.id
-    })
+    if (!this.data.game_id) {
+      this.setData({
+        game_id: options.id
+      })
+    }
     console.log(`game id is ${this.data.game_id}`)
     // load signup data for this game_id if user already signed up
     // How to handle 2 signups?
@@ -63,11 +65,10 @@ Page({
           }]
         });
         console.log(page.data.gameInfo)
-
-        
       },
     })
     console.log('markers', this.data.markers)
+    console.log('show page data', this.data)
   },
 
   /**
@@ -113,7 +114,9 @@ Page({
    * Page event handler function--Called when user drop down
    */
   onPullDownRefresh: function () {
-
+    wx.showNavigationBarLoading()
+    this.onLoad()
+    setTimeout(function () { wx.hideNavigationBarLoading() }, 1500)
   },
 
   /**
