@@ -1,6 +1,6 @@
 <view>
-  <view class='status-bar bg-grey text-center mb'>
-    <text class='text-white'>Signup opens {{gameInfo.signup_time.weekDay}}, {{gameInfo.signup_time.day}} {{gameInfo.signup_time.month}}, {{gameInfo.signup_time.time}}</text>
+  <view class='status-bar bg-orange text-center mb'>
+    <text class='text-white'>Signup from {{gameInfo.signup_time.weekDay}}, {{gameInfo.signup_time.day}} {{gameInfo.signup_time.month}}, {{gameInfo.signup_time.time}}</text>
   </view>
 </view>
 

@@ -16,6 +16,7 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    console.log('onload info passed', options)
     app.userInfoReadyCallback = res => {
       console.log('userInfoReadyCallback: ', res.userInfo);
     }
@@ -107,7 +108,9 @@ Page({
    * Page event handler function--Called when user drop down
    */
   onPullDownRefresh: function () {
-
+    wx.showNavigationBarLoading()
+    this.onLoad({ toast: "false", cancelToast: "false" })
+    setTimeout(function () { wx.hideNavigationBarLoading() }, 1500)
   },
 
   /**
@@ -165,7 +168,7 @@ Page({
             success(res) {
               console.log(res)
               wx.reLaunch({
-                url: '../registered/registered',
+                url: '../registered/registered?cancelToast=true',
               })
             }
           })
@@ -258,7 +261,7 @@ Page({
       data: data,
       success(res) {
         wx.reLaunch({
-          url: './registered',
+          url: './registered?cancelToast=true',
         })
       }
     })

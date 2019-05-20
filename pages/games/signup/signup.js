@@ -68,7 +68,9 @@ Page({
    * Page event handler function--Called when user drop down
    */
   onPullDownRefresh: function () {
-
+    wx.showNavigationBarLoading()
+    this.onLoad({ game_id: this.data.game_id })
+    setTimeout(function () { wx.hideNavigationBarLoading() }, 1500)
   },
 
   /**

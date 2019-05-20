@@ -29,6 +29,7 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
+    wx.stopPullDownRefresh()
     const page = this
     const url = app.globalData.url;
 
@@ -68,7 +69,6 @@ Page({
   },
 
   showGame: function (e) {
-    // const game_id = e.currentTarget.dataset.space.id
     const game_id = e.currentTarget.dataset.game_id
     wx.navigateTo({
       url: `../show/show?id=${game_id}`,
@@ -93,7 +93,9 @@ Page({
    * Page event handler function--Called when user drop down
    */
   onPullDownRefresh: function () {
-
+    wx.showNavigationBarLoading()
+    this.onShow()
+    setTimeout(function () { wx.hideNavigationBarLoading()}, 1500)
   },
 
   /**

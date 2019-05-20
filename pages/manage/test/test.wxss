@@ -1,7 +1,0 @@
-/* pages/manage/test/test.wxss */
-.btn {
-  background-color: rgba(250, 155, 67, 0.5);
-  font-weight: bold;
-  border-radius: 4px;
-  width: 50%;
-}
