@@ -14,14 +14,6 @@
         </view>
       </view>
       
-      <!-- TIMESLOT PICKER -->
-      <!-- <label for="timeslotPicker" class='header-sm bold'>Select timeslot</label>
-      <picker id="timeslotPicker" class="picker header-sm" bindchange="bindPickerChange" value="{{index}}" range="{{timeslotsArray}}">
-        <view class="user-input input-height">
-          <text>{{timeslotsArray[index]}}</text>
-        </view>
-      </picker> -->
-
       <!-- TIME PICKER -->
       <view class='form-group'>
         <!-- START TIME -->

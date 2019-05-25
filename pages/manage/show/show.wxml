@@ -19,14 +19,11 @@
       <text class='header-sm'>Attendees: {{gameInfo.signedUpCount}}/{{gameInfo.maxCapacity}}</text>
       <text class='text-orange header-sm'>Waiting: {{gameInfo.waitlistCount}}</text>
     </view>
-    <!-- <view>
-      <image src='../../../images/archery.jpg' class='avatar-md mr'></image>
-      <image src='../../../images/archery.jpg' class='avatar-md mr'></image>
-    </view> -->
+
      <!-- AVATAR SCROLL -->
     <scroll-view scroll-x style="width: 100%">   
       <view class='scroll-row'>
-        <image wx:for="{{gameInfo.attendees}}" wx:for-item="signup" data-signup="{{signup}}" 
+        <image wx:for="{{gameInfo.attendees}}" wx:for-item="signup" wx:key="{{signup.id}}" data-signup="{{signup}}" 
       wx:if="{{signup.attendeeStatus === 'Signed-up'}}" src='{{signup.profileImage}}' class='avatar-md mr my'></image>
       </view>
     </scroll-view>
@@ -43,12 +40,12 @@
   <!-- ANNOUNCEMENTS -->
   <view class='card' wx:if="{{gameInfo.announcement !== ''}}">
     <view class='card-content'>
-      <view class='d-flex flex-column text-center item-center'>
-        <image src='../../../images/announcement.png' class='icon'></image>
+      <view class='d-flex flex-column'>
+        <!-- <image src='../../../images/announcement.png' class='icon'></image> -->
         <text class='header-sm bold mb'>Announcements</text>
       </view>
       <view>
-        <text>{{gameInfo.announcement}}</text>
+        <text class='header-sm'>{{gameInfo.announcement}}</text>
       </view>
     </view>
   </view>
@@ -56,8 +53,8 @@
   <!-- DESCRIPTION -->
   <view class='card' wx:if="{{gameInfo.description !== ''}}">
     <view class='card-content'>
-      <view class='d-flex flex-column text-center item-center'>
-        <image src='../../../images/description.png' class='icon'></image>
+      <view class='d-flex flex-column'>
+        <!-- <image src='../../../images/description.png' class='icon'></image> -->
         <text class='header-sm bold mb'>Description</text>
       </view>
       <view>
@@ -69,14 +66,14 @@
   <!-- LOCATION -->
   <view class='card'>
     <view class='card-content'>
-      <view class='d-flex flex-column text-center item-center'>
-        <image src='../../../images/location.png' class='icon'></image>
+      <view class='d-flex flex-column'>
+        <!-- <image src='../../../images/location.png' class='icon'></image> -->
         <text class='header-sm bold mb'>Location</text>
       </view>
       <view>
         <!-- MAP -->
-        <view class='header-sm bold'>{{gameInfo.location.name}}</view>
-        <view class='header-sm mb'>{{gameInfo.location.address}}</view>
+        <view><text class='header-sm bold'>{{gameInfo.location.name}}</text></view>
+        <view><text class='header-sm mb'>{{gameInfo.location.address}}</text></view>
         <map bindtap="mapShow" class='w100' style="height: 500rpx;" latitude="{{gameInfo.location.lat}}" longitude="{{gameInfo.location.long}}" markers='{{markers}}'>
         </map>
       </view>

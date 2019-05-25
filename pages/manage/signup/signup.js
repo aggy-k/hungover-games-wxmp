@@ -142,5 +142,22 @@ Page({
     this.setData({
       editPlayer: false
     })
+  },
+
+  switchChange(e) {
+    console.log(e)
+    const signup_id = e.currentTarget.dataset.signup_id
+    const game_id = this.data.game_id
+    const url = app.globalData.url;
+    const isPaid = e.detail.value
+
+    wx.request({
+      url: `${url}signups/${signup_id}`,
+      method: 'PUT',
+      data: { is_paid: isPaid, game_id: game_id },
+      success(res) {
+        console.log(res)
+      }
+    })
   }
 })

@@ -179,10 +179,27 @@ button {
   color:#F98A8B;
 }
 
+.btn-green {
+  background-color:#67C180;
+  color:#FFF;
+}
+
 .btn-ghost-orange {
   border: solid 1px #F08302;
   color:#F08302;
   font-weight:bold;
+}
+
+.btn-ghost-red {
+  border: solid 1px #F98A8B;
+  color:#F98A8B;
+  /* font-weight:bold; */
+}
+
+.btn-ghost-green {
+  border: solid 1px #67C180;
+  color:#67C180;
+  /* font-weight:bold; */
 }
 
 .icon {

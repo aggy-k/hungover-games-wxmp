@@ -21,20 +21,26 @@
   <block wx:for="{{attendees}}" wx:for-item="attendee" wx:key="unique" wx:if="{{attendee.attendeeStatus === 'Signed-up'}}">
 
     <view class='d-flex item-center grid-box mb pos-relative'>
-      <!-- <navigator url='/pages/manage/signup_edit/signup_edit?id={{attendee.id}}'> -->
-        <image data-id="{{attendee.id}}" bindtap="editAttendeeStatus" src='/images/edit.png' class='icon-sm float-right-bottom'></image>
-      <!-- </navigator> -->
+        <!-- <image data-id="{{attendee.id}}" bindtap="editAttendeeStatus" src='/images/edit.png' class='icon-sm float-right-bottom'></image> -->
+      <view data-id="{{attendee.id}}" bindtap="editAttendeeStatus" class='rounded btn-ghost-green float-right-top d-flex item-center header-sm px'>{{attendee.attendeeStatus}}</view>
+      
+      <view class='float-right-bottom d-flex item-center'>
+        <text class='header-sm mr'>Paid</text>
+        <switch checked="{{attendee.isPaid}}" data-signup_id="{{attendee.id}}" bindchange="switchChange"/>
+      </view>
       <view class='my ml'>
         <image src="{{attendee.profileImage}}" class='avatar-md'></image>
       </view>
-      <view class='d-flex space-between ml w100'>
+      <view class='d-flex space-between ml w100' style="margin-right: 100px;">
         <view>
-          <view class='header-md bold' style="padding-left: 25px;">{{attendee.player}}</view>
-          <image src='/images/edit.png' class='icon-sm pos-absolute' style="left:80px; top:25px;" bindtap='changePlayer' data-signup_id="{{attendee.id}}" data-player_name="{{attendee.player}}" data-game_id="{{id}}"></image>
+          <view class='d-flex item-center'>
+            <view class='header-md bold' style="margin-right: 10px;">{{attendee.player}}</view>
+            <image src='/images/edit.png' class='icon-sm' bindtap='changePlayer' data-signup_id="{{attendee.id}}" data-player_name="{{attendee.player}}" data-game_id="{{id}}"></image>
+          </view>
 
           <view class='header-mini text-grey'>{{attendee.created_at}}</view>
         </view>
-        <view class='header-mini mr text-green'>{{attendee.attendeeStatus}}</view>
+        <!-- <view class='header-mini mr text-green'>{{attendee.attendeeStatus}}</view> -->
       </view>
     </view>
 
@@ -45,20 +51,19 @@
   <block wx:for="{{attendees}}" wx:for-item="attendee" wx:key="unique" wx:if="{{attendee.attendeeStatus === 'Waitlisted'}}">
 
     <view class='d-flex item-center grid-box mb pos-relative'>
-      <!-- <navigator url='/pages/manage/signup_edit/signup_edit?id={{attendee.id}}'> -->
-        <image data-id="{{attendee.id}}" bindtap="editAttendeeStatus" src='/images/edit.png' class='icon-sm float-right-bottom'></image>
-      <!-- </navigator> -->
+      <view data-id="{{attendee.id}}" bindtap="editAttendeeStatus" class='rounded btn-ghost-orange float-right-top d-flex item-center header-sm px' style="font-weight: normal;">{{attendee.attendeeStatus}}</view>
       <view class='my ml'>
         <image src="{{attendee.profileImage}}" class='avatar-md'></image>
       </view>
-      <view class='d-flex space-between ml w100'>
+      <view class='d-flex space-between ml w100' style="margin-right: 100px;">
         <view>
-          <view class='header-md bold' style="padding-left: 25px;">{{attendee.player}}</view>
-          <image src='/images/edit.png' class='icon-sm pos-absolute' style="left:80px; top:25px;" bindtap='changePlayer' data-signup_id="{{attendee.id}}" data-player_name="{{attendee.player}}" data-game_id="{{id}}"></image>
+          <view class='d-flex item-center'>
+            <view class='header-md bold' style="margin-right: 10px;">{{attendee.player}}</view>
+            <image src='/images/edit.png' class='icon-sm' bindtap='changePlayer' data-signup_id="{{attendee.id}}" data-player_name="{{attendee.player}}" data-game_id="{{id}}"></image>
+          </view>
 
           <view class='header-mini text-grey'>{{attendee.created_at}}</view>
         </view>
-        <view class='header-mini mr text-orange'>{{attendee.attendeeStatus}}</view>
       </view>
     </view>
 
@@ -69,19 +74,23 @@
   <block wx:for="{{attendees}}" wx:for-item="attendee" wx:key="unique" wx:if="{{(attendee.attendeeStatus !== 'Signed-up') && (attendee.attendeeStatus !== 'Waitlisted')}}">
 
     <view class='d-flex item-center grid-box mb pos-relative'>
-      <!-- <navigator url='/pages/manage/signup_edit/signup_edit?id={{attendee.id}}'> -->
-        <image data-id="{{attendee.id}}" bindtap="editAttendeeStatus" src='/images/edit.png' class='icon-sm float-right-bottom'></image>
-      <!-- </navigator> -->
+
+      <view data-id="{{attendee.id}}" bindtap="editAttendeeStatus" class='rounded btn-ghost-red float-right-top d-flex item-center header-sm px'>{{attendee.attendeeStatus}}</view>
+      <view wx:if="{{(attendee.attendeeStatus === 'No-show') || (attendee.attendeeStatus === 'Late-cancelled')}}" class='float-right-bottom d-flex item-center'>
+        <text class='header-sm mr'>Paid</text>
+        <switch checked="{{attendee.isPaid}}" data-signup_id="{{attendee.id}}" bindchange="switchChange"/>
+      </view>
       <view class='my ml'>
         <image src="{{attendee.profileImage}}" class='avatar-md'></image>
       </view>
-      <view class='d-flex space-between ml w100'>
+      <view class='d-flex space-between ml w100' style="margin-right: 100px;">
         <view>
-          <view class='header-md bold' style="padding-left: 25px;">{{attendee.player}}</view>
-          <image src='/images/edit.png' class='icon-sm pos-absolute' style="left:80px; top:25px;" bindtap='changePlayer' data-signup_id="{{attendee.id}}" data-player_name="{{attendee.player}}" data-game_id="{{id}}"></image>
+          <view class='d-flex item-center'>
+            <view class='header-md bold' style="margin-right: 10px;">{{attendee.player}}</view>
+            <image src='/images/edit.png' class='icon-sm' bindtap='changePlayer' data-signup_id="{{attendee.id}}" data-player_name="{{attendee.player}}" data-game_id="{{id}}"></image>
+          </view>
           <view class='header-mini text-grey'>{{attendee.created_at}}</view>
         </view>
-        <view class='header-mini mr text-red'>{{attendee.attendeeStatus}}</view>
       </view>
     </view>
 

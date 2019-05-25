@@ -45,6 +45,7 @@
   </block>
 
   <block wx:if="{{((userAdmin === true) && (adminTab === true))}}">
+    <button class='btn btn-ghost-orange w100 my' bindtap='gameCreate'>+ New game</button>
     <button class='btn btn-ghost-orange w100 my' bindtap='manageIndex'>Manage games</button>
     <button class='btn btn-ghost-orange w100 my' bindtap='updateGameRules'>Update game rules</button>
 

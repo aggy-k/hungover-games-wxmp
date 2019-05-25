@@ -11,8 +11,8 @@ Page({
     signUpTime: '12:00 PM',
     gameStatus: true,
     startTime: "17:30",
-    endTime: "19:30"
-
+    endTime: "19:30",
+    description: "Once players have arrived we have a short warm-up session, then we make 4 teams and get the games started. \n\nNew players are encouraged to arrive a little early to practice and learn the rules.\n\nYou do not need any previous archery experience to take part in the Hungover Games.We provide all the essential equipment, just bring some sportswear and be prepared to have fun."
   },
 
   /**
@@ -152,6 +152,8 @@ Page({
     console.log(e)
 
     const data = e.detail.value
+    console.log(data)
+    
     const date = data.date
     const start_time = `${data.date} ${data.startTime} +0800`
     const end_time = `${data.date} ${data.endTime} +0800`
@@ -159,6 +161,7 @@ Page({
     const max_capacity = parseInt(data.maxCapacity)
     // const location = data.location
     const description = data.description
+
     const announcement = data.announcement
 
     const is_active = data.isActive

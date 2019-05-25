@@ -117,7 +117,8 @@ Page({
   }, 
 
   gameCreate(e) {
-    const user_id = 1;
+    // const user_id = 1;
+    const user_id = app.globalData.userId;
     
     wx.navigateTo({
       url: `../create/create?user_id=${user_id}`,

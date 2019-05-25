@@ -2,14 +2,9 @@
   <!-- BANNER -->
   <view class="banner pos-middle" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://hungover-games.tuitu-tech.cn/assets/HG_arrows-bb7d7fecce2cc04897216ea3b0e5ba335a22d6db16fda12787167bc068e88af1.jpg');">
     <!-- SIGNUP TIME -->
-    <!-- <view class='status-bar bg-grey text-center mb pos-top'>
-      <view class='text-white'>
-        Signup opens {{gameInfo.signup_time.weekDay}}, {{gameInfo.signup_time.day}} 
-        {{gameInfo.signup_time.month}}, {{gameInfo.signup_time.time}}
-      </view>
-    </view> -->
+
     <!-- DATE -->
-    <view class='header-md bold text-white text-shadow'>
+    <view class='header-lg bold text-white text-shadow'>
       {{gameInfo.start_time.weekDay}}, {{gameInfo.start_time.day}} {{gameInfo.start_time.month}}, {{gameInfo.start_time.time}} - {{gameInfo.end_time.time}}
     </view>
 
@@ -17,12 +12,6 @@
 
   <view class='container'>
     <!-- DATE -->
-    <!-- <view class='card'>
-      <view class='card-content text-center d-flex flex-column'>
-        <text class='header-md bold'>{{gameInfo.start_time.weekDay}}, {{gameInfo.start_time.day}} {{gameInfo.start_time.month}}</text>
-        <text class='header-md bold'>{{gameInfo.start_time.time}} - {{gameInfo.end_time.time}}</text>
-      </view>
-    </view> -->
 
     <!-- ATTENDEES -->
     <view class='w100'>
@@ -70,8 +59,8 @@
     <!-- ANNOUNCEMENTS -->
     <view class='card' wx:if="{{(gameInfo.announcement !== '')}}">
       <view class='card-content'>
-        <view class='d-flex flex-column text-center item-center'>
-          <image src='/images/announcement.png' class='icon'></image>
+        <view class='d-flex flex-column'>
+          <!-- <image src='/images/announcement.png' class='icon'></image> -->
           <text class='header-sm bold mb'>Announcements</text>
         </view>
         <view>
@@ -83,8 +72,8 @@
     <!-- DESCRIPTION -->
     <view class='card' wx:if="{{gameInfo.description !== ''}}">
       <view class='card-content'>
-        <view class='d-flex flex-column text-center item-center'>
-          <image src='/images/description.png' class='icon'></image>
+        <view class='d-flex flex-column'>
+          <!-- <image src='/images/description.png' class='icon'></image> -->
           <text class='header-sm bold mb'>Description</text>
         </view>
         <view>
@@ -96,20 +85,17 @@
     <!-- LOCATION -->
     <view class='card pos-relative'>
       <view class='card-content'>
-        <view class='d-flex flex-column text-center item-center'>
-          <image src='/images/location.png' class='icon'></image>
+        <view class='d-flex flex-column'>
+          <!-- <image src='/images/location.png' class='icon'></image> -->
           <text class='header-sm bold mb'>Location</text>
         </view>
         <view>
           <!-- MAP -->
-          <view class='header-sm bold'>{{gameInfo.location.name}}</view>
-          <view class='header-sm mb'>{{gameInfo.location.address}}</view>
+          <view><text class='header-sm bold'>{{gameInfo.location.name}}</text></view>
+          <view><text class='header-sm mb'>{{gameInfo.location.address}}</text></view>
           <map bindtap="mapShow" class='w100' style="height: 500rpx;" latitude="{{gameInfo.location.lat}}" longitude="{{gameInfo.location.long}}" markers='{{markers}}'>
           </map>
 
-          <!-- <image src='/images/map.png' class='rounded w100'></image> -->
-          <!-- <image src='/images/map-marker-point.png' class='map-marker'></image> -->
-          <!-- <image src='/images/hg_logo.jpg' class='avatar-sm border-orange pos-fixed-map'></image> -->
         </view>
       </view>
     </view>
