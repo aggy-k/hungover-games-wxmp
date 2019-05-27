@@ -9,4 +9,6 @@
       <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='btn-orange w70'>Enter</button>
     </view>
   </view>
+
+  
 </view>

@@ -197,5 +197,5 @@ Page({
     const time = `${date.getHours()}:${('0' + date.getMinutes()).slice(-2)}`;
 
     return { weekDay: weekDay, day: day, month: month, year: year, time: time }
-  }
+  },
 })

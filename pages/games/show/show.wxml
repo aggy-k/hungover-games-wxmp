@@ -100,6 +100,7 @@
       </view>
     </view>
   </view>
+ 
 <view class='box-h70px'></view>
 <cover-view class='button-footer d-flex'>
   <button class='w100 ma btn btn-transparent' bindtap='toHome'>Home</button>

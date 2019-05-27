@@ -41,6 +41,7 @@ Page({
   getUserInfo: function (e) {
     const url = app.globalData.url;
     const id = app.globalData.userId;
+    console.log(e.detail.userInfo);
 
     const avatarUrl = e.detail.userInfo.avatarUrl;
     const nickName = e.detail.userInfo.nickName;
@@ -63,5 +64,6 @@ Page({
         });
       }
     })
-  }
+  },
+  
 })
