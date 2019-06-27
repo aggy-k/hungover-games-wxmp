@@ -17,7 +17,7 @@ Page({
   onLoad: function (options) {
 
   },
-
+ 
   loadData: function () {
     this.setData({
       userInfo: app.globalData.userInfo,

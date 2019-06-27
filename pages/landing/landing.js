@@ -37,7 +37,7 @@ Page({
       })
     }
   },
-
+ 
   getUserInfo: function (e) {
     const url = app.globalData.url;
     const id = app.globalData.userId;

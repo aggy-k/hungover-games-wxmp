@@ -8,7 +8,8 @@ Page({
    */
   data: {
     week: app.globalData.week,
-    month: app.globalData.month
+    month: app.globalData.month,
+    clickedInfo: false
   },
 
   /**
@@ -110,5 +111,28 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  clickInfo: function () {
+    this.setData({ clickedInfo: true })
+  },
+
+  cancelInfo: function () {
+    this.setData({ clickedInfo: false })
+  },
+
+  navToGameInfo: function () {
+    wx.navigateTo({
+      url: '/pages/info/game_info',
+    })
+    this.setData({ clickedInfo: false })
+  },
+
+  navToAppInfo: function () {
+    wx.navigateTo({
+      url: '/pages/info/app_info',
+    })
+    this.setData({ clickedInfo: false })
+  },
+
 })

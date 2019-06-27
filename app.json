@@ -15,7 +15,9 @@
     "pages/manage/edit/edit",
     "pages/manage/show/show",
     "pages/manage/signup/signup",
-    "pages/manage/signup_edit/signup_edit"
+    "pages/manage/signup_edit/signup_edit",
+    "pages/info/game_info",
+    "pages/info/app_info"
   ],
   "window": {
     "backgroundTextStyle": "light",

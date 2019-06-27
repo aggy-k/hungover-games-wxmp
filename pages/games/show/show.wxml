@@ -1,6 +1,6 @@
 
   <!-- BANNER -->
-  <view class="banner pos-middle" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://hungover-games.tuitu-tech.cn/assets/HG_arrows-bb7d7fecce2cc04897216ea3b0e5ba335a22d6db16fda12787167bc068e88af1.jpg');">
+  <view class="banner pos-middle" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://hungovergames.cn/assets/HG_arrows-bb7d7fecce2cc04897216ea3b0e5ba335a22d6db16fda12787167bc068e88af1.jpg');">
     <!-- SIGNUP TIME -->
 
     <!-- DATE -->
@@ -106,3 +106,4 @@
   <button class='w100 ma btn btn-transparent' bindtap='toHome'>Home</button>
   <button class='w100 ma btn btn-orange' open-type="getUserInfo" bindgetuserinfo='formSubmit' data-game_id="{{game_id}}">Sign up</button>
 </cover-view>
+ 

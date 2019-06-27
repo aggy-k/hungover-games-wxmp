@@ -1,0 +1,33 @@
+<view class='container text-dark-grey'>
+
+  <view class='w100 mb bg-img' style='height: 300rpx; background-image: url("https://hungovergames.cn/assets/hg_random-9d5e359e8acc4b19986f7f53c52cbb791514cacc0da2023c141798bb96162d4c.jpg");'></view>
+  <view class='header-lg bold w100 mb'>
+    What are the Hungover Games?
+  </view>
+
+  <view class='header-sm w100 mb'>
+    Essentially dodgeball, but with bows and arrows instead of rubber balls. There are usually 28 players in a game, split into 4 teams. You can choose to shoot the opposing team’s players, or their target.
+  </view>
+  
+  <view class='w100 mb bg-img' style='height: 300rpx; background-image: url("https://hungovergames.cn/assets/hg_cher-ba1a425912772e9763790a2e63e2d29cbc9e18d7042729a7684d9e26072265cb.jpg");'></view>
+
+  <!-- <view class='header-sm w100 mb'>  
+  </view> -->
+
+  <!-- <view class='w100 mb bg-img' style='height: 300rpx; background-image: url("https://hungovergames.cn/assets/hg_tim2-f60da779846f10734299f42bfac7013f3eb24df2cdb79346ba78af96cd368d39.jpg");'></view> -->
+    
+  <view wx:for="{{rules}}" wx:key="unique" class='header-sm w100 mb'>
+    <view class='d-flex'>
+      <view style="width: 10px; height: 10px; margin-right: 15px;">
+        <image style="width: 5px; height: 5px;" src='/images/bullet-orange.png'></image>
+      </view>
+      <text class='header-sm text-grey-dark'>{{item}}</text>
+    </view>
+     
+  </view>
+
+  <view class='header-sm w100 mb bold text-orange'>
+    <navigator url='/pages/gameRules/index/index'>Click here to view the latest sign-up time schedule and registration policy.</navigator>
+  </view>
+
+</view>

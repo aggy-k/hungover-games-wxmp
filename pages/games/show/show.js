@@ -1,5 +1,6 @@
-// pages/games/show/show.js
+  // pages/games/show/show.js
 const app = getApp();
+const SUP = require('../../../utils/set-user-profile.js');
 
 Page({
 
@@ -37,7 +38,7 @@ Page({
       app.userInfoReadyCallback = res => {
         this.setData({
           userInfo: res.userInfo,
-          hasUserInfo: true,
+          hasUserInfo: true, 
         })
       }
     } else {
@@ -153,26 +154,29 @@ Page({
   },
 
   formSubmit: function(e) {
-    app.updateUserInfo(e)
-    const page = this;
-    const url = app.globalData.url;
-    const game_id = e.target.dataset.game_id
-    console.log('signing up for game id ' + game_id)
-    const user_id = app.globalData.userId; 
+    // app.updateUserInfo(e)
+    SUP.setUserProfile(e, this)
+      .then(
+        data => {
+          const page = this;
+          const url = app.globalData.url;
+          const game_id = e.target.dataset.game_id
+          console.log('signing up for game id ' + game_id)
+          const user_id = app.globalData.userId;
 
-    // const attendee_status = ((this.data.gameInfo.maxCapacity >= this.data.gameInfo.attendeesCount) ? 'Signed-up' : 'Waitlisted')
-    // console.log('attendee status', attendee_status)
-
-    wx.request({
-      url: `${url}signups`,
-      method: 'POST',
-      data: {game_id: game_id, user_id: user_id},
-      success(res) {
-        wx.reLaunch({
-          url: '../registered/registered?toast=true',
-        })
-      }
-    });
+          wx.request({
+            url: `${url}signups`,
+            method: 'POST',
+            data: { game_id: game_id, user_id: user_id },
+            success(res) {
+              wx.reLaunch({
+                url: '../registered/registered?toast=true',
+              })
+            }
+          });
+        }
+      )
+    
   },
 
   toHome() {

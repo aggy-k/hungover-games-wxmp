@@ -1,0 +1,24 @@
+<view class='container' style='margin-bottom: 50px;'>
+  <view class='card'>
+    <view class='card-content'>
+      <!-- TITLE -->
+      <view class='header-lg bold text-dark-grey mb'>Hi there! 🙌</view>
+
+      <!-- CONTENT -->
+      <view class='header-sm text-dark-grey mb'>
+        This App is created ABSOLUTELY with ❤️ by <text class='bold'>Aggy & Frenkie</text> over at the Code Pandas!
+      </view>
+
+      <view class='header-sm text-dark-grey mb'>
+        Would you like to work with us? <text bindtap="getWechat" class='bold'>Click here</text> to add us on WeChat.
+      </view>
+
+      <view class='header-sm text-dark-grey mb'>
+        <image src='/images/CodePandaLogo.png' style="height: 80px; width: 80px;"></image>
+      </view>
+
+      <view class='header-mini text-grey bold mt'>Last update:</view>
+      <view class='header-mini text-grey'>Jun 17th, 2019</view>
+    </view>
+  </view>
+</view>

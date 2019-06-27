@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class='landing-bg' style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://hungover-games.tuitu-tech.cn/assets/hg_tim2-f60da779846f10734299f42bfac7013f3eb24df2cdb79346ba78af96cd368d39.jpg">
+<view class='landing-bg' style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://hungovergames.cn/assets/hg_tim2-f60da779846f10734299f42bfac7013f3eb24df2cdb79346ba78af96cd368d39.jpg">
   <view class="container">
     <view class='landing-top d-flex flex-column item-center'>
       <image src='/images/hg_logo.jpg' class='avatar-lg pos-middle border-white mb'></image>  

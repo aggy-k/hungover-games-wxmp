@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 14,
 			"list": [
 				{
 					"id": 0,
@@ -131,6 +131,19 @@
 					"name": "user signups",
 					"pathName": "pages/games/signup/signup",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "game info",
+					"pathName": "pages/info/game_info",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "app info",
+					"pathName": "pages/info/app_info",
 					"scene": null
 				}
 			]

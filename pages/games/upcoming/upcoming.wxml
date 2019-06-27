@@ -1,78 +1,95 @@
-<!-- BANNER -->
-<view class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://hungover-games.tuitu-tech.cn/assets/HG_arrows-bb7d7fecce2cc04897216ea3b0e5ba335a22d6db16fda12787167bc068e88af1.jpg');">
-  <image src='/images/hg_logo.jpg' class='avatar-md pos-middle border-white'></image>
+<view class='info-btn d-flex content-center item-center bold' style="{{clickedInfo ? 'opacity: 1.0' : 'opacity: 0.5'}};">
+  <image src='/images/info.png' style='height: 50px; width: 50px;' bindtap="{{clickedInfo ? 'cancelInfo' : 'clickInfo'}}"></image>
 </view>
 
-<view class="container">
+<!-- OVERLAY WHEN CLICKED ON Info -->
+<view wx:if="{{clickedInfo}}" class='overlay' bindtap='cancelInfo'></view>
 
-  <!-- CARDS SIGNUP OPEN -->
-  <view wx:if="{{(game.signup_opens && game.game_status.name === 'Active')}}" data-game_id="{{game.id}}" bindtap="showGame" wx:for="{{games}}" wx:for-item="game" wx:key="game.id" class="card" data-space="{{game}}">
-  
-    <view class="card-content">
-      <!-- DATE -->
-      <view class='d-flex flex-column text-center'>
-        <text class='header-md bold'>{{game.start_time.weekDay}}, {{game.start_time.day}} {{game.start_time.month}}, {{game.start_time.year}}</text>
-        <text class='header-md mb'>{{game.start_time.time}} - {{game.end_time.time}}</text>
-      </view>
-      <!-- ATTENDEES -->
-      <view>
-        <view class='d-flex space-between'>
-          <text class='header-mini text-grey'>Attendees: {{game.attendees_count}}/{{game.max_capacity}}</text>
-          <text class='header-mini text-grey'>Waiting: {{game.waitlist_count}}</text>
+<!-- HIDDEN FLOATING BUTTONS -->
+<view wx:if="{{clickedInfo}}" class='info-popup-buttons'>
+  <button class='btn-orange ma shadow' bindtap='navToGameInfo'>About the game</button>
+  <button class='btn-orange ma shadow' bindtap='navToAppInfo'>About the app</button>
+</view>
+
+<view class="{{clickedInfo ? 'blur' : ''}}">
+
+  <!-- BANNER -->
+  <view class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://hungovergames.cn/assets/HG_arrows-bb7d7fecce2cc04897216ea3b0e5ba335a22d6db16fda12787167bc068e88af1.jpg');">
+
+  </view>
+
+  <view class="container">
+
+    <!-- CARDS SIGNUP OPEN -->
+    <view wx:if="{{(game.signup_opens && game.game_status.name === 'Active')}}" data-game_id="{{game.id}}" bindtap="showGame" wx:for="{{games}}" wx:for-item="game" wx:key="game.id" class="card" data-space="{{game}}">
+    
+      <view class="card-content">
+        <!-- DATE -->
+        <view class='d-flex flex-column text-center'>
+          <text class='header-md bold'>{{game.start_time.weekDay}}, {{game.start_time.day}} {{game.start_time.month}}, {{game.start_time.year}}</text>
+          <text class='header-md mb'>{{game.start_time.time}} - {{game.end_time.time}}</text>
         </view>
-
-        <scroll-view scroll-x style="width: 100%">
-          <view class='scroll-row'>
-            <image wx:for="{{game.signups}}" wx:for-item="signup" wx:key="unique" data-signup="{{signup}}" wx:if="{{signup.signup_status === 'Signed-up'}}" src='{{signup.profile_image}}' class='avatar-sm mr my'></image>
+        <!-- ATTENDEES -->
+        <view>
+          <view class='d-flex space-between'>
+            <text class='header-mini text-grey'>Attendees: {{game.attendees_count}}/{{game.max_capacity}}</text>
+            <text class='header-mini text-grey'>Waiting: {{game.waitlist_count}}</text>
           </view>
-        </scroll-view>
-      
+
+          <scroll-view scroll-x style="width: 100%">
+            <view class='scroll-row'>
+              <image wx:for="{{game.signups}}" wx:for-item="signup" wx:key="unique" data-signup="{{signup}}" wx:if="{{signup.signup_status === 'Signed-up'}}" src='{{signup.profile_image}}' class='avatar-sm mr my'></image>
+            </view>
+          </scroll-view>
+        
+        </view>
+        <!-- STATUS -->
+        <view class='w100 mt'>
+          <view class='text-center card-status bg-green'>
+            <text class='text-white'>Signup open</text>
+          </view>
+        </view>
       </view>
-      <!-- STATUS -->
-      <view class='w100 mt'>
-        <view class='text-center card-status bg-green'>
-          <text class='text-white'>Signup open</text>
+    </view>
+
+    <!-- CARDS SIGNUP CLOSED -->
+    <view wx:if="{{(!game.signup_opens || game.game_status.name !== 'Active' )}}" wx:for="{{games}}" wx:for-item="game" wx:key="game.id" class="card" data-space="{{game}}" data-game_id="{{game.id}}">
+    
+      <view class="card-content">
+        <!-- DATE -->
+        <view class='d-flex flex-column text-center'>
+          <text class='header-md bold'>{{game.start_time.weekDay}}, {{game.start_time.day}} {{game.start_time.month}}, {{game.start_time.year}}</text>
+          <text class='header-md mb'>{{game.start_time.time}} - {{game.end_time.time}}</text>
+        </view>
+        <!-- ATTENDEES -->
+        <view>
+          <view class='d-flex space-between'>
+            <text class='header-mini text-grey'>Attendees: {{game.attendees_count}}/{{game.max_capacity}}</text>
+            <text class='header-mini text-grey'>Waiting: {{game.waitlist_count}}</text>
+          </view>
+
+          <scroll-view scroll-x style="width: 100%">
+            <view class='scroll-row'>
+              <image wx:for="{{game.signups}}" wx:for-item="signup" wx:key="unique" data-signup="{{signup}}" src='{{signup.profile_image}}' class='avatar-sm mr my'></image>
+            </view>
+          </scroll-view>
+        </view>
+        <!-- STATUS -->
+        <view class='w100 mt'>
+          <!-- signup not open -->
+          <block wx:if="{{game.game_status.name !== 'Active'}}">
+            <view class='text-center card-status bg-grey'>
+              <text class='text-white'>Cancelled</text>
+            </view>
+          </block>
+          <block wx:else>
+            <view class='text-center card-status bg-grey'>
+              <text class='text-white'>Signup opens {{game.signup_date.day}} {{game.signup_date.month}}, {{game.signup_date.time}}</text>
+            </view>
+          </block>
         </view>
       </view>
     </view>
   </view>
 
-  <!-- CARDS SIGNUP CLOSED -->
-  <view wx:if="{{(!game.signup_opens || game.game_status.name !== 'Active' )}}" wx:for="{{games}}" wx:for-item="game" wx:key="game.id" class="card" data-space="{{game}}" data-game_id="{{game.id}}">
-  
-    <view class="card-content">
-      <!-- DATE -->
-      <view class='d-flex flex-column text-center'>
-        <text class='header-md bold'>{{game.start_time.weekDay}}, {{game.start_time.day}} {{game.start_time.month}}, {{game.start_time.year}}</text>
-        <text class='header-md mb'>{{game.start_time.time}} - {{game.end_time.time}}</text>
-      </view>
-      <!-- ATTENDEES -->
-      <view>
-        <view class='d-flex space-between'>
-          <text class='header-mini text-grey'>Attendees: {{game.attendees_count}}/{{game.max_capacity}}</text>
-          <text class='header-mini text-grey'>Waiting: {{game.waitlist_count}}</text>
-        </view>
-
-        <scroll-view scroll-x style="width: 100%">
-          <view class='scroll-row'>
-            <image wx:for="{{game.signups}}" wx:for-item="signup" wx:key="unique" data-signup="{{signup}}" src='{{signup.profile_image}}' class='avatar-sm mr my'></image>
-          </view>
-        </scroll-view>
-      </view>
-      <!-- STATUS -->
-      <view class='w100 mt'>
-        <!-- signup not open -->
-        <block wx:if="{{game.game_status.name !== 'Active'}}">
-          <view class='text-center card-status bg-grey'>
-            <text class='text-white'>Cancelled</text>
-          </view>
-        </block>
-        <block wx:else>
-          <view class='text-center card-status bg-grey'>
-            <text class='text-white'>Signup opens {{game.signup_date.day}} {{game.signup_date.month}}, {{game.signup_date.time}}</text>
-          </view>
-        </block>
-      </view>
-    </view>
-  </view>
 </view>
