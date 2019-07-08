@@ -7,7 +7,7 @@ App({
     wx.setStorageSync('logs', logs)
     this.toLogin()
     
-    // 获取用户信息
+  // 获取用户信息
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {

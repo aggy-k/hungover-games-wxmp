@@ -46,7 +46,7 @@ Page({
           game.end_time = page.setDateTime(game.end_time)
           game.signup_date = page.setDateTime(game.signup_date)
           game.signup_time = new Date(game.signup_time)
-          game.signup_opens = (now >= game.signup_time)
+          // game.signup_opens = (now >= game.signup_time)
         });
         page.setData({ games: games });
         console.log(page.data.games)
@@ -80,7 +80,7 @@ Page({
    * Lifecycle function--Called when page hide
    */
   onHide: function () {
-
+ 
   },
 
   /**
