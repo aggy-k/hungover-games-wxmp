@@ -32,9 +32,23 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    
+  },
+
+  /**
+   * Lifecycle function--Called when page is initially rendered
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * Lifecycle function--Called when page show
+   */
+  onShow: function () {
     if (!this.data.game_id) {
       this.setData({
-        game_id: options.id
+        game_id: this.options.id
       })
     }
     console.log(`game id is ${this.data.game_id}`)
@@ -51,12 +65,12 @@ Page({
         game.signup_time = page.setDateTime(game.signup_time)
 
         const long = game.location.long
-        const lat = game.location.lat 
+        const lat = game.location.lat
 
-        page.setData({ 
+        page.setData({
           gameInfo: game,
           markers: [{
-            height: 30, 
+            height: 30,
             width: 30,
             iconPath: "/images/hg_logo_marker.png",
             id: 0,
@@ -69,20 +83,6 @@ Page({
     })
     console.log('markers', this.data.markers)
     console.log('show page data', this.data)
-  },
-
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow: function () {
-
   },
 
   setDateTime: function (dateString) {
@@ -130,7 +130,12 @@ Page({
    * Called when user click on the top right corner to share
    */
   onShareAppMessage: function () {
+    let shareMessage = {
+      title: "Join the game!",        
+　　　　path: `/pages/games/show/show?id=${this.data.game_id}`        
+　　　}
 
+    return shareMessage;
   },
 
   editGame: function(e) {

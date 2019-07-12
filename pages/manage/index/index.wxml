@@ -24,12 +24,21 @@
     <view wx:for="{{games}}" wx:for-item="game" wx:key="game.id" bindtap="showGame" class="card" data-game_id="{{game.id}}">
     <!-- <navigator class="card" url='../show/show'> -->
       <view class="card-content pos-relative">
-        <view wx:if="{{game.game_status.name === 'Cancelled'}}" class='bg-red text-white px rounded header-sm pos-absolute pos-flag-right-top flag text-center'>
-          Cancelled
-        </view>
-        <view class='bg-green text-white px rounded header-sm pos-absolute pos-flag-right-top flag text-center' wx:else>
-          Active
-        </view>
+
+        <!-- GAME TAGS -->
+        <block>
+          <view wx:if="{{game.game_status.name === 'Cancelled'}}" class='bg-red text-white px rounded header-sm pos-absolute pos-flag-right-top flag text-center'>
+            Cancelled
+          </view>
+          <view class='bg-green text-white px rounded header-sm pos-absolute pos-flag-right-top flag text-center' wx:else>
+            Active
+          </view>
+        </block>
+        <block>
+          <view wx:if="{{game.isPrivate === true}}" class='bg-orange text-white px rounded header-sm pos-absolute flag text-center' style='right: 0px; top: 25px;'>
+            Private
+          </view>
+        </block>
         
         <!-- DATE -->
         <view class='d-flex flex-column'>
@@ -60,12 +69,21 @@
     <view wx:for="{{pastGames}}" wx:for-item="game" wx:key="game.id" bindtap="showGame" class="card" data-game_id="{{game.id}}">
     <!-- <navigator class="card" url='../show/show'> -->
       <view class="card-content pos-relative">
-        <view wx:if="{{game.game_status.name === 'Cancelled'}}" class='bg-red text-white px rounded header-sm pos-absolute pos-flag-right-top flag text-center'>
-          Cancelled
-        </view>
-        <view class='bg-green text-white px rounded header-sm pos-absolute pos-flag-right-top flag text-center' wx:else>
-          Active
-        </view>
+        
+        <!-- GAME TAGS -->
+        <block>
+          <view wx:if="{{game.game_status.name === 'Cancelled'}}" class='bg-red text-white px rounded header-sm pos-absolute flag text-center' style='right: 0px; top: 25px;'>
+            Cancelled
+          </view>
+          <view class='bg-green text-white px rounded header-sm pos-absolute pos-flag-right-top flag text-center' wx:else>
+            Active
+          </view>
+        </block>
+        <block>
+          <view wx:if="{{game.isPrivate === true}}" class='bg-orange text-white px rounded header-sm pos-absolute pos-flag-right-top flag text-center'>
+            Private
+          </view>
+        </block>
         
         <!-- DATE -->
         <view class='d-flex flex-column'>

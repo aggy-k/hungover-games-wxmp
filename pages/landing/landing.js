@@ -1,6 +1,7 @@
 // pages/landing/landing.js
 //获取应用实例
-const app = getApp()
+const app = getApp();
+const API = require('../../utils/api-request.js');
 
 Page({
   data: {
@@ -39,8 +40,12 @@ Page({
   },
  
   getUserInfo: function (e) {
-    const url = app.globalData.url;
+    wx.showLoading({
+      title: 'Logging in..',
+    })
+
     const id = app.globalData.userId;
+    const url = `${app.globalData.url}users/${id}`; 
     console.log(e.detail.userInfo);
 
     const avatarUrl = e.detail.userInfo.avatarUrl;
@@ -53,17 +58,19 @@ Page({
     });
 
     app.globalData.userInfo = e.detail.userInfo;
+    const page = this;
+    
 
-    wx.request({
-      url: `${url}users/${id}`,
-      method: 'PUT',
-      data: data,
-      success(res) {
-        wx.switchTab({
-          url: '../games/upcoming/upcoming',
-        });
-      }
-    })
+    setTimeout(() => {
+      API.putData(page, url, data)
+        .then(
+          res => {
+            wx.switchTab({
+              url: '../games/upcoming/upcoming',
+            });
+          }
+        )
+    }, 1000)
   },
   
 })

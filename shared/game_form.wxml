@@ -109,6 +109,19 @@
         </view>
       </view>
 
+      <!-- PRIVATE RADIO BUTTON -->
+      <view class='form-group'>
+        <view class='form-label'>
+          <label class='header-sm bold' for='isPrivate'>Private Game?</label>
+        </view>
+        <radio-group id='isPrivate' class="radio-group header-sm" bindchange="changeIsPrivate" name="isPrivate">
+          <label class="radio d-flex space-between item-center mt">
+            <radio value="true" checked="{{isPrivate === true}}">Yes</radio>
+            <radio value="false" checked="{{isPrivate === false}}">No</radio>       
+          </label>
+        </radio-group>
+      </view>
+
       <!-- GAME STATUS RADIO BUTTON -->
       <view class='form-group'>
         <view class='form-label'>

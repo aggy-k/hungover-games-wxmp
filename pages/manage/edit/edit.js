@@ -13,24 +13,7 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-    const url = app.globalData.url;
-    const page = this;
-    console.log('options', options)
-    const id = options.id
-    // const id = 16;
-
-    wx.request({
-      url: `${url}games/${id}`,
-      method: 'get',
-      success(res) {
-        console.log('res', res)
-
-        const data = res.data;
-
-        page.setData(data)
-        console.log('res.data', res.data)
-      }
-    })
+    
 
   },
 
@@ -45,7 +28,24 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
+    const url = app.globalData.url;
+    const page = this;
+    console.log('options', this.options)
+    const id = this.options.id
+    // const id = 16;
 
+    wx.request({
+      url: `${url}games/${id}`,
+      method: 'get',
+      success(res) {
+        console.log('res', res)
+
+        const data = res.data;
+
+        page.setData(data)
+        console.log('res.data', res.data)
+      }
+    })
   },
 
   /**
@@ -83,24 +83,6 @@ Page({
 
   },
 
-  // bindPickerChange: function (e) {
-  //   console.log('picker发送选择改变，携带值为', e.detail.value)
-  //   const index = e.detail.value
-  //   this.setData({
-  //     index: index
-  //   })
-  //   if (index < (this.data.timeslots.length)) {
-  //     const signUpTime = this.data.timeslots[index].signup_time
-  //     const startTime = this.data.timeslots[index].start_time
-  //     const endTime = this.data.timeslots[index].end_time
-
-  //     this.setData({
-  //       signUpTime: signUpTime,
-  //       startTime: startTime,
-  //       endTime: endTime
-  //     })
-  //   }
-  // },
   bindDateChange: function (e) {
     console.log('picker send selection modified. The carry value is ', e.detail.value)
     const date = new Date(e.detail.value)
@@ -145,6 +127,10 @@ Page({
     console.log('a change event occurred on radio; carry value is: ', e.detail.value)
   },
 
+  changeIsPrivate: function (e) {
+    console.log('a change event occurred on radio; carry value is: ', e.detail.value)
+  },
+
   formSubmit(e) {
     const url = app.globalData.url;
     const page = this;
@@ -162,9 +148,11 @@ Page({
     const announcement = data.announcement
 
     const is_active = data.isActive
+    const is_private = (data.isPrivate === "true")
 
-    const user_id = 1; // for testing purposes only
-    // const user_id = app.globalData.userId
+
+    // const user_id = 1; // for testing purposes only
+    const user_id = app.globalData.userId
     console.log('start time', start_time)
 
     const games = {
@@ -177,7 +165,8 @@ Page({
       description: description,
       announcement: announcement,
       user_id: user_id,
-      is_active: is_active
+      is_active: is_active,
+      is_private: is_private
     }
 
     wx.request({
@@ -186,7 +175,7 @@ Page({
       data: games,
       success(res) {
         console.log('put res', res);
-        wx.navigateTo({
+        wx.navigateBack({
           url: `/pages/manage/show/show?id=${game_id}`,
         })
       }
@@ -196,7 +185,7 @@ Page({
   cancelSubmit: function(e) {
     console.log(e)
     const id = e.currentTarget.dataset.id
-    wx.navigateTo({
+    wx.navigateBack({
       url: `/pages/manage/show/show?id=${id}`,
     })
   }

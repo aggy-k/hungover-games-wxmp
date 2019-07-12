@@ -146,6 +146,10 @@ Page({
     console.log('a change event occurred on radio; carry value is: ', e.detail.value)
   },
 
+  changeIsPrivate: function(e) {
+    console.log('a change event occurred on radio; carry value is: ', e.detail.value)  
+  },
+
   formSubmit(e) {
     const url = app.globalData.url;
     const page = this;
@@ -165,9 +169,10 @@ Page({
     const announcement = data.announcement
 
     const is_active = data.isActive
+    const is_private = (data.isPrivate === "true")
 
-    const user_id = 1; // for testing purposes only
-    // const user_id = app.globalData.userId
+    // const user_id = 1; // for testing purposes only
+    const user_id = app.globalData.userId
     console.log('start time', start_time)
 
     const games = {
@@ -180,7 +185,8 @@ Page({
       description: description,
       announcement: announcement,
       user_id: user_id,
-      is_active: is_active
+      is_active: is_active,
+      is_private: is_private
     }
 
     wx.request({

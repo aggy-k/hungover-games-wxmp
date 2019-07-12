@@ -1,6 +1,7 @@
-  // pages/games/show/show.js
+// pages/games/show/show.js
 const app = getApp();
 const SUP = require('../../../utils/set-user-profile.js');
+const API = require('../../../utils/api-request.js');
 
 Page({
 
@@ -13,6 +14,8 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     week: app.globalData.week,
     month: app.globalData.month,
+    canSignUp: false,
+    signUpBtnText: 'Sign up',
     markers: [{
       iconPath: "/images/hg_logo_marker.png",
       id: 0,
@@ -27,6 +30,9 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: 'Loading game..',
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -38,7 +44,7 @@ Page({
       app.userInfoReadyCallback = res => {
         this.setData({
           userInfo: res.userInfo,
-          hasUserInfo: true, 
+          hasUserInfo: true,
         })
       }
     } else {
@@ -59,124 +65,153 @@ Page({
         // userId: app.globalData.userId,
         game_id: options.id
       })
+      this.getPageData();
     }
-
-    const page = this
-    wx.request({
-      url: app.globalData.url + `games/${page.data.game_id}`,
-      success: function (res) {
-        const game = res.data
-        game.start_time = page.setDateTime(game.start_time)
-        game.end_time = page.setDateTime(game.end_time)
-        game.signup_time = page.setDateTime(game.signup_time)
-
-        const long = game.location.long
-        const lat = game.location.lat
-
-        let userSignedUp = 0
-        let userWaitlisted = 0
-
-        game.attendees.forEach((a) => {
-          if ((a.userId === app.globalData.userId) && (a.attendeeStatus === "Signed-up")) {
-            userSignedUp += 1
-          } else if ((a.userId === app.globalData.userId) && (a.attendeeStatus === "Waitlisted")) {
-            userWaitlisted += 1
-          }
-        })
-
-        page.setData({
-          gameInfo: game,
-          userSignedUp: userSignedUp,
-          userWaitlisted: userWaitlisted,
-          markers: [{
-            height: 30,
-            width: 30,
-            iconPath: "/images/hg_logo_marker.png",
-            id: 0,
-            latitude: lat,
-            longitude: long
-          }]
-        });
-        console.log('userSignedUp', page.data.userSignedUp)
-      },
-    })
   },
 
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
+  getPageData: function() {
+
+    const page = this
+    const path = `${app.globalData.url}games/${page.data.game_id}`
+
+    setTimeout(function() {
+      API.getData(page, path)
+        .then(
+          res => {
+            const game = res.data
+            game.start_time = page.setDateTime(game.start_time)
+            game.end_time = page.setDateTime(game.end_time)
+            game.signup_time = page.setDateTime(game.signup_time)
+
+            const long = game.location.long
+            const lat = game.location.lat
+
+            let userSignedUp = 0
+            let userWaitlisted = 0
+
+            game.attendees.forEach((a) => {
+              if ((a.userId === app.globalData.userId) && (a.attendeeStatus === "Signed-up")) {
+                userSignedUp += 1
+              } else if ((a.userId === app.globalData.userId) && (a.attendeeStatus === "Waitlisted")) {
+                userWaitlisted += 1
+              }
+            })
+
+            wx.hideLoading();
+            wx.hideNavigationBarLoading();
+            wx.stopPullDownRefresh();
+
+            page.setData({
+              gameInfo: game,
+              userSignedUp: userSignedUp,
+              userWaitlisted: userWaitlisted,
+              markers: [{
+                height: 30,
+                width: 30,
+                iconPath: "/images/hg_logo_marker.png",
+                id: 0,
+                latitude: lat,
+                longitude: long
+              }]
+            });
+            
+            console.log('userSignedUp', page.data.userSignedUp)
+          })
+    }, 1500)     
+  },
+
   onReady: function () {
 
   },
 
-  /**
-   * Lifecycle function--Called when page show
-   */
   onShow: function () {
+    const options = this.options;
+    wx.showLoading({
+      title: 'Loading game..',
+    })
 
+    if (!this.data.game_id) {
+      this.setData({
+        game_id: options.id
+      })
+    }
+    this.getPageData();
+    
   },
 
-  /**
-   * Lifecycle function--Called when page hide
-   */
   onHide: function () {
 
   },
 
-  /**
-   * Lifecycle function--Called when page unload
-   */
   onUnload: function () {
-
+    
   },
 
-  /**
-   * Page event handler function--Called when user drop down
-   */
   onPullDownRefresh: function () {
-    wx.showNavigationBarLoading()
-    this.onLoad()
-    setTimeout(function () { wx.hideNavigationBarLoading() }, 1500)
+    wx.showLoading({
+      title: 'Refreshing..',
+    })
+    this.getPageData();
   },
 
-  /**
-   * Called when page reach bottom
-   */
   onReachBottom: function () {
 
   },
 
-  /**
-   * Called when user click on the top right corner to share
-   */
   onShareAppMessage: function (res) {
 
   },
 
   formSubmit: function(e) {
-    // app.updateUserInfo(e)
-    SUP.setUserProfile(e, this)
-      .then(
-        data => {
+    const page = this;
+    let canSignUp = !page.data.canSignUp
+    console.log('can sign up disabled?', canSignUp)
+ 
+    page.setData({
+      canSignUp: canSignUp,
+      signUpBtnText: 'Signing up..'
+    })
+    wx.showLoading({
+      title: 'Signing up..',
+    })
+    SUP.setUserProfile(e, this).then(
+        res => {
           const page = this;
-          const url = app.globalData.url;
           const game_id = e.target.dataset.game_id
           console.log('signing up for game id ' + game_id)
           const user_id = app.globalData.userId;
+          const url = `${app.globalData.url}signups`;
+          const data = { game_id: game_id, user_id: user_id };
 
-          wx.request({
-            url: `${url}signups`,
-            method: 'POST',
-            data: { game_id: game_id, user_id: user_id },
-            success(res) {
-              wx.reLaunch({
-                url: '../registered/registered?toast=true',
-              })
-            }
-          });
+          API.postData(page, url, data).then(
+            res => {
+              setTimeout(function () {
+                wx.hideLoading();
+                wx.showToast({
+                  title: 'Signed-up',
+                  icon: 'success',
+                  duration: 2000
+                });
+                canSignUp = !page.data.canSignUp
+                console.log('can sign up disabled?', canSignUp)
+                let signUpBtnText = `Sign up again`
+                page.setData({
+                  canSignUp: canSignUp,
+                  signUpBtnText: signUpBtnText
+                })
+                page.getPageData()
+              }, 4000);
+            })
         }
       )
     
+  },
+
+  showMySignups() {
+    const game_id = this.data.game_id
+    wx.navigateTo({
+      url: `/pages/games/signup/signup?game_id=${game_id}&user_only=true`,
+    })
   },
 
   toHome() {

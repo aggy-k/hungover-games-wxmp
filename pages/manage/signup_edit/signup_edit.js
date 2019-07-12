@@ -44,7 +44,7 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
-
+    
   },
 
   /**
@@ -102,7 +102,7 @@ Page({
       data: {attendee_status: attendeeStatus, game_id: game_id},
       success(res) {
         console.log(res)
-        wx.navigateTo({
+        wx.navigateBack({
           url: `/pages/manage/signup/signup?game_id=${game_id}`,
         })
       }
@@ -112,7 +112,7 @@ Page({
   cancelSubmit() {
     const game_id = this.data.game.id;
 
-    wx.navigateTo({
+    wx.navigateBack({
       url: `/pages/manage/signup/signup?game_id=${game_id}`,
     })
   }

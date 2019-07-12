@@ -16,19 +16,7 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-    console.log('onLoad options is', options)
-    const game_id = options.game_id;
-    this.setData({game_id: game_id})
-    const url = app.globalData.url;
-    const page = this;
-
-    wx.request({
-      url: `${url}games/${game_id}`,
-      success(res) {
-        console.log('res', res);
-        page.setData(res.data)
-      }
-    })
+    
   },
 
   /**
@@ -42,7 +30,19 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
+    console.log('onLoad options is', this.options)
+    const game_id = this.options.game_id;
+    this.setData({ game_id: game_id })
+    const url = app.globalData.url;
+    const page = this;
 
+    wx.request({
+      url: `${url}games/${game_id}`,
+      success(res) {
+        console.log('res', res);
+        page.setData(res.data)
+      }
+    })
   },
 
   /**

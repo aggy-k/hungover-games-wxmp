@@ -1,61 +1,28 @@
 // pages/games/upcoming/upcoming.js
 const app = getApp();
+const API = require('../../../utils/api-request.js');
 
 Page({
 
-  /**
-   * Page initial data
-   */
   data: {
     week: app.globalData.week,
     month: app.globalData.month,
     clickedInfo: false
   },
 
-  /**
-   * Lifecycle function--Called when page load
-   */
   onLoad: function (options) {
     
   },
 
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
   onReady: function () {
 
   },
 
-  /**
-   * Lifecycle function--Called when page show
-   */
   onShow: function () {
-    wx.stopPullDownRefresh()
-    const page = this
-    const url = app.globalData.url;
-
-    wx.request({
-      url: `${url}games`,
-      success: function (res) {
-        const games = res.data.games
-        console.log('resdata', res.data)
-        const now = new Date();
-
-        games.forEach(function (game) {
-          game.start_time = page.setDateTime(game.start_time)
-          game.end_time = page.setDateTime(game.end_time)
-          game.signup_date = page.setDateTime(game.signup_date)
-          game.signup_time = new Date(game.signup_time)
-          // game.signup_opens = (now >= game.signup_time)
-        });
-        page.setData({ games: games });
-        console.log(page.data.games)
-
-        console.log(page.data.games[0].signup_time, now)
-        console.log('signup time vs now', (page.data.now >= page.data.games[0].signup_time))
-      },
+    wx.showLoading({
+      title: 'Loading...',
     })
-    console.log('page data', this.data)
+    this.getPageData();
   },
 
   setDateTime: function(dateString) {
@@ -67,6 +34,43 @@ Page({
     const time = `${date.getHours()}:${('0' + date.getMinutes()).slice(-2)}`;
 
     return { weekDay: weekDay, day: day, month: month, year: year, time: time }
+  },
+
+  getPageData: function() {
+    const page = this
+    // const url = app.globalData.url;
+    const url_path = `${app.globalData.url}games?is_private=false`
+
+    setTimeout(function() {
+      API.getData(page, url_path)
+        .then(
+          res => {
+            const games = res.data.games
+            console.log('resdata', res.data)
+            const now = new Date();
+
+            games.forEach(function (game) {
+              game.start_time = page.setDateTime(game.start_time)
+              game.end_time = page.setDateTime(game.end_time)
+              game.signup_date = page.setDateTime(game.signup_date)
+              game.signup_time = new Date(game.signup_time)
+              // game.signup_opens = (now >= game.signup_time)
+            });
+            page.setData({ games: games });
+
+            wx.hideLoading();
+            wx.hideNavigationBarLoading();
+            wx.stopPullDownRefresh();
+
+            console.log(page.data.games)
+
+            console.log(page.data.games[0].signup_time, now)
+            console.log('signup time vs now', (page.data.now >= page.data.games[0].signup_time))
+          }
+        )   
+    }, 500)
+   
+    console.log('page data', this.data)
   },
 
   showGame: function (e) {
@@ -83,32 +87,23 @@ Page({
  
   },
 
-  /**
-   * Lifecycle function--Called when page unload
-   */
   onUnload: function () {
 
   },
 
-  /**
-   * Page event handler function--Called when user drop down
-   */
   onPullDownRefresh: function () {
-    wx.showNavigationBarLoading()
-    this.onShow()
-    setTimeout(function () { wx.hideNavigationBarLoading()}, 1500)
+    wx.showNavigationBarLoading();
+    wx.showLoading({
+      title: 'Refreshing..',
+    })
+    
+    this.getPageData();
   },
 
-  /**
-   * Called when page reach bottom
-   */
   onReachBottom: function () {
 
   },
 
-  /**
-   * Called when user click on the top right corner to share
-   */
   onShareAppMessage: function () {
 
   },

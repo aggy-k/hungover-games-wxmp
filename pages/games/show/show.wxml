@@ -35,7 +35,7 @@
       </navigator>
     </view>
 
-    <view class='card' wx:if="{{userSignedUp > 0}}">
+    <view class='card' wx:if="{{userSignedUp > 0}}" bindtap="showMySignups">
       <view class='card-content'>
         <!-- <view><text class='header-sm mb'>You're signed up</text></view>  -->
         <view class='d-flex item-center'>
@@ -45,7 +45,7 @@
       </view>
     </view>
 
-    <view class='card' wx:if="{{userWaitlisted > 0}}">
+    <view class='card' wx:if="{{userWaitlisted > 0}}" bindtap="showMySignups">
       <view class='card-content'>
         <!-- <view><text class='header-sm mb'>You're on the waitlist</text></view>  -->
         <view class='d-flex item-center'>
@@ -104,6 +104,6 @@
 <view class='box-h70px'></view>
 <cover-view class='button-footer d-flex'>
   <button class='w100 ma btn btn-transparent' bindtap='toHome'>Home</button>
-  <button class='w100 ma btn btn-orange' open-type="getUserInfo" bindgetuserinfo='formSubmit' data-game_id="{{game_id}}">Sign up</button>
+  <button class='w100 ma btn btn-orange' open-type="getUserInfo" bindgetuserinfo='formSubmit' data-game_id="{{game_id}}" disabled="{{canSignUp}}">{{signUpBtnText}}</button>
 </cover-view>
- 
+  
