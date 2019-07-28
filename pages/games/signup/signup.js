@@ -83,14 +83,8 @@ Page({
     const id = e.currentTarget.dataset.id
     const game_id = e.currentTarget.dataset.game_id
 
-    const start_time = new Date(`${e.currentTarget.dataset.start_time}`);
-
-    const last_status = e.currentTarget.dataset.last_status
-    console.log('last status', last_status)
-
-    const delta = (start_time - (new Date())) / 3600 / 1000;
-
-    const attendee_status = (((delta < 24) && (last_status === 'Signed-up')) ? 'Late-cancelled' : 'Cancelled')
+    // Late cancellation logic moved to back-end
+    const attendee_status = 'Cancelled'
     console.log(attendee_status)
 
     const url = `${app.globalData.url}signups/${id}`

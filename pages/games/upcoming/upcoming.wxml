@@ -7,8 +7,10 @@
 
 <!-- HIDDEN FLOATING BUTTONS -->
 <view wx:if="{{clickedInfo}}" class='info-popup-buttons'>
-  <button class='btn-orange ma shadow' bindtap='navToGameInfo'>About the game</button>
+  
   <button class='btn-orange ma shadow' bindtap='navToAppInfo'>About the app</button>
+  <button class='btn-orange ma shadow' bindtap='navToGameInfo'>About the game</button>
+  <button class='btn-orange ma shadow' bindtap='navToChatInfo'>Chat with us</button>
 </view>
 
 <view class="{{clickedInfo ? 'blur' : ''}}">
@@ -19,6 +21,12 @@
   </view>
 
   <view class="container">
+
+    <!-- IF NO GAME -->
+    <view wx:if="{{!games.length}}" style='margin-top: 30rpx;' class='d-flex flex-column content-center item-center'>
+      <image src='/images/not-found.png' style='width: 70px; height: 70px; opacity: 0.5;'></image>
+      <view class='ma text-dark-grey text-size-sheader'>No upcoming game</view>
+    </view>
 
     <!-- CARDS SIGNUP OPEN -->
     <!-- <view wx:if="{{(game.signup_opens && game.game_status.name === 'Active')}}" data-game_id="{{game.id}}" bindtap="showGame" wx:for="{{games}}" wx:for-item="game" wx:key="game.id" class="card" data-space="{{game}}"> -->

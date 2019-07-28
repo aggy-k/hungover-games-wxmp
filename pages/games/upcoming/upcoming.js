@@ -64,8 +64,8 @@ Page({
 
             console.log(page.data.games)
 
-            console.log(page.data.games[0].signup_time, now)
-            console.log('signup time vs now', (page.data.now >= page.data.games[0].signup_time))
+            // console.log(page.data.games[0].signup_time, now)
+            // console.log('signup time vs now', (page.data.now >= page.data.games[0].signup_time))
           }
         )   
     }, 500)
@@ -126,6 +126,13 @@ Page({
   navToAppInfo: function () {
     wx.navigateTo({
       url: '/pages/info/app_info',
+    })
+    this.setData({ clickedInfo: false })
+  },
+
+  navToChatInfo: function () {
+    wx.navigateTo({
+      url: '/pages/info/chat_info',
     })
     this.setData({ clickedInfo: false })
   },

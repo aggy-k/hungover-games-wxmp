@@ -1,0 +1,18 @@
+<view class='container' style='margin-bottom: 50px;'>
+  <view class='card'>
+    <view class='card-content'>
+      <!-- TITLE -->
+      <view class='header-lg bold text-dark-grey mb d-flex content-center'>You have questions?</view>
+
+      <!-- CONTENT -->
+      <view class='header-sm text-dark-grey mb d-flex content-center'>
+        <!-- Add us on WeChat using this QR Code below 👇 -->
+        Click on the QR code and add us on WeChat
+      </view>
+
+      <view class='header-sm text-dark-grey mb d-flex content-center'>
+        <image bindlongpress="saveImage" src='/images/account_qr.png'  style="height: 400rpx; width: 400rpx;"></image>
+      </view>
+    </view>
+  </view>
+</view>

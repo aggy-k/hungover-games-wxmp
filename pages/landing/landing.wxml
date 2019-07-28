@@ -7,6 +7,7 @@
     </view>
     <view class='landing-bottom w70'>
       <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='btn-orange w70'>Enter</button>
+      <!-- <button type='primary' open-type='contact'>test contact</button> -->
     </view>
   </view>
 
