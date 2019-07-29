@@ -22,6 +22,13 @@
 
   <!-- UPCOMING BLOCK -->
   <block wx:if="{{isUpcoming === true}}">
+
+    <!-- IF NO GAME -->
+    <view wx:if="{{!games.length}}" style='margin-top: 30rpx;' class='d-flex flex-column content-center item-center'>
+      <image src='/images/not-found.png' style='width: 70px; height: 70px; opacity: 0.5;'></image>
+      <view class='ma text-dark-grey text-size-sheader'>No upcoming game</view>
+    </view>
+
     <view wx:for="{{games}}" wx:for-item="game" wx:key="unique" class="py card" style='padding-top: 0px;'>
       
       <!-- DATE -->
@@ -72,6 +79,13 @@
 
   <!-- PAST BLOCK -->
   <block wx:if="{{isUpcoming === false}}">
+
+    <!-- IF NO GAME -->
+    <view wx:if="{{!pastGames.length}}" style='margin-top: 30rpx;' class='d-flex flex-column content-center item-center'>
+      <image src='/images/not-found.png' style='width: 70px; height: 70px; opacity: 0.5;'></image>
+      <view class='ma text-dark-grey text-size-sheader'>No past game</view>
+    </view>
+
     <view wx:for="{{pastGames}}" wx:for-item="game" wx:key="unique" class="py card" style='padding-top: 0px;'>
       
       <!-- DATE -->
